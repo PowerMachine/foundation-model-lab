@@ -1,6 +1,11 @@
 # Foundation Model Lab
 
+[![CI](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/ci.yml)
+[![Portfolio Pages](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/pages.yml/badge.svg)](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/pages.yml)
+
 Resource-aware research on foundation models, multimodal adaptation, and executable agents.
+
+[Open the evidence site](https://powermachine.github.io/foundation-model-lab/)
 
 This repository is an experiment system, not a model zoo. It turns each method into a small,
 inspectable run with explicit hypotheses, leakage controls, resource budgets, machine-readable
