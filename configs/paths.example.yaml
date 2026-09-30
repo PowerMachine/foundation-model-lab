@@ -1,0 +1,10 @@
+data_root: /path/to/fmlab-data
+model_root: /path/to/local-models
+
+models:
+  qwen_base_05b: Qwen/Qwen2.5-0.5B
+  qwen_instruct_3b: Qwen/Qwen2.5-3B-Instruct
+  qwen_instruct_7b: Qwen/Qwen2.5-7B-Instruct
+  qwen_coder_3b: Qwen/Qwen2.5-Coder-3B-Instruct
+  qwen_vl_8b: Qwen/Qwen3-VL-8B-Instruct
+

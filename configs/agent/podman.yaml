@@ -1,0 +1,22 @@
+# Locked-down runner for model-generated code. The image must already exist locally;
+# PodmanRunner always uses --pull=never.
+runner: podman
+image: localhost/fmlab-python:3.12
+podman_binary: podman
+
+sandbox:
+  workspace: ${FMLAB_DATA_ROOT}/agent-sandboxes/current
+  allowlist: [python3, pytest]
+  python_modules: [pytest]
+  cpus: 1.0
+  tmpfs_mb: 256
+  timeout_seconds: 30
+  cpu_seconds: 20
+  memory_mb: 2048
+  output_bytes: 200000
+  file_bytes: 50000000
+  processes: 32
+
+# These properties are enforced by the implementation and intentionally are not
+# configurable: network=none, read-only rootfs, cap-drop=all,
+# no-new-privileges, pull=never, and exactly one host bind mount.

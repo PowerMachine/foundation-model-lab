@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evidence-first portfolio for reliable multimodal agents, evaluation, distributed correctness, and inference systems.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#07111e">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>Reliable Multimodal Agent Systems · Research Engineering Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to portfolio evidence</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Portfolio home">
+      <span class="brand-mark" aria-hidden="true">RM</span>
+      <span class="brand-text">Reliable Systems Lab</span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a href="#flagships"><span data-i18n data-en="Work" data-ko="프로젝트">Work</span></a>
+      <a href="#evidence-ledger"><span data-i18n data-en="Evidence" data-ko="증거">Evidence</span></a>
+      <a href="#method"><span data-i18n data-en="Method" data-ko="방법">Method</span></a>
+      <a href="#limitations"><span data-i18n data-en="Boundaries" data-ko="경계">Boundaries</span></a>
+    </nav>
+    <div class="header-tools">
+      <div class="language-switch" role="group" aria-label="Language">
+        <button type="button" data-language="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="ko" aria-pressed="false">KO</button>
+      </div>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme"
+              title="Toggle color theme"><span aria-hidden="true">◐</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n data-en="Evidence-first research engineering" data-ko="증거 중심 리서치 엔지니어링">Evidence-first research engineering</span>
+        </p>
+        <h1 id="hero-title">
+          <span data-i18n data-en="Reliable multimodal agent systems—claims you can audit." data-ko="감사 가능한 주장으로 만드는 신뢰성 높은 멀티모달 에이전트 시스템.">Reliable multimodal agent systems—claims you can audit.</span>
+        </h1>
+        <p class="hero-lede" data-i18n data-en="I connect multimodal post-training and reward design, agent evaluation, distributed semantics, and inference behavior. Every headline number resolves to code, a result JSON, and an explicit limitation." data-ko="멀티모달 post-training·보상 설계, 에이전트 평가, 분산 학습 의미론, 추론 동작을 연결합니다. 모든 핵심 수치는 코드·result JSON·명시적 한계로 추적됩니다.">I connect multimodal post-training and reward design, agent evaluation, distributed semantics, and inference behavior. Every headline number resolves to code, a result JSON, and an explicit limitation.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#review-path">
+            <span data-i18n data-en="Start 5-minute review" data-ko="5분 리뷰 시작">Start 5-minute review</span> ↓
+          </a>
+          <a class="button button-secondary" href="#flagships">
+            <span data-i18n data-en="Explore evidence" data-ko="증거 살펴보기">Explore evidence</span>
+          </a>
+        </div>
+        <dl class="hero-stats" aria-label="Portfolio evidence summary">
+          <div><dt>5</dt><dd><span data-i18n data-en="source evidence bundles" data-ko="원천 evidence bundle">source evidence bundles</span></dd></div>
+          <div><dt>2</dt><dd><span data-i18n data-en="real 8B LoRA steps" data-ko="실제 8B LoRA step">real 8B LoRA steps</span></dd></div>
+          <div><dt>81</dt><dd><span data-i18n data-en="systems trials" data-ko="systems trial">systems trials</span></dd></div>
+          <div><dt>11/11</dt><dd><span data-i18n data-en="DDP gates passed" data-ko="통과한 DDP gate">DDP gates passed</span></dd></div>
+        </dl>
+      </div>
+      <aside class="hero-console" aria-label="Research system contract">
+        <div class="console-bar"><span></span><span></span><span></span>
+          <code>evidence.contract</code>
+        </div>
+        <div class="console-body">
+          <p><span class="console-key">position</span><span class="console-value">reliable_multimodal_agents</span></p>
+          <p><span class="console-key">pipeline</span><span class="console-value">data → train/reward → agent → eval → serve</span></p>
+          <p><span class="console-key">controls</span><span class="console-value">holdout · attack · fault · resume</span></p>
+          <p><span class="console-key">release</span><span class="console-value">manifest + SHA-256 + boundary</span></p>
+          <div class="contract-ok"><span aria-hidden="true">✓</span>
+            <span data-i18n data-en="Claim boundary attached" data-ko="주장 경계 연결됨">Claim boundary attached</span>
+          </div>
+        </div>
+        <div class="signal-flow" aria-label="End-to-end research loop">
+          <span>DATA</span><i></i><span>TRAIN</span><i></i><span>AGENT</span><i></i>
+          <span>EVAL</span><i></i><span>SERVE</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="review-path section" id="review-path" aria-labelledby="review-title">
+      <div class="section-heading">
+        <p class="section-kicker">00 — REVIEW PATH</p>
+        <h2 id="review-title">
+          <span data-i18n data-en="A reviewer can verify the work in five minutes." data-ko="5분 안에 검증할 수 있는 리뷰 경로">A reviewer can verify the work in five minutes.</span>
+        </h2>
+        <p data-i18n data-en="Follow one evidence chain from reward behavior through real GPU wiring, agent integrity, distributed semantics, and serving limits." data-ko="보상 동작에서 실제 GPU 경로, 에이전트 무결성, 분산 의미론, serving 한계까지 하나의 evidence chain으로 검토합니다.">Follow one evidence chain from reward behavior through real GPU wiring, agent integrity, distributed semantics, and serving limits.</p>
+      </div>
+      <ol class="review-timeline">
+        <li><span class="time">0:00–0:55</span><a href="#visual-reward"><span data-i18n data-en="Audit rewards" data-ko="보상 감사">Audit rewards</span></a><p>Ablation · attacks · holdout</p></li>
+        <li><span class="time">0:55–1:50</span><a href="#vlm-lora-gpu"><span data-i18n data-en="Verify GPU run" data-ko="GPU 실행 확인">Verify GPU run</span></a><p>BF16 · LoRA · held-out</p></li>
+        <li><span class="time">1:50–2:50</span><a href="#agent-eval"><span data-i18n data-en="Probe integrity" data-ko="무결성 점검">Probe integrity</span></a><p>Graders · retry · resume</p></li>
+        <li><span class="time">2:50–3:50</span><a href="#ddp-correctness"><span data-i18n data-en="Check DDP" data-ko="DDP 확인">Check DDP</span></a><p>Parity · sharding · contract</p></li>
+        <li><span class="time">3:50–5:00</span><a href="#inference-systems"><span data-i18n data-en="Find knees" data-ko="knee 확인">Find knees</span></a><p>p99 · goodput · capacity</p></li>
+      </ol>
+    </section>
+
+    <section class="flagships section" id="flagships" aria-labelledby="flagships-title">
+      <div class="section-heading split-heading">
+        <div><p class="section-kicker">01 — FLAGSHIP WORK</p>
+          <h2 id="flagships-title">
+            <span data-i18n data-en="Five linked systems, not disconnected demos." data-ko="분리된 데모가 아닌, 연결된 다섯 개의 시스템">Five linked systems, not disconnected demos.</span>
+          </h2>
+        </div>
+        <p data-i18n data-en="Filter by what actually ran. Actual never silently upgrades simulated or scripted evidence." data-ko="실제로 실행된 증거 유형으로 필터링하세요. 실측이 simulation이나 scripted evidence를 암묵적으로 승격하지 않습니다.">Filter by what actually ran. Actual never silently upgrades simulated or scripted evidence.</p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="Filter projects by evidence class">
+        <button type="button" data-filter="all" aria-pressed="true">
+          <span data-i18n data-en="All evidence" data-ko="전체">All evidence</span>
+        </button>
+        <button type="button" data-filter="actual" aria-pressed="false">
+          <span class="filter-dot dot-actual"></span><span data-i18n data-en="Actual execution" data-ko="실제 실행">Actual execution</span>
+        </button>
+        <button type="button" data-filter="synthetic" aria-pressed="false">
+          <span class="filter-dot dot-synthetic"></span><span data-i18n data-en="Synthetic audit" data-ko="합성 감사">Synthetic audit</span>
+        </button>
+        <button type="button" data-filter="simulation" aria-pressed="false">
+          <span class="filter-dot dot-simulation"></span><span data-i18n data-en="Simulation" data-ko="시뮬레이션">Simulation</span>
+        </button>
+        <span class="filter-status" role="status" aria-live="polite">5 projects shown</span>
+      </div>
+      <div class="track-grid"><article class="track-card accent-mint" id="visual-reward" data-evidence="synthetic">
+  <div class="track-card-header">
+    <span class="track-number" aria-hidden="true">01</span>
+    <span class="evidence-badge"><span data-i18n data-en="Scripted synthetic audit" data-ko="스크립트 기반 합성 감사">Scripted synthetic audit</span></span>
+  </div>
+  <h3 data-i18n data-en="Visual reward contracts" data-ko="시각 보상 계약">Visual reward contracts</h3>
+  <p class="track-subtitle" data-i18n data-en="Hidden-reference grading for document QA, chart QA, and grounding." data-ko="문서 QA·차트 QA·그라운딩을 위한 hidden-reference 채점 환경입니다.">Hidden-reference grading for document QA, chart QA, and grounding.</p>
+  <div class="metrics-grid"><div class="metric"><strong class="metric-value">45.8% → 100.0%</strong><span class="metric-label" data-i18n data-en="preference accuracy" data-ko="선호 정확도">preference accuracy</span><span class="metric-context">+54.2 pp</span></div><div class="metric"><strong class="metric-value">100% → 0%</strong><span class="metric-label" data-i18n data-en="attack false acceptance" data-ko="공격 오수락률">attack false acceptance</span><span class="metric-context">n=24</span></div><div class="metric"><strong class="metric-value">[39.6, 68.8] pp</strong><span class="metric-label" data-i18n data-en="paired bootstrap 95% CI" data-ko="paired bootstrap 95% CI">paired bootstrap 95% CI</span><span class="metric-context">1000 resamples</span></div></div>
+  <figure class="evidence-figure">
+    <img src="assets/visual-reward.svg" alt="Robust reward by scripted candidate, including attack candidates."
+         width="1120" height="570">
+  </figure>
+  <p class="finding" data-i18n data-en="Strict schemas, calibration, grounding, and attack penalties separate true success from superficially plausible reward exploits." data-ko="엄격한 스키마·캘리브레이션·그라운딩·공격 페널티가 실제 성공과 피상적인 보상 악용을 분리합니다.">Strict schemas, calibration, grounding, and attack penalties separate true success from superficially plausible reward exploits.</p>
+  <aside class="claim-boundary">
+    <span class="boundary-label"><span data-i18n data-en="Claim boundary" data-ko="주장 경계">Claim boundary</span></span>
+    <p data-i18n data-en="Deterministic synthetic tasks and scripted candidates audit the grader. This is not VLM generation, human-preference agreement, or online RL evidence." data-ko="결정론적 합성 과제와 스크립트 후보로 grader를 검증했습니다. VLM 생성 품질, 사람 선호 일치도, 온라인 RL의 증거는 아닙니다.">Deterministic synthetic tasks and scripted candidates audit the grader. This is not VLM generation, human-preference agreement, or online RL evidence.</p>
+  </aside>
+  <div class="card-actions">
+    <a class="button button-small" href="evidence/visual-reward/report.html">
+      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
+    </a>
+    <a class="text-link" href="evidence/visual-reward/result.json">JSON ↗</a>
+    <a class="text-link" href="source/visual-reward.py" data-repo-path="src/fmlab/vlm/reward_environment.py">
+      <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
+    </a>
+  </div>
+</article>
+<article class="track-card accent-rose" id="vlm-lora-gpu" data-evidence="actual gpu">
+  <div class="track-card-header">
+    <span class="track-number" aria-hidden="true">02</span>
+    <span class="evidence-badge"><span data-i18n data-en="Actual GPU smoke" data-ko="실제 GPU smoke">Actual GPU smoke</span></span>
+  </div>
+  <h3 data-i18n data-en="Qwen3-VL LoRA execution" data-ko="Qwen3-VL LoRA 실제 실행">Qwen3-VL LoRA execution</h3>
+  <p class="track-subtitle" data-i18n data-en="A bounded, local-only BF16 training and held-out generation smoke." data-ko="로컬 BF16 학습과 held-out 생성 경로를 실제 GPU에서 제한적으로 검증했습니다.">A bounded, local-only BF16 training and held-out generation smoke.</p>
+  <div class="metrics-grid"><div class="metric"><strong class="metric-value">2 / 2</strong><span class="metric-label" data-i18n data-en="real LoRA steps" data-ko="실제 LoRA step">real LoRA steps</span><span class="metric-context">36.75 s total</span></div><div class="metric"><strong class="metric-value">7.67M</strong><span class="metric-label" data-i18n data-en="trainable parameters" data-ko="학습 parameter">trainable parameters</span><span class="metric-context">0.0874% of 8.77B</span></div><div class="metric"><strong class="metric-value">17.45 GiB</strong><span class="metric-label" data-i18n data-en="peak GPU allocated" data-ko="최대 GPU allocated">peak GPU allocated</span><span class="metric-context">BF16 · vision frozen</span></div><div class="metric"><strong class="metric-value">100% → 100%</strong><span class="metric-label" data-i18n data-en="held-out exact match" data-ko="held-out exact match">held-out exact match</span><span class="metric-context">delta 0 · n=3 synthetic</span></div></div>
+  <figure class="evidence-figure">
+    <img src="assets/vlm-lora-gpu.svg" alt="Measured Qwen3-VL LoRA runtime and GPU memory profile."
+         width="1120" height="570">
+  </figure>
+  <p class="finding" data-i18n data-en="Two optimizer steps completed with a frozen vision tower, an audited LoRA-only trainable path, and before/after held-out generation." data-ko="vision tower 고정, LoRA-only trainable path 감사, 전후 held-out 생성을 포함해 optimizer 2 step을 완료했습니다.">Two optimizer steps completed with a frozen vision tower, an audited LoRA-only trainable path, and before/after held-out generation.</p>
+  <aside class="claim-boundary">
+    <span class="boundary-label"><span data-i18n data-en="Claim boundary" data-ko="주장 경계">Claim boundary</span></span>
+    <p data-i18n data-en="Three synthetic held-out examples were already perfect: exact match stayed 100% → 100% (delta 0). This proves execution wiring, not quality gain or benchmark value." data-ko="합성 held-out 3개는 baseline부터 완벽해 EM이 100% → 100%(delta 0)였습니다. 실행 경로 증거이며 품질 향상이나 benchmark 성능의 증거가 아닙니다.">Three synthetic held-out examples were already perfect: exact match stayed 100% → 100% (delta 0). This proves execution wiring, not quality gain or benchmark value.</p>
+  </aside>
+  <div class="card-actions">
+    <a class="button button-small" href="evidence/vlm-lora-gpu/report.html">
+      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
+    </a>
+    <a class="text-link" href="evidence/vlm-lora-gpu/result.json">JSON ↗</a>
+    <a class="text-link" href="source/vlm-lora-gpu.py" data-repo-path="src/fmlab/vlm/lora_e2e.py">
+      <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
+    </a>
+  </div>
+</article>
+<article class="track-card accent-violet" id="agent-eval" data-evidence="actual environment">
+  <div class="track-card-header">
+    <span class="track-number" aria-hidden="true">03</span>
+    <span class="evidence-badge"><span data-i18n data-en="Actual local harness" data-ko="실제 로컬 하네스">Actual local harness</span></span>
+  </div>
+  <h3 data-i18n data-en="Reliable agent evaluation" data-ko="신뢰 가능한 에이전트 평가">Reliable agent evaluation</h3>
+  <p class="track-subtitle" data-i18n data-en="Outcome + process integrity grading with retries and exact resume." data-ko="결과와 실행 무결성을 함께 채점하고 재시도·정확 재개를 검증합니다.">Outcome + process integrity grading with retries and exact resume.</p>
+  <div class="metrics-grid"><div class="metric"><strong class="metric-value">100% / 0%</strong><span class="metric-label" data-i18n data-en="oracle / shortcut pass@1" data-ko="oracle / shortcut pass@1">oracle / shortcut pass@1</span><span class="metric-context">24 episodes</span></div><div class="metric"><strong class="metric-value">5/5</strong><span class="metric-label" data-i18n data-en="transient faults recovered" data-ko="일시 장애 복구">transient faults recovered</span><span class="metric-context">≤ 2 attempts</span></div><div class="metric"><strong class="metric-value">24/24</strong><span class="metric-label" data-i18n data-en="episodes exactly resumed" data-ko="정확히 재개된 episode">episodes exactly resumed</span><span class="metric-context">0 duplicate executions</span></div></div>
+  <figure class="evidence-figure">
+    <img src="assets/agent-eval.svg" alt="Pass, raw outcome, and reward-hack rates by scripted policy."
+         width="1120" height="570">
+  </figure>
+  <p class="finding" data-i18n data-en="Positive and adversarial controls exercise private graders, unsafe-action detection, fault recovery, immutable tasks, and a content-addressed ledger." data-ko="정상·적대 통제 정책으로 private grader, 위험 행동 탐지, 장애 복구, immutable task와 content-addressed ledger를 검증합니다.">Positive and adversarial controls exercise private graders, unsafe-action detection, fault recovery, immutable tasks, and a content-addressed ledger.</p>
+  <aside class="claim-boundary">
+    <span class="boundary-label"><span data-i18n data-en="Claim boundary" data-ko="주장 경계">Claim boundary</span></span>
+    <p data-i18n data-en="Real files, tools, graders, and processes ran locally, but both policies are deterministic scripted controls. This is not an LLM benchmark or OS sandbox." data-ko="실제 파일·도구·grader·프로세스를 실행했지만 정책은 스크립트 통제군입니다. LLM 성능 벤치마크나 OS 보안 샌드박스가 아닙니다.">Real files, tools, graders, and processes ran locally, but both policies are deterministic scripted controls. This is not an LLM benchmark or OS sandbox.</p>
+  </aside>
+  <div class="card-actions">
+    <a class="button button-small" href="evidence/agent-eval/report.html">
+      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
+    </a>
+    <a class="text-link" href="evidence/agent-eval/result.json">JSON ↗</a>
+    <a class="text-link" href="source/agent-eval.py" data-repo-path="src/fmlab/agent/eval_environment.py">
+      <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
+    </a>
+  </div>
+</article>
+<article class="track-card accent-blue" id="ddp-correctness" data-evidence="actual">
+  <div class="track-card-header">
+    <span class="track-number" aria-hidden="true">04</span>
+    <span class="evidence-badge"><span data-i18n data-en="Actual CPU / Gloo" data-ko="실제 CPU / Gloo">Actual CPU / Gloo</span></span>
+  </div>
+  <h3 data-i18n data-en="Distributed correctness" data-ko="분산 학습 정확성">Distributed correctness</h3>
+  <p class="track-subtitle" data-i18n data-en="Two-rank DDP parity, deterministic sharding, and fail-closed resume." data-ko="2-rank DDP 동등성, 결정론적 샤딩, fail-closed 재개를 검증합니다.">Two-rank DDP parity, deterministic sharding, and fail-closed resume.</p>
+  <div class="metrics-grid"><div class="metric"><strong class="metric-value">1.11e-16</strong><span class="metric-label" data-i18n data-en="max gradient abs. error" data-ko="최대 gradient 절대 오차">max gradient abs. error</span><span class="metric-context">FP64 reference</span></div><div class="metric"><strong class="metric-value">0.0</strong><span class="metric-label" data-i18n data-en="resume loss divergence" data-ko="재개 loss 차이">resume loss divergence</span><span class="metric-context">exact state match</span></div><div class="metric"><strong class="metric-value">11/11</strong><span class="metric-label" data-i18n data-en="correctness gates passed" data-ko="통과한 정확성 gate">correctness gates passed</span><span class="metric-context">2 real processes</span></div></div>
+  <figure class="evidence-figure">
+    <img src="assets/ddp-correctness.svg" alt="Overlapping uninterrupted and checkpoint-resumed DDP loss curves."
+         width="1120" height="570">
+  </figure>
+  <p class="finding" data-i18n data-en="A single-process global-batch reference checks gradients and updates while checkpoint contracts reject drift and byte corruption before state load." data-ko="single-process global-batch 기준으로 gradient와 update를 대조하며 checkpoint 계약은 state load 전에 설정 변화와 byte 손상을 거부합니다.">A single-process global-batch reference checks gradients and updates while checkpoint contracts reject drift and byte corruption before state load.</p>
+  <aside class="claim-boundary">
+    <span class="boundary-label"><span data-i18n data-en="Claim boundary" data-ko="주장 경계">Claim boundary</span></span>
+    <p data-i18n data-en="This is a real two-process CPU/Gloo correctness study on one tiny deterministic workload. It makes no NCCL, multi-node, convergence, or scaling claim." data-ko="작은 결정론적 workload에서 실제 2-process CPU/Gloo 정확성을 검증했습니다. NCCL, multi-node, 수렴 또는 확장 성능 주장은 포함하지 않습니다.">This is a real two-process CPU/Gloo correctness study on one tiny deterministic workload. It makes no NCCL, multi-node, convergence, or scaling claim.</p>
+  </aside>
+  <div class="card-actions">
+    <a class="button button-small" href="evidence/ddp-correctness/report.html">
+      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
+    </a>
+    <a class="text-link" href="evidence/ddp-correctness/result.json">JSON ↗</a>
+    <a class="text-link" href="source/ddp-correctness.py" data-repo-path="src/fmlab/distributed/experiment.py">
+      <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
+    </a>
+  </div>
+</article>
+<article class="track-card accent-amber" id="inference-systems" data-evidence="simulation actual">
+  <div class="track-card-header">
+    <span class="track-number" aria-hidden="true">05</span>
+    <span class="evidence-badge"><span data-i18n data-en="Simulation + actual CPU probe" data-ko="시뮬레이션 + 실제 CPU probe">Simulation + actual CPU probe</span></span>
+  </div>
+  <h3 data-i18n data-en="Inference dynamics" data-ko="추론 시스템 동역학">Inference dynamics</h3>
+  <p class="track-subtitle" data-i18n data-en="Tail latency, SLO goodput, paged KV, faults, and capacity knees." data-ko="tail latency, SLO goodput, paged KV, 장애, capacity knee를 분석합니다.">Tail latency, SLO goodput, paged KV, faults, and capacity knees.</p>
+  <div class="metrics-grid"><div class="metric"><strong class="metric-value">+65.4%</strong><span class="metric-label" data-i18n data-en="continuous throughput" data-ko="continuous throughput">continuous throughput</span><span class="metric-context">vs static FCFS</span></div><div class="metric"><strong class="metric-value">+218.0%</strong><span class="metric-label" data-i18n data-en="SLO token goodput" data-ko="SLO token goodput">SLO token goodput</span><span class="metric-context">vs static FCFS</span></div><div class="metric"><strong class="metric-value">-10.0%</strong><span class="metric-label" data-i18n data-en="p99 end-to-end latency" data-ko="p99 end-to-end latency">p99 end-to-end latency</span><span class="metric-context">paired modeled trace</span></div></div>
+  <figure class="evidence-figure">
+    <img src="assets/inference-systems.svg" alt="Capacity and SLO curves with knees for three scheduler policies."
+         width="1120" height="570">
+  </figure>
+  <p class="finding" data-i18n data-en="Paired traces expose scheduler trade-offs and overload knees; a separately labeled tiny CPU probe checks quantization fidelity without claiming integer-kernel speedup." data-ko="paired trace로 scheduler trade-off와 과부하 knee를 드러내며 별도 tiny CPU probe는 정수 kernel 가속을 주장하지 않고 양자화 fidelity만 확인합니다.">Paired traces expose scheduler trade-offs and overload knees; a separately labeled tiny CPU probe checks quantization fidelity without claiming integer-kernel speedup.</p>
+  <aside class="claim-boundary">
+    <span class="boundary-label"><span data-i18n data-en="Claim boundary" data-ko="주장 경계">Claim boundary</span></span>
+    <p data-i18n data-en="Scheduler and capacity results are discrete-event simulation. Fake INT8/INT4 weights run through FP32 kernels; this is not vLLM, GPU, or fleet telemetry." data-ko="scheduler와 capacity 결과는 discrete-event simulation입니다. Fake INT8/INT4 weight는 FP32 kernel로 실행되며 vLLM, GPU, fleet telemetry가 아닙니다.">Scheduler and capacity results are discrete-event simulation. Fake INT8/INT4 weights run through FP32 kernels; this is not vLLM, GPU, or fleet telemetry.</p>
+  </aside>
+  <div class="card-actions">
+    <a class="button button-small" href="evidence/inference-systems/report.html">
+      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
+    </a>
+    <a class="text-link" href="evidence/inference-systems/result.json">JSON ↗</a>
+    <a class="text-link" href="source/inference-systems.py" data-repo-path="src/fmlab/systems/simulator.py">
+      <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
+    </a>
+  </div>
+</article></div>
+    </section>
+
+    <section class="ledger section" id="evidence-ledger" aria-labelledby="ledger-title">
+      <div class="section-heading split-heading">
+        <div><p class="section-kicker">02 — EVIDENCE LEDGER</p>
+          <h2 id="ledger-title">
+            <span data-i18n data-en="Measured, manifested, bounded." data-ko="측정하고, manifest로 남기고, 경계를 명시합니다.">Measured, manifested, bounded.</span>
+          </h2>
+        </div>
+        <div class="search-wrap">
+          <label class="visually-hidden" for="evidence-search">Search evidence ledger</label>
+          <input id="evidence-search" type="search" placeholder="Search evidence…" autocomplete="off">
+          <span aria-hidden="true">⌕</span>
+        </div>
+      </div>
+      <article class="scorecard-panel" aria-labelledby="scorecard-title">
+        <div class="scorecard-copy">
+          <span class="aggregate-badge">
+            <span data-i18n data-en="Aggregate view · not an experiment" data-ko="집계 뷰 · 개별 실험 아님">Aggregate view · not an experiment</span>
+          </span>
+          <h3 id="scorecard-title">
+            <span data-i18n data-en="One map of every evidence mode." data-ko="모든 증거 유형을 한눈에 보는 지도">One map of every evidence mode.</span>
+          </h3>
+          <p data-i18n data-en="The scorecard aggregates five source bundles without creating a sixth performance claim. Component counts preserve mixed modes inside a track." data-ko="scorecard는 다섯 원천 bundle을 집계하며 여섯 번째 성능 주장을 만들지 않습니다. 한 track 안의 혼합 evidence mode도 그대로 유지합니다.">The scorecard aggregates five source bundles without creating a sixth performance claim. Component counts preserve mixed modes inside a track.</p>
+          <dl class="mode-counts">
+            <div><dt>4</dt><dd><span data-i18n data-en="actual components" data-ko="actual component">actual components</span></dd></div>
+            <div><dt>2</dt><dd><span data-i18n data-en="scripted controls" data-ko="scripted control">scripted controls</span></dd></div>
+            <div><dt>2</dt><dd><span data-i18n data-en="simulated components" data-ko="simulated component">simulated components</span></dd></div>
+          </dl>
+          <div class="card-actions">
+            <a class="button button-small" href="meta/portfolio-scorecard/scorecard.json">Scorecard JSON</a>
+            <a class="text-link" href="meta/portfolio-scorecard/evidence_manifest.json">Aggregate manifest ↗</a>
+          </div>
+        </div>
+        <figure>
+          <img src="meta/portfolio-scorecard/scorecard.svg"
+               alt="Aggregate evidence-mode scorecard across five source bundles."
+               width="1200" height="760">
+        </figure>
+      </article>
+      <div class="table-wrap">
+        <table>
+          <caption>
+            <span data-i18n data-en="Public evidence classes and unsupported claims for every flagship." data-ko="각 flagship의 공개 증거 등급과 지원하지 않는 주장">Public evidence classes and unsupported claims for every flagship.</span>
+          </caption>
+          <thead><tr>
+            <th scope="col"><span data-i18n data-en="Track" data-ko="트랙">Track</span></th>
+            <th scope="col"><span data-i18n data-en="Evidence class" data-ko="증거 등급">Evidence class</span></th>
+            <th scope="col"><span data-i18n data-en="Measured" data-ko="측정 내용">Measured</span></th>
+            <th scope="col"><span data-i18n data-en="Does not establish" data-ko="입증하지 않는 것">Does not establish</span></th>
+            <th scope="col"><span data-i18n data-en="Integrity" data-ko="무결성">Integrity</span></th>
+          </tr></thead>
+          <tbody><tr data-evidence="synthetic">
+  <th scope="row"><a href="#visual-reward"><span data-i18n data-en="Visual reward contracts" data-ko="시각 보상 계약">Visual reward contracts</span></a></th>
+  <td><span class="table-badge"><span data-i18n data-en="Scripted synthetic audit" data-ko="스크립트 기반 합성 감사">Scripted synthetic audit</span></span></td>
+  <td>24 attacks; source-group holdout; paired bootstrap</td>
+  <td><span data-i18n data-en="VLM quality, human preferences, online RL" data-ko="VLM 품질, 사람 선호, 온라인 RL">VLM quality, human preferences, online RL</span></td>
+  <td><a href="evidence/visual-reward/site_manifest.json">Site manifest</a> · <a href="evidence/visual-reward/source_evidence_manifest.json">Source manifest</a></td>
+</tr>
+<tr data-evidence="actual gpu">
+  <th scope="row"><a href="#vlm-lora-gpu"><span data-i18n data-en="Qwen3-VL LoRA execution" data-ko="Qwen3-VL LoRA 실제 실행">Qwen3-VL LoRA execution</span></a></th>
+  <td><span class="table-badge"><span data-i18n data-en="Actual GPU smoke" data-ko="실제 GPU smoke">Actual GPU smoke</span></span></td>
+  <td>2 real BF16 LoRA steps; 17.45 GiB peak</td>
+  <td><span data-i18n data-en="Quality gain, useful convergence, public benchmark value" data-ko="품질 향상, 유의미한 수렴, 공개 benchmark 성능">Quality gain, useful convergence, public benchmark value</span></td>
+  <td><a href="evidence/vlm-lora-gpu/site_manifest.json">Site manifest</a> · <a href="evidence/vlm-lora-gpu/source_evidence_manifest.json">Source manifest</a></td>
+</tr>
+<tr data-evidence="actual environment">
+  <th scope="row"><a href="#agent-eval"><span data-i18n data-en="Reliable agent evaluation" data-ko="신뢰 가능한 에이전트 평가">Reliable agent evaluation</span></a></th>
+  <td><span class="table-badge"><span data-i18n data-en="Actual local harness" data-ko="실제 로컬 하네스">Actual local harness</span></span></td>
+  <td>24 local episodes; faults, retries, exact resume</td>
+  <td><span data-i18n data-en="LLM capability, SWE-bench scale, security boundary" data-ko="LLM 성능, SWE-bench 규모, 보안 경계">LLM capability, SWE-bench scale, security boundary</span></td>
+  <td><a href="evidence/agent-eval/site_manifest.json">Site manifest</a> · <a href="evidence/agent-eval/source_evidence_manifest.json">Source manifest</a></td>
+</tr>
+<tr data-evidence="actual">
+  <th scope="row"><a href="#ddp-correctness"><span data-i18n data-en="Distributed correctness" data-ko="분산 학습 정확성">Distributed correctness</span></a></th>
+  <td><span class="table-badge"><span data-i18n data-en="Actual CPU / Gloo" data-ko="실제 CPU / Gloo">Actual CPU / Gloo</span></span></td>
+  <td>2 CPU/Gloo ranks; 11/11 invariant gates</td>
+  <td><span data-i18n data-en="NCCL, multi-node, scaling efficiency" data-ko="NCCL, multi-node, 확장 효율">NCCL, multi-node, scaling efficiency</span></td>
+  <td><a href="evidence/ddp-correctness/site_manifest.json">Site manifest</a> · <a href="evidence/ddp-correctness/source_evidence_manifest.json">Source manifest</a></td>
+</tr>
+<tr data-evidence="simulation actual">
+  <th scope="row"><a href="#inference-systems"><span data-i18n data-en="Inference dynamics" data-ko="추론 시스템 동역학">Inference dynamics</span></a></th>
+  <td><span class="table-badge"><span data-i18n data-en="Simulation + actual CPU probe" data-ko="시뮬레이션 + 실제 CPU probe">Simulation + actual CPU probe</span></span></td>
+  <td>81 simulations + actual tiny CPU fidelity probe</td>
+  <td><span data-i18n data-en="vLLM, integer kernels, GPU/fleet telemetry" data-ko="vLLM, 정수 kernel, GPU/fleet telemetry">vLLM, integer kernels, GPU/fleet telemetry</span></td>
+  <td><a href="evidence/inference-systems/site_manifest.json">Site manifest</a> · <a href="evidence/inference-systems/source_evidence_manifest.json">Source manifest</a></td>
+</tr></tbody>
+        </table>
+        <p class="empty-state" hidden>
+          <span data-i18n data-en="No evidence rows match that search." data-ko="검색과 일치하는 evidence row가 없습니다.">No evidence rows match that search.</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="method section" id="method" aria-labelledby="method-title">
+      <div class="section-heading"><p class="section-kicker">03 — RESEARCH METHOD</p>
+        <h2 id="method-title">
+          <span data-i18n data-en="Reliability is designed in before the run." data-ko="신뢰성은 실행 전에 설계합니다.">Reliability is designed in before the run.</span>
+        </h2>
+      </div>
+      <div class="method-grid">
+        <article><span class="method-icon">{ }</span><h3><span data-i18n data-en="Contracts" data-ko="계약">Contracts</span></h3><p><span data-i18n data-en="Typed observations, immutable tasks, config hashes, and fail-closed validation." data-ko="typed observation, immutable task, config hash와 fail-closed 검증">Typed observations, immutable tasks, config hashes, and fail-closed validation.</span></p></article>
+        <article><span class="method-icon">↯</span><h3><span data-i18n data-en="Negative controls" data-ko="음성 통제">Negative controls</span></h3><p><span data-i18n data-en="Reward attacks, unsafe actions, injected faults, corruption, and overload." data-ko="보상 공격, 위험 행동, 주입 장애, 손상, 과부하">Reward attacks, unsafe actions, injected faults, corruption, and overload.</span></p></article>
+        <article><span class="method-icon">±</span><h3><span data-i18n data-en="Statistical discipline" data-ko="통계적 규율">Statistical discipline</span></h3><p><span data-i18n data-en="Grouped holdouts, paired traces, bootstrap intervals, and fixed seeds." data-ko="grouped holdout, paired trace, bootstrap interval과 고정 seed">Grouped holdouts, paired traces, bootstrap intervals, and fixed seeds.</span></p></article>
+        <article><span class="method-icon">#</span><h3><span data-i18n data-en="Auditable release" data-ko="감사 가능한 공개">Auditable release</span></h3><p><span data-i18n data-en="Sanitized artifacts, explicit allowlists, SHA-256, and no weights or private traces." data-ko="sanitized artifact, allowlist, SHA-256, weight·private trace 제외">Sanitized artifacts, explicit allowlists, SHA-256, and no weights or private traces.</span></p></article>
+      </div>
+    </section>
+
+    <section class="limitations section" id="limitations" aria-labelledby="limitations-title">
+      <div class="limitations-panel">
+        <div class="section-heading"><p class="section-kicker">04 — CLAIM BOUNDARIES</p>
+          <h2 id="limitations-title">
+            <span data-i18n data-en="What remains unproven is part of the result." data-ko="아직 입증하지 못한 것도 결과의 일부입니다.">What remains unproven is part of the result.</span>
+          </h2>
+          <p data-i18n data-en="The next promotion must change the evidence class, not only add another toy run." data-ko="다음 단계는 toy run을 더하는 것이 아니라 증거 등급을 올려야 합니다.">The next promotion must change the evidence class, not only add another toy run.</p>
+        </div>
+        <ol class="promotion-list">
+          <li><span>01</span><div><strong><span data-i18n data-en="Real multimodal post-training" data-ko="실제 멀티모달 post-training">Real multimodal post-training</span></strong><p><span data-i18n data-en="Three-seed training on releasable, non-synthetic grouped holdouts." data-ko="공개 가능한 비합성 grouped holdout에서 3-seed 학습">Three-seed training on releasable, non-synthetic grouped holdouts.</span></p></div></li>
+          <li><span>02</span><div><strong><span data-i18n data-en="Online visual RLVR" data-ko="온라인 visual RLVR">Online visual RLVR</span></strong><p><span data-i18n data-en="Reward rollouts with overoptimization and grader-transfer evaluation." data-ko="reward rollout과 overoptimization·grader transfer 평가">Reward rollouts with overoptimization and grader-transfer evaluation.</span></p></div></li>
+          <li><span>03</span><div><strong><span data-i18n data-en="Calibrated GPU serving" data-ko="보정된 GPU serving">Calibrated GPU serving</span></strong><p><span data-i18n data-en="Replay against vLLM or SGLang and fit to real GPU traces." data-ko="vLLM/SGLang replay 후 실제 GPU trace로 보정">Replay against vLLM or SGLang and fit to real GPU traces.</span></p></div></li>
+          <li><span>04</span><div><strong><span data-i18n data-en="Multi-GPU semantics and scale" data-ko="Multi-GPU 의미론과 확장성">Multi-GPU semantics and scale</span></strong><p><span data-i18n data-en="Re-run invariants on NCCL, then measure scaling separately." data-ko="NCCL invariant 재검증 후 scaling 별도 측정">Re-run invariants on NCCL, then measure scaling separately.</span></p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="closing section" aria-labelledby="closing-title">
+      <p class="section-kicker">05 — TRACE THE CLAIM</p>
+      <h2 id="closing-title">
+        <span data-i18n data-en="Start with a number. End at the invariant that produced it." data-ko="숫자에서 시작해 그 숫자를 만든 invariant까지 추적하세요.">Start with a number. End at the invariant that produced it.</span>
+      </h2>
+      <div class="closing-actions">
+        <a class="button button-primary" href="#review-path">
+          <span data-i18n data-en="Run the review path" data-ko="리뷰 경로 실행">Run the review path</span>
+        </a>
+        <a class="button button-secondary" href="evidence/vlm-lora-gpu/result.json">
+          <span data-i18n data-en="Inspect machine-readable evidence" data-ko="machine-readable evidence 확인">Inspect machine-readable evidence</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Reliable Systems Lab</strong>
+      <p><span data-i18n data-en="Multimodal agents, evaluation, and ML systems." data-ko="멀티모달 에이전트·평가·ML 시스템">Multimodal agents, evaluation, and ML systems.</span></p>
+    </div>
+    <div class="build-stamp"><span>Evidence snapshot</span><code>c133c27f7b08</code>
+      <span>· 5 source + 1 aggregate manifests</span>
+    </div>
+  </footer>
+  <noscript><p class="noscript">Filters and language switching require JavaScript. Reports remain accessible.</p></noscript>
+</body>
+</html>

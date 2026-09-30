@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="330" viewBox="0 0 700 330">
+<rect width="100%" height="100%" fill="#0b1220"/>
+<text x="24" y="28" fill="#f8fafc" font-size="17" font-family="sans-serif">Uninterrupted vs checkpoint-resumed loss</text>
+<line x1="76" y1="52" x2="76" y2="262" stroke="#64748b"/>
+<line x1="76" y1="262" x2="646" y2="262" stroke="#64748b"/>
+<polyline points="76.00,262.00 646.00,52.00" fill="none" stroke="#38bdf8" stroke-width="4"/>
+<polyline points="76.00,262.00 646.00,52.00" fill="none" stroke="#f472b6" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="76" y="289" fill="#94a3b8" font-size="12" font-family="sans-serif">optimizer step</text>
+<text x="306" y="310" fill="#38bdf8" font-size="13" font-family="sans-serif">uninterrupted</text>
+<text x="436" y="310" fill="#f472b6" font-size="13" font-family="sans-serif">resumed</text>
+<text x="14" y="60" fill="#94a3b8" font-size="11" font-family="monospace">0.822322</text>
+<text x="14" y="262" fill="#94a3b8" font-size="11" font-family="monospace">0.810290</text>
+</svg>

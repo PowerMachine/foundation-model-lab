@@ -1,0 +1,26 @@
+# Deterministic local evaluation of the environment and graders; no model is loaded.
+artifact_dir: ${FMLAB_DATA_ROOT}/artifacts/agent/reliable-agent-benchmark
+scratch_dir: ${FMLAB_DATA_ROOT}/tmp/reliable-agent-benchmark
+
+policies:
+  - oracle_patch_scripted
+  - shortcut_probe_scripted
+
+# This host cannot currently create the required bwrap namespaces. Process mode has
+# resource/path bounds but does not isolate networking and is not safe for untrusted code.
+isolation: process
+
+shard_index: 0
+shard_count: 1
+task_limit: null
+seed: 20260804
+bootstrap_resamples: 2000
+
+max_retries: 1
+inject_transient_failures: true
+transient_failure_modulus: 5
+
+timeout_seconds: 5
+cpu_seconds: 3
+memory_mb: 512
+

@@ -1,0 +1,14 @@
+teachers:
+  - profile: 30b-thinking-fp8
+    model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-30B-A3B-Thinking-FP8
+    role: reasoning_teacher
+  - profile: 32b-instruct-fp8
+    model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-32B-Instruct-FP8
+    role: instruction_teacher
+runtime:
+  mode: local
+  device_map: auto
+  torch_dtype: auto
+  max_new_tokens: 256
+  local_files_only: true
+warning: Start with one image and one request; teacher profiles are for inference/data generation, not full fine-tuning.

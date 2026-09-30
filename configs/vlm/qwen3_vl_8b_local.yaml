@@ -1,0 +1,13 @@
+experiment: qwen3_vl_inference
+mode: local
+profile: 8b-instruct
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-8B-Instruct
+device_map: auto
+torch_dtype: bfloat16
+max_new_tokens: 128
+do_sample: false
+# Qwen3-VL uses patch_size=16 with spatial_merge_size=2, so the effective
+# 32x32 token unit makes this cap roughly 980 visual tokens (grid dependent).
+max_pixels: 1003520
+local_files_only: true
+trust_remote_code: true

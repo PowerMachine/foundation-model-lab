@@ -1,0 +1,15 @@
+kind: dpo
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-0.5B
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/dpo
+train_file: null  # JSONL: {"prompt":"...", "chosen":"...", "rejected":"..."}
+smoke: true
+max_steps: 2
+sample_limit: 8
+max_length: 128
+batch_size: 1
+learning_rate: 0.000005
+dtype: bfloat16
+save_model: false
+extra:
+  beta: 0.1
+

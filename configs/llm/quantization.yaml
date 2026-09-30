@@ -1,0 +1,14 @@
+kind: quantization
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-0.5B
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/quantization/int4
+smoke: true
+max_steps: 1
+sample_limit: 4
+max_length: 128
+batch_size: 1
+dtype: bfloat16
+device_map: auto
+quantization_bits: 4
+extra:
+  max_new_tokens: 32
+

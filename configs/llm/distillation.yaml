@@ -1,0 +1,18 @@
+kind: distillation
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-0.5B
+teacher_model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-3B-Instruct
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/distillation
+train_file: null
+smoke: true
+max_steps: 2
+sample_limit: 4
+max_length: 64
+batch_size: 1
+learning_rate: 0.00002
+dtype: bfloat16
+save_model: false
+extra:
+  temperature: 2.0
+  soft_target_weight: 0.7
+  hard_target_weight: 0.3
+

@@ -1,0 +1,14 @@
+seed: 29
+device: auto
+class_count: 3
+nodes_per_class: 30
+feature_dim: 8
+hidden_dim: 16
+within_class_edge_probability: 0.20
+between_class_edge_probability: 0.018
+feature_signal: 0.55
+train_per_class: 5
+validation_per_class: 5
+epochs: 160
+learning_rate: 0.012
+weight_decay: 0.0005

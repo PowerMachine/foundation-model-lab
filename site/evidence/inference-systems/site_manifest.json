@@ -1,0 +1,55 @@
+{
+  "files": [
+    {
+      "bytes": 4677,
+      "path": "actual_probe.json",
+      "sha256": "79accd238f03076b02e1394e1ce4d6225cc9134c2e2eaba968fcfda02df2e8e9"
+    },
+    {
+      "bytes": 22101,
+      "path": "capacity.svg",
+      "sha256": "4b8bc310895ba6b197a23765e8fa791fb427cbcf318fa2ce6ae3b7ecf78f49bf"
+    },
+    {
+      "bytes": 188853,
+      "path": "capacity_sweep.json",
+      "sha256": "5d896104b2f80d99644c57f34ffaa4317e496e6e5519262609bbabc4e27b917a"
+    },
+    {
+      "bytes": 21454,
+      "path": "kv.svg",
+      "sha256": "002da0017a554550831a4928f79659b92d5044d0f7678730e89466d347394376"
+    },
+    {
+      "bytes": 3050,
+      "path": "pareto.svg",
+      "sha256": "241d2c0e8749e712626160002b3dcb352b12011b9a6343222cb8f03ae33dbcfc"
+    },
+    {
+      "bytes": 19625,
+      "path": "report.html",
+      "sha256": "626bd8e0266b9b4320e198799c33cd49bc7751454246460c97fee382eedaee6f"
+    },
+    {
+      "bytes": 228072,
+      "path": "result.json",
+      "sha256": "8585e85250bfa4dff17634d5de6e37dd33b3f1ef4a491bcda7d83ad73110aa08"
+    },
+    {
+      "bytes": 3935,
+      "path": "slo.svg",
+      "sha256": "e217317cf850a709552e41fbfb443be21ae9e0d8c46191eb304e24cce42f943c"
+    },
+    {
+      "bytes": 4226,
+      "path": "source_evidence_manifest.json",
+      "sha256": "d1fa22e0581d5f3416298f984e97d42fd2a00d79ec944c17bdde21c53578d100"
+    }
+  ],
+  "schema": "fmlab.portfolio-site-bundle/v1",
+  "source_manifest": "source_evidence_manifest.json",
+  "source_manifest_sha256": "d1fa22e0581d5f3416298f984e97d42fd2a00d79ec944c17bdde21c53578d100",
+  "transformations": [
+    "Neutralized excluded report links: kv_trace.jsonl, requests.jsonl, simulation.json, trace.jsonl, workload.json"
+  ]
+}

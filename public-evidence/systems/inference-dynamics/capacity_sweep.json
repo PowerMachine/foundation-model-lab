@@ -1,0 +1,5969 @@
+{
+  "enabled": true,
+  "evidence_class": "deterministic_discrete_event_capacity_study",
+  "claim_boundary": "Capacity rows and knees are simulator results under configured service-time and KV assumptions; they are not measured vLLM, GPU, or production serving capacity.",
+  "design": {
+    "paired_policy_trials": true,
+    "request_semantics": "inherited from trace config; only request_count and Poisson rate change",
+    "trace_pattern": "mixed",
+    "fault_injection": "disabled to isolate nominal modeled capacity",
+    "configured_poisson_rates_rps": [
+      4.0,
+      8.0,
+      12.0,
+      18.0,
+      24.0,
+      32.0,
+      48.0,
+      72.0,
+      96.0
+    ],
+    "request_count_per_trial": 96,
+    "seeds": [
+      1103,
+      2207,
+      3301
+    ],
+    "uncertainty": "mean, min, max, and population standard deviation across fixed seeds",
+    "knee_rule": {
+      "id": "prefix_first_mean_threshold_violation_v1",
+      "description": "Rates are sorted ascending. The sustainable prefix ends at the first rate whose across-seed mean violates any configured threshold; later stochastic recoveries cannot move the knee upward.",
+      "criteria": {
+        "completion_ratio_mean_gte": 0.9,
+        "slo_attainment_mean_gte": 0.9,
+        "terminal_failure_ratio_mean_lte": 0.1
+      }
+    }
+  },
+  "rows": [
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "da2b1e908f07fb7cee996f1da42c3d9c3002199fab0139c11f10bf58e6989959",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 20770.095701455,
+      "offered_load_requests_per_second": 4.573883595218341,
+      "completed_load_requests_per_second": 4.517359604725038,
+      "e2e_p99_ms": 185.57630644678366,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 56.707280144420686,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "da2b1e908f07fb7cee996f1da42c3d9c3002199fab0139c11f10bf58e6989959",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 20770.095701455,
+      "offered_load_requests_per_second": 4.573883595218341,
+      "completed_load_requests_per_second": 4.565416621796581,
+      "e2e_p99_ms": 159.46744204345245,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 57.28396434927921,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "da2b1e908f07fb7cee996f1da42c3d9c3002199fab0139c11f10bf58e6989959",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 20770.095701455,
+      "offered_load_requests_per_second": 4.573883595218341,
+      "completed_load_requests_per_second": 4.565416621796581,
+      "e2e_p99_ms": 159.46744204345245,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 57.28396434927921,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b9b13263491985153aa3881f0a950c8d1d8e708b391c6c21676e48e6c7d4c706",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 18480.089595244,
+      "offered_load_requests_per_second": 5.1406677175660995,
+      "completed_load_requests_per_second": 4.968147265109912,
+      "e2e_p99_ms": 246.08566862215085,
+      "slo_attainment": 0.9782608695652174,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 61.345818403965865,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.7222222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b9b13263491985153aa3881f0a950c8d1d8e708b391c6c21676e48e6c7d4c706",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 18480.089595244,
+      "offered_load_requests_per_second": 5.1406677175660995,
+      "completed_load_requests_per_second": 5.022148865817628,
+      "e2e_p99_ms": 154.26859725562196,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 64.15390164076712,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8888888888888888,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "b9b13263491985153aa3881f0a950c8d1d8e708b391c6c21676e48e6c7d4c706",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 18480.089595244,
+      "offered_load_requests_per_second": 5.1406677175660995,
+      "completed_load_requests_per_second": 5.022148865817628,
+      "e2e_p99_ms": 154.26859725562196,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 64.15390164076712,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8888888888888888,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "cdf5e5be337bfce62214c67feabf521a2a20502aefb3441026c1a12318015945",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 18136.969623624,
+      "offered_load_requests_per_second": 5.237920224349902,
+      "completed_load_requests_per_second": 5.271883780457372,
+      "e2e_p99_ms": 187.00308815557923,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 68.0951654975744,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.7222222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "cdf5e5be337bfce62214c67feabf521a2a20502aefb3441026c1a12318015945",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 18136.969623624,
+      "offered_load_requests_per_second": 5.237920224349902,
+      "completed_load_requests_per_second": 5.271883780457372,
+      "e2e_p99_ms": 143.67615727993308,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 68.0951654975744,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.7222222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "cdf5e5be337bfce62214c67feabf521a2a20502aefb3441026c1a12318015945",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 18136.969623624,
+      "offered_load_requests_per_second": 5.237920224349902,
+      "completed_load_requests_per_second": 5.271883780457372,
+      "e2e_p99_ms": 143.67615727993308,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 68.0951654975744,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.7222222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "4694e1b36f984fcdc480233cb9fdc6d57f5d528871ea55d6178c98815e886279",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 10388.047850727,
+      "offered_load_requests_per_second": 9.145125375346773,
+      "completed_load_requests_per_second": 9.002830729255859,
+      "e2e_p99_ms": 187.29434883550383,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 113.01425809065867,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "4694e1b36f984fcdc480233cb9fdc6d57f5d528871ea55d6178c98815e886279",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 10388.047850727,
+      "offered_load_requests_per_second": 9.145125375346773,
+      "completed_load_requests_per_second": 9.0154307098712,
+      "e2e_p99_ms": 165.13631281645385,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 113.17242806008528,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9444444444444444,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "4694e1b36f984fcdc480233cb9fdc6d57f5d528871ea55d6178c98815e886279",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 10388.047850727,
+      "offered_load_requests_per_second": 9.145125375346773,
+      "completed_load_requests_per_second": 9.0154307098712,
+      "e2e_p99_ms": 165.13631281645385,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 113.17242806008528,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9444444444444444,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "2923b0ca5a2634d1dcd2a524c3ce6572218029d624e99676deafcf0cdd6677f1",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 9243.044797622,
+      "offered_load_requests_per_second": 10.277998438830576,
+      "completed_load_requests_per_second": 10.020553126756162,
+      "e2e_p99_ms": 254.73305939943913,
+      "slo_attainment": 0.946236559139785,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 115.93672219773795,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8611111111111112,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "2923b0ca5a2634d1dcd2a524c3ce6572218029d624e99676deafcf0cdd6677f1",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 9243.044797622,
+      "offered_load_requests_per_second": 10.277998438830576,
+      "completed_load_requests_per_second": 10.020553126756162,
+      "e2e_p99_ms": 154.16452607036373,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 128.0044851030787,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "2923b0ca5a2634d1dcd2a524c3ce6572218029d624e99676deafcf0cdd6677f1",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 9243.044797622,
+      "offered_load_requests_per_second": 10.277998438830576,
+      "completed_load_requests_per_second": 10.020553126756162,
+      "e2e_p99_ms": 154.16452607036373,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 128.0044851030787,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "85a6acab541d4738b3ea6bf2bf12819b9bf983c80c3ea47231f6cdd0d79917f9",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 9071.484811812,
+      "offered_load_requests_per_second": 10.472376019006314,
+      "completed_load_requests_per_second": 10.388957299207647,
+      "e2e_p99_ms": 229.54309362759923,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 132.9786534298579,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.7777777777777778,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "85a6acab541d4738b3ea6bf2bf12819b9bf983c80c3ea47231f6cdd0d79917f9",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 9071.484811812,
+      "offered_load_requests_per_second": 10.472376019006314,
+      "completed_load_requests_per_second": 10.498314744462466,
+      "e2e_p99_ms": 154.58925735962112,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 135.6032321159735,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8888888888888888,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "85a6acab541d4738b3ea6bf2bf12819b9bf983c80c3ea47231f6cdd0d79917f9",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 9071.484811812,
+      "offered_load_requests_per_second": 10.472376019006314,
+      "completed_load_requests_per_second": 10.498314744462466,
+      "e2e_p99_ms": 154.58925735962112,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 135.6032321159735,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8888888888888888,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "84784098a430cb81d55db374c83712e725d60ccf26bc4579f34b812314852991",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 6927.365233818,
+      "offered_load_requests_per_second": 13.713727628540381,
+      "completed_load_requests_per_second": 13.338976888179541,
+      "e2e_p99_ms": 204.34936757707376,
+      "slo_attainment": 0.9893617021276596,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 165.17626699830836,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "84784098a430cb81d55db374c83712e725d60ccf26bc4579f34b812314852991",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 6927.365233818,
+      "offered_load_requests_per_second": 13.713727628540381,
+      "completed_load_requests_per_second": 13.487328302641385,
+      "e2e_p99_ms": 171.52238371231928,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 169.30901486294505,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9444444444444444,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "84784098a430cb81d55db374c83712e725d60ccf26bc4579f34b812314852991",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 6927.365233818,
+      "offered_load_requests_per_second": 13.713727628540381,
+      "completed_load_requests_per_second": 13.487328302641385,
+      "e2e_p99_ms": 171.52238371231928,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 169.30901486294505,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9444444444444444,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b7c63ef276a9d8f86d9a01b4304773542ab45047e453dac4ffc7c9d2f0916fa2",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 6164.029865081,
+      "offered_load_requests_per_second": 15.411995411990372,
+      "completed_load_requests_per_second": 14.995380781591768,
+      "e2e_p99_ms": 278.07562529261145,
+      "slo_attainment": 0.967741935483871,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 181.23449460762527,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b7c63ef276a9d8f86d9a01b4304773542ab45047e453dac4ffc7c9d2f0916fa2",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 6164.029865081,
+      "offered_load_requests_per_second": 15.411995411990372,
+      "completed_load_requests_per_second": 14.834140128026267,
+      "e2e_p99_ms": 173.68572983858715,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 189.6190085930314,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "b7c63ef276a9d8f86d9a01b4304773542ab45047e453dac4ffc7c9d2f0916fa2",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 6164.029865081,
+      "offered_load_requests_per_second": 15.411995411990372,
+      "completed_load_requests_per_second": 14.995380781591768,
+      "e2e_p99_ms": 173.65399842083713,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 191.55389643581745,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "2b10401d297b514d091bd4e41961cd00be7049147f9331bf0e9de61196d94843",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 6049.656541208,
+      "offered_load_requests_per_second": 15.70337081996234,
+      "completed_load_requests_per_second": 15.494205655439325,
+      "e2e_p99_ms": 245.86767876350763,
+      "slo_attainment": 0.9789473684210527,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 191.80195632417522,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8055555555555556,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "2b10401d297b514d091bd4e41961cd00be7049147f9331bf0e9de61196d94843",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 6049.656541208,
+      "offered_load_requests_per_second": 15.70337081996234,
+      "completed_load_requests_per_second": 15.516546127971525,
+      "e2e_p99_ms": 157.1473391930209,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 201.22510347011493,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "2b10401d297b514d091bd4e41961cd00be7049147f9331bf0e9de61196d94843",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 6049.656541208,
+      "offered_load_requests_per_second": 15.70337081996234,
+      "completed_load_requests_per_second": 15.679878192476487,
+      "e2e_p99_ms": 168.12565782067415,
+      "slo_attainment": 1.0,
+      "completion_ratio": 1.0,
+      "slo_goodput_tokens_per_second": 202.53175998615464,
+      "status_counts": {
+        "completed": 96,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 3,
+      "kv_allocation_failures_per_request": 0.03125
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "337559e13a1e5c11a12ab8a7a18de47d7a4b7f064671c661e6a5afddc390afca",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 4620.243489212,
+      "offered_load_requests_per_second": 20.561686894168993,
+      "completed_load_requests_per_second": 19.837524574891102,
+      "e2e_p99_ms": 309.85861909562266,
+      "slo_attainment": 0.9468085106382979,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 230.4529450615009,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "337559e13a1e5c11a12ab8a7a18de47d7a4b7f064671c661e6a5afddc390afca",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 4620.243489212,
+      "offered_load_requests_per_second": 20.561686894168993,
+      "completed_load_requests_per_second": 20.13386924382142,
+      "e2e_p99_ms": 182.61517575724554,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 252.74431603946036,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "337559e13a1e5c11a12ab8a7a18de47d7a4b7f064671c661e6a5afddc390afca",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 4620.243489212,
+      "offered_load_requests_per_second": 20.561686894168993,
+      "completed_load_requests_per_second": 20.13386924382142,
+      "e2e_p99_ms": 182.61517575724554,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 252.74431603946036,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "66093e118887404645aa8d081bbac289e53f1cdcc22fd0b0cb7531168d6471ec",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 4111.353243388,
+      "offered_load_requests_per_second": 23.106747189087148,
+      "completed_load_requests_per_second": 21.95361918358388,
+      "e2e_p99_ms": 292.80418145647764,
+      "slo_attainment": 0.9347826086956522,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 248.17134729268733,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.8611111111111112,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "66093e118887404645aa8d081bbac289e53f1cdcc22fd0b0cb7531168d6471ec",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 4111.353243388,
+      "offered_load_requests_per_second": 23.106747189087148,
+      "completed_load_requests_per_second": 22.172771353986043,
+      "e2e_p99_ms": 187.68867600060037,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 282.46182637903956,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 2,
+      "kv_allocation_failures_per_request": 0.020833333333333332
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "66093e118887404645aa8d081bbac289e53f1cdcc22fd0b0cb7531168d6471ec",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 4111.353243388,
+      "offered_load_requests_per_second": 23.106747189087148,
+      "completed_load_requests_per_second": 22.413779738268495,
+      "e2e_p99_ms": 214.21278293480634,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 286.31796052755885,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 9,
+      "kv_allocation_failures_per_request": 0.09375
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "df8d7c6730ba1f0f3888d89ba8b2d58b1d6dcf957ccd04ed46cb297b8474129f",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 4035.104360805,
+      "offered_load_requests_per_second": 23.543381163268744,
+      "completed_load_requests_per_second": 22.816143168943118,
+      "e2e_p99_ms": 260.00293555940675,
+      "slo_attainment": 0.9368421052631579,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 270.9116788901878,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9166666666666666,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "df8d7c6730ba1f0f3888d89ba8b2d58b1d6dcf957ccd04ed46cb297b8474129f",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 4035.104360805,
+      "offered_load_requests_per_second": 23.543381163268744,
+      "completed_load_requests_per_second": 22.870214061004372,
+      "e2e_p99_ms": 161.88968588519955,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 294.87978129720534,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.020833333333333332,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 2,
+      "kv_allocation_failures_per_request": 0.020833333333333332
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "df8d7c6730ba1f0f3888d89ba8b2d58b1d6dcf957ccd04ed46cb297b8474129f",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 4035.104360805,
+      "offered_load_requests_per_second": 23.543381163268744,
+      "completed_load_requests_per_second": 23.11351421058953,
+      "e2e_p99_ms": 185.95221672926334,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 298.7725836905677,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 7,
+      "kv_allocation_failures_per_request": 0.07291666666666667
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "3840b5bc2e87358dc3e8b51cc54df2725c3fbe631d0a468f4b4f4e4afe385e05",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 3466.682616909,
+      "offered_load_requests_per_second": 27.403720068468484,
+      "completed_load_requests_per_second": 25.810351464499988,
+      "e2e_p99_ms": 323.1870729927701,
+      "slo_attainment": 0.9032258064516129,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 277.530660908602,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 1,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.010416666666666666,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 0.9166666666666666,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "3840b5bc2e87358dc3e8b51cc54df2725c3fbe631d0a468f4b4f4e4afe385e05",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 3466.682616909,
+      "offered_load_requests_per_second": 27.403720068468484,
+      "completed_load_requests_per_second": 26.342829827184868,
+      "e2e_p99_ms": 192.10731716824733,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 327.4442073142549,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 8,
+      "kv_allocation_failures_per_request": 0.08333333333333333
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "3840b5bc2e87358dc3e8b51cc54df2725c3fbe631d0a468f4b4f4e4afe385e05",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 3466.682616909,
+      "offered_load_requests_per_second": 27.403720068468484,
+      "completed_load_requests_per_second": 26.626086061885783,
+      "e2e_p99_ms": 225.4215772845867,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 334.2423569470768,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 13,
+      "kv_allocation_failures_per_request": 0.13541666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "99e50ead62762283f4f3e2e2e19f7f74869192c69cb2f7c8385f1aecdc26942e",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 3085.014932541,
+      "offered_load_requests_per_second": 30.79401626161738,
+      "completed_load_requests_per_second": 28.09592890644853,
+      "e2e_p99_ms": 315.1409227795156,
+      "slo_attainment": 0.9021739130434783,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 299.2827209599952,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "99e50ead62762283f4f3e2e2e19f7f74869192c69cb2f7c8385f1aecdc26942e",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 3085.014932541,
+      "offered_load_requests_per_second": 30.79401626161738,
+      "completed_load_requests_per_second": 28.8193438569975,
+      "e2e_p99_ms": 189.84740038547017,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9375,
+      "slo_goodput_tokens_per_second": 363.7641624616573,
+      "status_counts": {
+        "completed": 90,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 3,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.03125,
+      "terminal_failure_ratio": 0.03125,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 3,
+      "kv_allocation_failures_per_request": 0.03125
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "99e50ead62762283f4f3e2e2e19f7f74869192c69cb2f7c8385f1aecdc26942e",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 3085.014932541,
+      "offered_load_requests_per_second": 30.79401626161738,
+      "completed_load_requests_per_second": 29.779988652230745,
+      "e2e_p99_ms": 231.77742867844452,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 380.41533891236696,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 16,
+      "kv_allocation_failures_per_request": 0.16666666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "80af26aac3cd4041894eb4ae26ea7caa9740d30cb71c4b97d8dab0fc5b09aa93",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 3027.828270604,
+      "offered_load_requests_per_second": 31.375623552470866,
+      "completed_load_requests_per_second": 30.224361407971053,
+      "e2e_p99_ms": 295.51124234535047,
+      "slo_attainment": 0.9052631578947369,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 329.6046149332422,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 0.9444444444444444,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "80af26aac3cd4041894eb4ae26ea7caa9740d30cb71c4b97d8dab0fc5b09aa93",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 3027.828270604,
+      "offered_load_requests_per_second": 31.375623552470866,
+      "completed_load_requests_per_second": 30.594576027978455,
+      "e2e_p99_ms": 174.98441565339223,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 395.475151182711,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 5,
+      "kv_allocation_failures_per_request": 0.052083333333333336
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "80af26aac3cd4041894eb4ae26ea7caa9740d30cb71c4b97d8dab0fc5b09aa93",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 3027.828270604,
+      "offered_load_requests_per_second": 31.375623552470866,
+      "completed_load_requests_per_second": 30.272527859262894,
+      "e2e_p99_ms": 217.72991096091178,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 387.74599513353746,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 11,
+      "kv_allocation_failures_per_request": 0.11458333333333333
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b3c3dc1f34f79c768b2c12e2dad3f118fbf71627d115ea8820d16d65e8469e56",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 2601.511962682,
+      "offered_load_requests_per_second": 36.517225891231654,
+      "completed_load_requests_per_second": 31.122010623156957,
+      "e2e_p99_ms": 328.78663202080634,
+      "slo_attainment": 0.8160919540229885,
+      "completion_ratio": 0.90625,
+      "slo_goodput_tokens_per_second": 287.6103050691746,
+      "status_counts": {
+        "completed": 87,
+        "rejected": 4,
+        "timed_out": 2,
+        "cancelled": 2,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.041666666666666664,
+      "timeout_rate": 0.020833333333333332,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.07291666666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b3c3dc1f34f79c768b2c12e2dad3f118fbf71627d115ea8820d16d65e8469e56",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 2601.511962682,
+      "offered_load_requests_per_second": 36.517225891231654,
+      "completed_load_requests_per_second": 32.45751664242285,
+      "e2e_p99_ms": 197.30787040920066,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.90625,
+      "slo_goodput_tokens_per_second": 411.87469394522793,
+      "status_counts": {
+        "completed": 87,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 7,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.07291666666666667,
+      "terminal_failure_ratio": 0.07291666666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 13,
+      "kv_allocation_failures_per_request": 0.13541666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "b3c3dc1f34f79c768b2c12e2dad3f118fbf71627d115ea8820d16d65e8469e56",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 2601.511962682,
+      "offered_load_requests_per_second": 36.517225891231654,
+      "completed_load_requests_per_second": 34.02067871046505,
+      "e2e_p99_ms": 301.39208193375276,
+      "slo_attainment": 0.9021739130434783,
+      "completion_ratio": 0.9583333333333334,
+      "slo_goodput_tokens_per_second": 359.4358663757829,
+      "status_counts": {
+        "completed": 92,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.020833333333333332,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 49,
+      "kv_allocation_failures_per_request": 0.5104166666666666
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "f9c7e3ec4f241f32456be8e51d9d506a5f7d6297701324f7dec01ccfe1c39f5a",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 2315.261199405,
+      "offered_load_requests_per_second": 41.03208744845467,
+      "completed_load_requests_per_second": 35.58314015524746,
+      "e2e_p99_ms": 318.06758327812065,
+      "slo_attainment": 0.8571428571428571,
+      "completion_ratio": 0.9479166666666666,
+      "slo_goodput_tokens_per_second": 348.79297822506305,
+      "status_counts": {
+        "completed": 91,
+        "rejected": 0,
+        "timed_out": 1,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.010416666666666666,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 0.9722222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "f9c7e3ec4f241f32456be8e51d9d506a5f7d6297701324f7dec01ccfe1c39f5a",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 2315.261199405,
+      "offered_load_requests_per_second": 41.03208744845467,
+      "completed_load_requests_per_second": 37.17560815187954,
+      "e2e_p99_ms": 193.89342941675602,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9166666666666666,
+      "slo_goodput_tokens_per_second": 463.0053015279542,
+      "status_counts": {
+        "completed": 88,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 5,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.052083333333333336,
+      "terminal_failure_ratio": 0.052083333333333336,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 7,
+      "kv_allocation_failures_per_request": 0.07291666666666667
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "f9c7e3ec4f241f32456be8e51d9d506a5f7d6297701324f7dec01ccfe1c39f5a",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 2315.261199405,
+      "offered_load_requests_per_second": 41.03208744845467,
+      "completed_load_requests_per_second": 39.05533778789884,
+      "e2e_p99_ms": 232.29294915685173,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.96875,
+      "slo_goodput_tokens_per_second": 498.90044400025624,
+      "status_counts": {
+        "completed": 93,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 27,
+      "kv_allocation_failures_per_request": 0.28125
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "1aa899610f1da31fcf784e3c749ff1ba8780d6a84104cbab0c83dc90731264ab",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 2272.371202953,
+      "offered_load_requests_per_second": 41.80654986145981,
+      "completed_load_requests_per_second": 36.11784070664742,
+      "e2e_p99_ms": 344.3768714521319,
+      "slo_attainment": 0.797752808988764,
+      "completion_ratio": 0.9270833333333334,
+      "slo_goodput_tokens_per_second": 342.51075906079126,
+      "status_counts": {
+        "completed": 89,
+        "rejected": 2,
+        "timed_out": 0,
+        "cancelled": 3,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.020833333333333332,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.041666666666666664,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 2,
+      "kv_allocation_failures_per_request": 0.020833333333333332
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "1aa899610f1da31fcf784e3c749ff1ba8780d6a84104cbab0c83dc90731264ab",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 2272.371202953,
+      "offered_load_requests_per_second": 41.80654986145981,
+      "completed_load_requests_per_second": 38.692607419315074,
+      "e2e_p99_ms": 190.37334624610418,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.9479166666666666,
+      "slo_goodput_tokens_per_second": 488.122124366744,
+      "status_counts": {
+        "completed": 91,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 0,
+        "oom": 5,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.052083333333333336,
+      "terminal_failure_ratio": 0.052083333333333336,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 5,
+      "kv_allocation_failures_per_request": 0.052083333333333336
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "1aa899610f1da31fcf784e3c749ff1ba8780d6a84104cbab0c83dc90731264ab",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 2272.371202953,
+      "offered_load_requests_per_second": 41.80654986145981,
+      "completed_load_requests_per_second": 40.39338137181244,
+      "e2e_p99_ms": 226.74714784136157,
+      "slo_attainment": 0.9894736842105263,
+      "completion_ratio": 0.9895833333333334,
+      "slo_goodput_tokens_per_second": 506.830637844215,
+      "status_counts": {
+        "completed": 95,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.0,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 26,
+      "kv_allocation_failures_per_request": 0.2708333333333333
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "86fdbd3f0c749e85e1ccf2bcf019c67fc9114cc25c6b575ea3c6f5d00d382cb9",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1736.341308455,
+      "offered_load_requests_per_second": 54.71274543628245,
+      "completed_load_requests_per_second": 36.433050322266084,
+      "e2e_p99_ms": 368.0529821430432,
+      "slo_attainment": 0.7361111111111112,
+      "completion_ratio": 0.75,
+      "slo_goodput_tokens_per_second": 295.5125192806027,
+      "status_counts": {
+        "completed": 72,
+        "rejected": 15,
+        "timed_out": 4,
+        "cancelled": 2,
+        "oom": 3,
+        "aborted": 0
+      },
+      "rejection_rate": 0.15625,
+      "timeout_rate": 0.041666666666666664,
+      "oom_rate": 0.03125,
+      "terminal_failure_ratio": 0.22916666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 4,
+      "kv_allocation_failures_per_request": 0.041666666666666664
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "86fdbd3f0c749e85e1ccf2bcf019c67fc9114cc25c6b575ea3c6f5d00d382cb9",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1736.341308455,
+      "offered_load_requests_per_second": 54.71274543628245,
+      "completed_load_requests_per_second": 45.54126162379573,
+      "e2e_p99_ms": 271.34454207707313,
+      "slo_attainment": 0.9397590361445783,
+      "completion_ratio": 0.8645833333333334,
+      "slo_goodput_tokens_per_second": 502.5999475589986,
+      "status_counts": {
+        "completed": 83,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 11,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.11458333333333333,
+      "terminal_failure_ratio": 0.11458333333333333,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 34,
+      "kv_allocation_failures_per_request": 0.3541666666666667
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "86fdbd3f0c749e85e1ccf2bcf019c67fc9114cc25c6b575ea3c6f5d00d382cb9",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1736.341308455,
+      "offered_load_requests_per_second": 54.71274543628245,
+      "completed_load_requests_per_second": 44.24769977004715,
+      "e2e_p99_ms": 367.11580964967186,
+      "slo_attainment": 0.7790697674418605,
+      "completion_ratio": 0.8958333333333334,
+      "slo_goodput_tokens_per_second": 372.50389108737363,
+      "status_counts": {
+        "completed": 86,
+        "rejected": 3,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 5,
+        "aborted": 0
+      },
+      "rejection_rate": 0.03125,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.052083333333333336,
+      "terminal_failure_ratio": 0.08333333333333333,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 78,
+      "kv_allocation_failures_per_request": 0.8125
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b91304c464b46b5282c7ba5eb6d89c813a913c0227665fa80b0b1fc14f0eae35",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1545.50746627,
+      "offered_load_requests_per_second": 61.46848337735789,
+      "completed_load_requests_per_second": 38.14302661299204,
+      "e2e_p99_ms": 374.2301379472611,
+      "slo_attainment": 0.5441176470588235,
+      "completion_ratio": 0.7083333333333334,
+      "slo_goodput_tokens_per_second": 222.12703733448302,
+      "status_counts": {
+        "completed": 68,
+        "rejected": 18,
+        "timed_out": 6,
+        "cancelled": 3,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.1875,
+      "timeout_rate": 0.0625,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.2604166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "b91304c464b46b5282c7ba5eb6d89c813a913c0227665fa80b0b1fc14f0eae35",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1545.50746627,
+      "offered_load_requests_per_second": 61.46848337735789,
+      "completed_load_requests_per_second": 48.75532249838339,
+      "e2e_p99_ms": 215.38318496849956,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.8229166666666666,
+      "slo_goodput_tokens_per_second": 594.9383656764759,
+      "status_counts": {
+        "completed": 79,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 13,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.13541666666666666,
+      "terminal_failure_ratio": 0.13541666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 37,
+      "kv_allocation_failures_per_request": 0.3854166666666667
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "b91304c464b46b5282c7ba5eb6d89c813a913c0227665fa80b0b1fc14f0eae35",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1545.50746627,
+      "offered_load_requests_per_second": 61.46848337735789,
+      "completed_load_requests_per_second": 52.51940251918667,
+      "e2e_p99_ms": 289.70166854112006,
+      "slo_attainment": 0.9111111111111111,
+      "completion_ratio": 0.9375,
+      "slo_goodput_tokens_per_second": 567.209547207216,
+      "status_counts": {
+        "completed": 90,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.020833333333333332,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 48,
+      "kv_allocation_failures_per_request": 0.5
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "d536e2f8bfb2117f786c4d6c98441d3bd6a5482e678837cbd642b6d509d02b5e",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1516.914135302,
+      "offered_load_requests_per_second": 62.627144008442244,
+      "completed_load_requests_per_second": 37.57358996610272,
+      "e2e_p99_ms": 376.985721195048,
+      "slo_attainment": 0.48484848484848486,
+      "completion_ratio": 0.6875,
+      "slo_goodput_tokens_per_second": 170.78904530046694,
+      "status_counts": {
+        "completed": 66,
+        "rejected": 18,
+        "timed_out": 9,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.1875,
+      "timeout_rate": 0.09375,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.28125,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "d536e2f8bfb2117f786c4d6c98441d3bd6a5482e678837cbd642b6d509d02b5e",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1516.914135302,
+      "offered_load_requests_per_second": 62.627144008442244,
+      "completed_load_requests_per_second": 50.63136145968069,
+      "e2e_p99_ms": 215.0436293585011,
+      "slo_attainment": 1.0,
+      "completion_ratio": 0.8541666666666666,
+      "slo_goodput_tokens_per_second": 619.92545006731,
+      "status_counts": {
+        "completed": 82,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 13,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.13541666666666666,
+      "terminal_failure_ratio": 0.13541666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 23,
+      "kv_allocation_failures_per_request": 0.23958333333333334
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "d536e2f8bfb2117f786c4d6c98441d3bd6a5482e678837cbd642b6d509d02b5e",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1516.914135302,
+      "offered_load_requests_per_second": 62.627144008442244,
+      "completed_load_requests_per_second": 57.44476441521799,
+      "e2e_p99_ms": 312.8043997824183,
+      "slo_attainment": 0.8617021276595744,
+      "completion_ratio": 0.9791666666666666,
+      "slo_goodput_tokens_per_second": 569.5587280317358,
+      "status_counts": {
+        "completed": 94,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.010416666666666666,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 61,
+      "kv_allocation_failures_per_request": 0.6354166666666666
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "aa655a2895439730479ec7be7e6f43f746ebcea4936f51ee1050344a52ec1a99",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1159.560872303,
+      "offered_load_requests_per_second": 81.92756608915305,
+      "completed_load_requests_per_second": 36.07862231276823,
+      "e2e_p99_ms": 373.71001701129444,
+      "slo_attainment": 0.6037735849056604,
+      "completion_ratio": 0.5520833333333334,
+      "slo_goodput_tokens_per_second": 217.83319132237426,
+      "status_counts": {
+        "completed": 53,
+        "rejected": 31,
+        "timed_out": 9,
+        "cancelled": 1,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.3229166666666667,
+      "timeout_rate": 0.09375,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.4375,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 3,
+      "kv_allocation_failures_per_request": 0.03125
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "aa655a2895439730479ec7be7e6f43f746ebcea4936f51ee1050344a52ec1a99",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1159.560872303,
+      "offered_load_requests_per_second": 81.92756608915305,
+      "completed_load_requests_per_second": 50.216387195236464,
+      "e2e_p99_ms": 264.4655396166303,
+      "slo_attainment": 0.9538461538461539,
+      "completion_ratio": 0.6770833333333334,
+      "slo_goodput_tokens_per_second": 522.2504268304593,
+      "status_counts": {
+        "completed": 65,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 30,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.3125,
+      "terminal_failure_ratio": 0.3125,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 64,
+      "kv_allocation_failures_per_request": 0.6666666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "aa655a2895439730479ec7be7e6f43f746ebcea4936f51ee1050344a52ec1a99",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 1159.560872303,
+      "offered_load_requests_per_second": 81.92756608915305,
+      "completed_load_requests_per_second": 49.557299917733154,
+      "e2e_p99_ms": 374.0622621562171,
+      "slo_attainment": 0.6956521739130435,
+      "completion_ratio": 0.71875,
+      "slo_goodput_tokens_per_second": 341.87354725856494,
+      "status_counts": {
+        "completed": 69,
+        "rejected": 19,
+        "timed_out": 3,
+        "cancelled": 2,
+        "oom": 3,
+        "aborted": 0
+      },
+      "rejection_rate": 0.19791666666666666,
+      "timeout_rate": 0.03125,
+      "oom_rate": 0.03125,
+      "terminal_failure_ratio": 0.2604166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 88,
+      "kv_allocation_failures_per_request": 0.9166666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "904c906ed93e59d1433a53b3f7d5706e20bd4cc356d16e90ef191165fef316a9",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1032.338310847,
+      "offered_load_requests_per_second": 92.0240961725576,
+      "completed_load_requests_per_second": 40.97760925353443,
+      "e2e_p99_ms": 368.2926244405329,
+      "slo_attainment": 0.5535714285714286,
+      "completion_ratio": 0.5833333333333334,
+      "slo_goodput_tokens_per_second": 234.15776716305393,
+      "status_counts": {
+        "completed": 56,
+        "rejected": 30,
+        "timed_out": 6,
+        "cancelled": 3,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.3125,
+      "timeout_rate": 0.0625,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.3854166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "904c906ed93e59d1433a53b3f7d5706e20bd4cc356d16e90ef191165fef316a9",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1032.338310847,
+      "offered_load_requests_per_second": 92.0240961725576,
+      "completed_load_requests_per_second": 59.45343472281459,
+      "e2e_p99_ms": 267.97897690180775,
+      "slo_attainment": 0.9436619718309859,
+      "completion_ratio": 0.7395833333333334,
+      "slo_goodput_tokens_per_second": 606.2575597087009,
+      "status_counts": {
+        "completed": 71,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 21,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.21875,
+      "terminal_failure_ratio": 0.21875,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 40,
+      "kv_allocation_failures_per_request": 0.4166666666666667
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "904c906ed93e59d1433a53b3f7d5706e20bd4cc356d16e90ef191165fef316a9",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 1032.338310847,
+      "offered_load_requests_per_second": 92.0240961725576,
+      "completed_load_requests_per_second": 52.713656852115655,
+      "e2e_p99_ms": 366.2371571045024,
+      "slo_attainment": 0.6086956521739131,
+      "completion_ratio": 0.71875,
+      "slo_goodput_tokens_per_second": 302.53055236866373,
+      "status_counts": {
+        "completed": 69,
+        "rejected": 14,
+        "timed_out": 5,
+        "cancelled": 4,
+        "oom": 4,
+        "aborted": 0
+      },
+      "rejection_rate": 0.14583333333333334,
+      "timeout_rate": 0.052083333333333336,
+      "oom_rate": 0.041666666666666664,
+      "terminal_failure_ratio": 0.23958333333333334,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 65,
+      "kv_allocation_failures_per_request": 0.6770833333333334
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "0e38ec6ccb277b70055b9f462a4427014d5a94c8ae36e321437f238c44a53bee",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1013.276090201,
+      "offered_load_requests_per_second": 93.75529623042341,
+      "completed_load_requests_per_second": 35.03635951784056,
+      "e2e_p99_ms": 377.4488572765523,
+      "slo_attainment": 0.425531914893617,
+      "completion_ratio": 0.4895833333333333,
+      "slo_goodput_tokens_per_second": 152.07270939658454,
+      "status_counts": {
+        "completed": 47,
+        "rejected": 38,
+        "timed_out": 7,
+        "cancelled": 2,
+        "oom": 2,
+        "aborted": 0
+      },
+      "rejection_rate": 0.3958333333333333,
+      "timeout_rate": 0.07291666666666667,
+      "oom_rate": 0.020833333333333332,
+      "terminal_failure_ratio": 0.4895833333333333,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 2,
+      "kv_allocation_failures_per_request": 0.020833333333333332
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "0e38ec6ccb277b70055b9f462a4427014d5a94c8ae36e321437f238c44a53bee",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1013.276090201,
+      "offered_load_requests_per_second": 93.75529623042341,
+      "completed_load_requests_per_second": 57.50033046252551,
+      "e2e_p99_ms": 276.13126227648115,
+      "slo_attainment": 0.8857142857142857,
+      "completion_ratio": 0.7291666666666666,
+      "slo_goodput_tokens_per_second": 568.4318382866808,
+      "status_counts": {
+        "completed": 70,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 1,
+        "oom": 25,
+        "aborted": 0
+      },
+      "rejection_rate": 0.0,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.2604166666666667,
+      "terminal_failure_ratio": 0.2604166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 56,
+      "kv_allocation_failures_per_request": 0.5833333333333334
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "0e38ec6ccb277b70055b9f462a4427014d5a94c8ae36e321437f238c44a53bee",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 1013.276090201,
+      "offered_load_requests_per_second": 93.75529623042341,
+      "completed_load_requests_per_second": 53.06450664731747,
+      "e2e_p99_ms": 365.59618091882476,
+      "slo_attainment": 0.625,
+      "completion_ratio": 0.6666666666666666,
+      "slo_goodput_tokens_per_second": 318.3870398839049,
+      "status_counts": {
+        "completed": 64,
+        "rejected": 15,
+        "timed_out": 1,
+        "cancelled": 1,
+        "oom": 15,
+        "aborted": 0
+      },
+      "rejection_rate": 0.15625,
+      "timeout_rate": 0.010416666666666666,
+      "oom_rate": 0.15625,
+      "terminal_failure_ratio": 0.3229166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 109,
+      "kv_allocation_failures_per_request": 1.1354166666666667
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 1103,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "94b187f026b86a18552ac82e272d138dca806e8f363c00dfaf47aa2b0f72cc5e",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 871.170654227,
+      "offered_load_requests_per_second": 109.04866863805762,
+      "completed_load_requests_per_second": 38.453139276715035,
+      "e2e_p99_ms": 361.17451072496254,
+      "slo_attainment": 0.5333333333333333,
+      "completion_ratio": 0.46875,
+      "slo_goodput_tokens_per_second": 211.91952312500734,
+      "status_counts": {
+        "completed": 45,
+        "rejected": 41,
+        "timed_out": 6,
+        "cancelled": 0,
+        "oom": 4,
+        "aborted": 0
+      },
+      "rejection_rate": 0.4270833333333333,
+      "timeout_rate": 0.0625,
+      "oom_rate": 0.041666666666666664,
+      "terminal_failure_ratio": 0.53125,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 5,
+      "kv_allocation_failures_per_request": 0.052083333333333336
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "94b187f026b86a18552ac82e272d138dca806e8f363c00dfaf47aa2b0f72cc5e",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 871.170654227,
+      "offered_load_requests_per_second": 109.04866863805762,
+      "completed_load_requests_per_second": 57.492988906544554,
+      "e2e_p99_ms": 325.4508994227821,
+      "slo_attainment": 0.8852459016393442,
+      "completion_ratio": 0.6354166666666666,
+      "slo_goodput_tokens_per_second": 576.8149050951683,
+      "status_counts": {
+        "completed": 61,
+        "rejected": 13,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 20,
+        "aborted": 0
+      },
+      "rejection_rate": 0.13541666666666666,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.20833333333333334,
+      "terminal_failure_ratio": 0.34375,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 51,
+      "kv_allocation_failures_per_request": 0.53125
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 1103,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "94b187f026b86a18552ac82e272d138dca806e8f363c00dfaf47aa2b0f72cc5e",
+      "request_semantics_sha256": "37b1c69c0e39b1bcb5a41859f49c60fe98dbadff4583fc6ba28369ff70e9e68e",
+      "arrival_observation_ms": 871.170654227,
+      "offered_load_requests_per_second": 109.04866863805762,
+      "completed_load_requests_per_second": 52.49990775733257,
+      "e2e_p99_ms": 378.96641309969914,
+      "slo_attainment": 0.7068965517241379,
+      "completion_ratio": 0.6041666666666666,
+      "slo_goodput_tokens_per_second": 365.6890126545234,
+      "status_counts": {
+        "completed": 58,
+        "rejected": 27,
+        "timed_out": 5,
+        "cancelled": 1,
+        "oom": 5,
+        "aborted": 0
+      },
+      "rejection_rate": 0.28125,
+      "timeout_rate": 0.052083333333333336,
+      "oom_rate": 0.052083333333333336,
+      "terminal_failure_ratio": 0.3854166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 62,
+      "kv_allocation_failures_per_request": 0.6458333333333334
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 2207,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "a01c02edf22f0dee385e7383ca51fcc448b56b92a2676098409ceecc988063a4",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 775.753733135,
+      "offered_load_requests_per_second": 122.46154409864464,
+      "completed_load_requests_per_second": 36.163476503922446,
+      "e2e_p99_ms": 369.4960159707679,
+      "slo_attainment": 0.45,
+      "completion_ratio": 0.4166666666666667,
+      "slo_goodput_tokens_per_second": 195.2827731211812,
+      "status_counts": {
+        "completed": 40,
+        "rejected": 44,
+        "timed_out": 9,
+        "cancelled": 2,
+        "oom": 1,
+        "aborted": 0
+      },
+      "rejection_rate": 0.4583333333333333,
+      "timeout_rate": 0.09375,
+      "oom_rate": 0.010416666666666666,
+      "terminal_failure_ratio": 0.5625,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 1,
+      "kv_allocation_failures_per_request": 0.010416666666666666
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "a01c02edf22f0dee385e7383ca51fcc448b56b92a2676098409ceecc988063a4",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 775.753733135,
+      "offered_load_requests_per_second": 122.46154409864464,
+      "completed_load_requests_per_second": 63.33733104609253,
+      "e2e_p99_ms": 335.83473449635926,
+      "slo_attainment": 0.828125,
+      "completion_ratio": 0.6666666666666666,
+      "slo_goodput_tokens_per_second": 534.4087307014057,
+      "status_counts": {
+        "completed": 64,
+        "rejected": 14,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 14,
+        "aborted": 0
+      },
+      "rejection_rate": 0.14583333333333334,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.14583333333333334,
+      "terminal_failure_ratio": 0.2916666666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 30,
+      "kv_allocation_failures_per_request": 0.3125
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 2207,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "a01c02edf22f0dee385e7383ca51fcc448b56b92a2676098409ceecc988063a4",
+      "request_semantics_sha256": "f600ebc0dea41e7e4b7c7da8b65a6d175de2aafdfffb2de57aeb3aa7eba47451",
+      "arrival_observation_ms": 775.753733135,
+      "offered_load_requests_per_second": 122.46154409864464,
+      "completed_load_requests_per_second": 54.07193244363772,
+      "e2e_p99_ms": 368.41930034563694,
+      "slo_attainment": 0.5454545454545454,
+      "completion_ratio": 0.5729166666666666,
+      "slo_goodput_tokens_per_second": 243.8152590185846,
+      "status_counts": {
+        "completed": 55,
+        "rejected": 28,
+        "timed_out": 3,
+        "cancelled": 4,
+        "oom": 6,
+        "aborted": 0
+      },
+      "rejection_rate": 0.2916666666666667,
+      "timeout_rate": 0.03125,
+      "oom_rate": 0.0625,
+      "terminal_failure_ratio": 0.3854166666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 92,
+      "kv_allocation_failures_per_request": 0.9583333333333334
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 3301,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "32d7bfe8df9b70af871c8cee78e1c307a90bb6a5bbb011eae28ada0ab52b6841",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 761.457067651,
+      "offered_load_requests_per_second": 124.76080929035585,
+      "completed_load_requests_per_second": 39.20303155612387,
+      "e2e_p99_ms": 371.32942801970694,
+      "slo_attainment": 0.4883720930232558,
+      "completion_ratio": 0.4479166666666667,
+      "slo_goodput_tokens_per_second": 196.92685618890127,
+      "status_counts": {
+        "completed": 43,
+        "rejected": 43,
+        "timed_out": 7,
+        "cancelled": 3,
+        "oom": 0,
+        "aborted": 0
+      },
+      "rejection_rate": 0.4479166666666667,
+      "timeout_rate": 0.07291666666666667,
+      "oom_rate": 0.0,
+      "terminal_failure_ratio": 0.5208333333333334,
+      "kv_peak_utilization": 0.9722222222222222,
+      "kv_allocation_failures": 0,
+      "kv_allocation_failures_per_request": 0.0
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "request_count": 96,
+      "trace_sha256": "32d7bfe8df9b70af871c8cee78e1c307a90bb6a5bbb011eae28ada0ab52b6841",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 761.457067651,
+      "offered_load_requests_per_second": 124.76080929035585,
+      "completed_load_requests_per_second": 58.541707752849476,
+      "e2e_p99_ms": 317.2506351609693,
+      "slo_attainment": 0.7833333333333333,
+      "completion_ratio": 0.625,
+      "slo_goodput_tokens_per_second": 480.04200357336566,
+      "status_counts": {
+        "completed": 60,
+        "rejected": 12,
+        "timed_out": 0,
+        "cancelled": 2,
+        "oom": 22,
+        "aborted": 0
+      },
+      "rejection_rate": 0.125,
+      "timeout_rate": 0.0,
+      "oom_rate": 0.22916666666666666,
+      "terminal_failure_ratio": 0.3541666666666667,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 38,
+      "kv_allocation_failures_per_request": 0.3958333333333333
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "seed": 3301,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "request_count": 96,
+      "trace_sha256": "32d7bfe8df9b70af871c8cee78e1c307a90bb6a5bbb011eae28ada0ab52b6841",
+      "request_semantics_sha256": "711a1d10ae7185921f14dce508a0f2de1ed4ad9e94d38b6618e4491652a30ad6",
+      "arrival_observation_ms": 761.457067651,
+      "offered_load_requests_per_second": 124.76080929035585,
+      "completed_load_requests_per_second": 50.067173854886335,
+      "e2e_p99_ms": 374.05016269387704,
+      "slo_attainment": 0.58,
+      "completion_ratio": 0.5208333333333334,
+      "slo_goodput_tokens_per_second": 232.31168668667257,
+      "status_counts": {
+        "completed": 50,
+        "rejected": 31,
+        "timed_out": 6,
+        "cancelled": 2,
+        "oom": 7,
+        "aborted": 0
+      },
+      "rejection_rate": 0.3229166666666667,
+      "timeout_rate": 0.0625,
+      "oom_rate": 0.07291666666666667,
+      "terminal_failure_ratio": 0.4583333333333333,
+      "kv_peak_utilization": 1.0,
+      "kv_allocation_failures": 62,
+      "kv_allocation_failures_per_request": 0.6458333333333334
+    }
+  ],
+  "aggregates": [
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.984157179044781,
+          "min": 4.573883595218341,
+          "max": 5.237920224349902,
+          "population_stddev": 0.2928114555002662
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.919130216764107,
+          "min": 4.517359604725038,
+          "max": 5.271883780457372,
+          "population_stddev": 0.3099770811017495
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 206.22168774150455,
+          "min": 185.57630644678366,
+          "max": 246.08566862215085,
+          "population_stddev": 28.194108784762545
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9927536231884058,
+          "min": 0.9782608695652174,
+          "max": 1.0,
+          "population_stddev": 0.01024792436502242
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9791666666666666,
+          "min": 0.9583333333333334,
+          "max": 1.0,
+          "population_stddev": 0.01701034543599428
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 62.04942134865365,
+          "min": 56.707280144420686,
+          "max": 68.0951654975744,
+          "population_stddev": 4.675630155887953
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.75,
+          "min": 0.7222222222222222,
+          "max": 0.8055555555555556,
+          "population_stddev": 0.039283710065919325
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 282,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.965166611061221,
+          "min": 9.145125375346773,
+          "max": 10.472376019006314,
+          "population_stddev": 0.5852614128876105
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.804113718406557,
+          "min": 9.002830729255859,
+          "max": 10.388957299207647,
+          "population_stddev": 0.5862145398496031
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 223.85683395418073,
+          "min": 187.29434883550383,
+          "max": 254.73305939943913,
+          "population_stddev": 27.823791766959907
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.982078853046595,
+          "min": 0.946236559139785,
+          "max": 1.0,
+          "population_stddev": 0.025344329074786627
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9791666666666666,
+          "min": 0.96875,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.008505172717997162
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 120.64321123941818,
+          "min": 113.01425809065867,
+          "max": 132.9786534298579,
+          "population_stddev": 8.803694286663676
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8148148148148149,
+          "min": 0.7777777777777778,
+          "max": 0.8611111111111112,
+          "population_stddev": 0.03464497580346244
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 282,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.94303128683103,
+          "min": 13.713727628540381,
+          "max": 15.70337081996234,
+          "population_stddev": 0.8773503748247858
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.609521108403547,
+          "min": 13.338976888179541,
+          "max": 15.494205655439325,
+          "population_stddev": 0.9212015795871259
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 242.76422387773096,
+          "min": 204.34936757707376,
+          "max": 278.07562529261145,
+          "population_stddev": 30.178511597443066
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9786836686775278,
+          "min": 0.967741935483871,
+          "max": 0.9893617021276596,
+          "population_stddev": 0.008828202180097602
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9791666666666666,
+          "min": 0.96875,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.008505172717997162
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 179.40423931003627,
+          "min": 165.17626699830836,
+          "max": 191.80195632417522,
+          "population_stddev": 10.946664906419656
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8703703703703703,
+          "min": 0.8055555555555556,
+          "max": 1.0,
+          "population_stddev": 0.0916619901538117
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 282,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 22.403938415508293,
+          "min": 20.561686894168993,
+          "max": 23.543381163268744,
+          "population_stddev": 1.314808048793976
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 21.53576230913937,
+          "min": 19.837524574891102,
+          "max": 22.816143168943118,
+          "population_stddev": 1.2513980069901833
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 287.55524537050235,
+          "min": 260.00293555940675,
+          "max": 309.85861909562266,
+          "population_stddev": 20.689140351753263
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9394777415323693,
+          "min": 0.9347826086956522,
+          "max": 0.9468085106382979,
+          "population_stddev": 0.00525138161447182
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9756944444444445,
+          "min": 0.9583333333333334,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.0129918659262984
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 249.84532374812534,
+          "min": 230.4529450615009,
+          "max": 270.9116788901878,
+          "population_stddev": 16.559567901672498
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9259259259259259,
+          "min": 0.8611111111111112,
+          "max": 1.0,
+          "population_stddev": 0.05707790743489791
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        }
+      },
+      "status_counts_total": {
+        "completed": 281,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 1,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 29.85778662751891,
+          "min": 27.403720068468484,
+          "max": 31.375623552470866,
+          "population_stddev": 1.7514563021251166
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 28.043547259639855,
+          "min": 25.810351464499988,
+          "max": 30.224361407971053,
+          "population_stddev": 1.8023926362767815
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 311.27974603921206,
+          "min": 295.51124234535047,
+          "max": 323.1870729927701,
+          "population_stddev": 11.62380932600722
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.903554292463276,
+          "min": 0.9021739130434783,
+          "max": 0.9052631578947369,
+          "population_stddev": 0.00128238988680009
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9722222222222223,
+          "min": 0.9583333333333334,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 302.13933226727977,
+          "min": 277.530660908602,
+          "max": 329.6046149332422,
+          "population_stddev": 21.354848677537152
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9537037037037037,
+          "min": 0.9166666666666666,
+          "max": 1.0,
+          "population_stddev": 0.03464497580346244
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 280,
+        "rejected": 0,
+        "timed_out": 1,
+        "cancelled": 7,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 39.78528773371537,
+          "min": 36.517225891231654,
+          "max": 41.80654986145981,
+          "population_stddev": 2.3323977879731426
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 34.27433049501728,
+          "min": 31.122010623156957,
+          "max": 36.11784070664742,
+          "population_stddev": 2.23968994890081
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 330.410362250353,
+          "min": 318.06758327812065,
+          "max": 344.3768714521319,
+          "population_stddev": 10.801914520107072
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8236625400515365,
+          "min": 0.797752808988764,
+          "max": 0.8571428571428571,
+          "population_stddev": 0.024829817888285168
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9270833333333334,
+          "min": 0.90625,
+          "max": 0.9479166666666666,
+          "population_stddev": 0.01701034543599428
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 326.3046807850096,
+          "min": 287.6103050691746,
+          "max": 348.79297822506305,
+          "population_stddev": 27.480994686457265
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.020833333333333332,
+          "min": 0.0,
+          "max": 0.041666666666666664,
+          "population_stddev": 0.017010345435994292
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.008505172717997146
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.008505172717997146
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.041666666666666664,
+          "min": 0.010416666666666666,
+          "max": 0.07291666666666667,
+          "population_stddev": 0.025515518153991442
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9907407407407408,
+          "min": 0.9722222222222222,
+          "max": 1.0,
+          "population_stddev": 0.013094570021973109
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.008505172717997146
+        }
+      },
+      "status_counts_total": {
+        "completed": 267,
+        "rejected": 6,
+        "timed_out": 3,
+        "cancelled": 9,
+        "oom": 3,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "slo_attainment"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 59.6027909406942,
+          "min": 54.71274543628245,
+          "max": 62.627144008442244,
+          "population_stddev": 3.4899887670229304
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 37.38322230045362,
+          "min": 36.433050322266084,
+          "max": 38.14302661299204,
+          "population_stddev": 0.7109545765165506
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 373.08961376178405,
+          "min": 368.0529821430432,
+          "max": 376.985721195048,
+          "population_stddev": 3.7348853892318403
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5883590810061398,
+          "min": 0.48484848484848486,
+          "max": 0.7361111111111112,
+          "population_stddev": 0.1072417990567239
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.7152777777777778,
+          "min": 0.6875,
+          "max": 0.75,
+          "population_stddev": 0.025983731852596812
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 229.47620063851755,
+          "min": 170.78904530046694,
+          "max": 295.5125192806027,
+          "population_stddev": 51.18263957873754
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.17708333333333334,
+          "min": 0.15625,
+          "max": 0.1875,
+          "population_stddev": 0.01473139127471974
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.06597222222222222,
+          "min": 0.041666666666666664,
+          "max": 0.09375,
+          "population_stddev": 0.021404215288086725
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.013888888888888888,
+          "min": 0.0,
+          "max": 0.03125,
+          "population_stddev": 0.012991865926298408
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.2569444444444445,
+          "min": 0.22916666666666666,
+          "max": 0.28125,
+          "population_stddev": 0.02140421528808673
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.01736111111111111,
+          "min": 0.0,
+          "max": 0.041666666666666664,
+          "population_stddev": 0.017704928866641614
+        }
+      },
+      "status_counts_total": {
+        "completed": 206,
+        "rejected": 51,
+        "timed_out": 19,
+        "cancelled": 8,
+        "oom": 4,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 89.23565283071135,
+          "min": 81.92756608915305,
+          "max": 93.75529623042341,
+          "population_stddev": 5.215704636109033
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 37.36419702804774,
+          "min": 35.03635951784056,
+          "max": 40.97760925353443,
+          "population_stddev": 2.5902559547781014
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 373.15049957612655,
+          "min": 368.2926244405329,
+          "max": 377.4488572765523,
+          "population_stddev": 3.7588956496150656
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5276256427902354,
+          "min": 0.425531914893617,
+          "max": 0.6037735849056604,
+          "population_stddev": 0.07504403632545012
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5416666666666666,
+          "min": 0.4895833333333333,
+          "max": 0.5833333333333334,
+          "population_stddev": 0.03897559777889525
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 201.35455596067092,
+          "min": 152.07270939658454,
+          "max": 234.15776716305393,
+          "population_stddev": 35.479085338352405
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.34375,
+          "min": 0.3125,
+          "max": 0.3958333333333333,
+          "population_stddev": 0.03707318837510871
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0763888888888889,
+          "min": 0.0625,
+          "max": 0.09375,
+          "population_stddev": 0.012991865926298408
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.01736111111111111,
+          "min": 0.010416666666666666,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.004910463758239913
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.4375,
+          "min": 0.3854166666666667,
+          "max": 0.4895833333333333,
+          "population_stddev": 0.04252586358998572
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.020833333333333332,
+          "min": 0.010416666666666666,
+          "max": 0.03125,
+          "population_stddev": 0.008505172717997146
+        }
+      },
+      "status_counts_total": {
+        "completed": 156,
+        "rejected": 99,
+        "timed_out": 22,
+        "cancelled": 6,
+        "oom": 5,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "policy": "static_fcfs",
+      "policy_kind": "static_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 118.75700734235271,
+          "min": 109.04866863805762,
+          "max": 124.76080929035585,
+          "population_stddev": 6.92871009656868
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 37.939882445587116,
+          "min": 36.163476503922446,
+          "max": 39.20303155612387,
+          "population_stddev": 1.2928774522656563
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 367.3333182384792,
+          "min": 361.17451072496254,
+          "max": 371.32942801970694,
+          "population_stddev": 4.418788101332009
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.4905684754521964,
+          "min": 0.45,
+          "max": 0.5333333333333333,
+          "population_stddev": 0.03405612214117289
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.4444444444444445,
+          "min": 0.4166666666666667,
+          "max": 0.46875,
+          "population_stddev": 0.02140421528808672
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 201.37638414502996,
+          "min": 195.2827731211812,
+          "max": 211.91952312500734,
+          "population_stddev": 7.485278304633711
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.4444444444444444,
+          "min": 0.4270833333333333,
+          "max": 0.4583333333333333,
+          "population_stddev": 0.012991865926298411
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0763888888888889,
+          "min": 0.0625,
+          "max": 0.09375,
+          "population_stddev": 0.012991865926298408
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.01736111111111111,
+          "min": 0.0,
+          "max": 0.041666666666666664,
+          "population_stddev": 0.017704928866641614
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5381944444444445,
+          "min": 0.5208333333333334,
+          "max": 0.5625,
+          "population_stddev": 0.0177049288666416
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9907407407407408,
+          "min": 0.9722222222222222,
+          "max": 1.0,
+          "population_stddev": 0.013094570021973109
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.020833333333333332,
+          "min": 0.0,
+          "max": 0.052083333333333336,
+          "population_stddev": 0.022502571869471737
+        }
+      },
+      "status_counts_total": {
+        "completed": 128,
+        "rejected": 128,
+        "timed_out": 22,
+        "cancelled": 5,
+        "oom": 5,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.984157179044781,
+          "min": 4.573883595218341,
+          "max": 5.237920224349902,
+          "population_stddev": 0.2928114555002662
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.953149756023861,
+          "min": 4.565416621796581,
+          "max": 5.271883780457372,
+          "population_stddev": 0.29251167433205366
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 152.4707321930025,
+          "min": 143.67615727993308,
+          "max": 159.46744204345245,
+          "population_stddev": 6.570916106002294
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9861111111111112,
+          "min": 0.96875,
+          "max": 1.0,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 63.17767716254024,
+          "min": 57.28396434927921,
+          "max": 68.0951654975744,
+          "population_stddev": 4.467309275252969
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8055555555555555,
+          "min": 0.7222222222222222,
+          "max": 0.8888888888888888,
+          "population_stddev": 0.06804138174397716
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 284,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.965166611061221,
+          "min": 9.145125375346773,
+          "max": 10.472376019006314,
+          "population_stddev": 0.5852614128876105
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.844766193696609,
+          "min": 9.0154307098712,
+          "max": 10.498314744462466,
+          "population_stddev": 0.6180140502109857
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 157.96336541547956,
+          "min": 154.16452607036373,
+          "max": 165.13631281645385,
+          "population_stddev": 5.075002790138896
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9826388888888888,
+          "min": 0.96875,
+          "max": 1.0,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 125.5933817597125,
+          "min": 113.17242806008528,
+          "max": 135.6032321159735,
+          "population_stddev": 9.314694739951014
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9444444444444443,
+          "min": 0.8888888888888888,
+          "max": 1.0,
+          "population_stddev": 0.04536092116265147
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 283,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.94303128683103,
+          "min": 13.713727628540381,
+          "max": 15.70337081996234,
+          "population_stddev": 0.8773503748247858
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.61267151954639,
+          "min": 13.487328302641385,
+          "max": 15.516546127971525,
+          "population_stddev": 0.8430964769095345
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 167.45181758130911,
+          "min": 157.1473391930209,
+          "max": 173.68572983858715,
+          "population_stddev": 7.339696758337887
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9756944444444445,
+          "min": 0.9583333333333334,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.0129918659262984
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 186.71770897536376,
+          "min": 169.30901486294505,
+          "max": 201.22510347011493,
+          "population_stddev": 13.19020678631912
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.006944444444444444,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.006944444444444444,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9814814814814815,
+          "min": 0.9444444444444444,
+          "max": 1.0,
+          "population_stddev": 0.026189140043946218
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.006944444444444444,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        }
+      },
+      "status_counts_total": {
+        "completed": 281,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 2,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 22.403938415508293,
+          "min": 20.561686894168993,
+          "max": 23.543381163268744,
+          "population_stddev": 1.314808048793976
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 21.725618219603945,
+          "min": 20.13386924382142,
+          "max": 22.870214061004372,
+          "population_stddev": 1.1609924443686972
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 177.39784588101517,
+          "min": 161.88968588519955,
+          "max": 187.68867600060037,
+          "population_stddev": 11.159819921536721
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9722222222222222,
+          "min": 0.9583333333333334,
+          "max": 0.9791666666666666,
+          "population_stddev": 0.009820927516479791
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 276.6953079052351,
+          "min": 252.74431603946036,
+          "max": 294.87978129720534,
+          "population_stddev": 17.67840320095313
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.008505172717997146
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.008505172717997146
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.013888888888888888,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.009820927516479826
+        }
+      },
+      "status_counts_total": {
+        "completed": 280,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 3,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 29.85778662751891,
+          "min": 27.403720068468484,
+          "max": 31.375623552470866,
+          "population_stddev": 1.7514563021251166
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 28.585583237386942,
+          "min": 26.342829827184868,
+          "max": 30.594576027978455,
+          "population_stddev": 1.743620650533674
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 185.64637773570325,
+          "min": 174.98441565339223,
+          "max": 192.10731716824733,
+          "population_stddev": 7.595388186250382
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9652777777777778,
+          "min": 0.9375,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.02140421528808674
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 362.22784031954103,
+          "min": 327.4442073142549,
+          "max": 395.475151182711,
+          "population_stddev": 27.794754243700044
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.01736111111111111,
+          "min": 0.010416666666666666,
+          "max": 0.03125,
+          "population_stddev": 0.009820927516479828
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.01736111111111111,
+          "min": 0.010416666666666666,
+          "max": 0.03125,
+          "population_stddev": 0.009820927516479828
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.05555555555555555,
+          "min": 0.03125,
+          "max": 0.08333333333333333,
+          "population_stddev": 0.021404215288086722
+        }
+      },
+      "status_counts_total": {
+        "completed": 278,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 5,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 39.78528773371537,
+          "min": 36.517225891231654,
+          "max": 41.80654986145981,
+          "population_stddev": 2.3323977879731426
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 36.108577404539155,
+          "min": 32.45751664242285,
+          "max": 38.692607419315074,
+          "population_stddev": 2.6549331706402635
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 193.85821535735363,
+          "min": 190.37334624610418,
+          "max": 197.30787040920066,
+          "population_stddev": 2.83111713694164
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.923611111111111,
+          "min": 0.90625,
+          "max": 0.9479166666666666,
+          "population_stddev": 0.0177049288666416
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 454.334039946642,
+          "min": 411.87469394522793,
+          "max": 488.122124366744,
+          "population_stddev": 31.726022384678046
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.05902777777777778,
+          "min": 0.052083333333333336,
+          "max": 0.07291666666666667,
+          "population_stddev": 0.009820927516479828
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.05902777777777778,
+          "min": 0.052083333333333336,
+          "max": 0.07291666666666667,
+          "population_stddev": 0.009820927516479828
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.08680555555555557,
+          "min": 0.052083333333333336,
+          "max": 0.13541666666666666,
+          "population_stddev": 0.03540985773328322
+        }
+      },
+      "status_counts_total": {
+        "completed": 266,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 17,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 59.6027909406942,
+          "min": 54.71274543628245,
+          "max": 62.627144008442244,
+          "population_stddev": 3.4899887670229304
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 48.30931519395327,
+          "min": 45.54126162379573,
+          "max": 50.63136145968069,
+          "population_stddev": 2.101820000463535
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 233.9237854680246,
+          "min": 215.0436293585011,
+          "max": 271.34454207707313,
+          "population_stddev": 26.46083386690988
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9799196787148595,
+          "min": 0.9397590361445783,
+          "max": 1.0,
+          "population_stddev": 0.028397862698254908
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8472222222222222,
+          "min": 0.8229166666666666,
+          "max": 0.8645833333333334,
+          "population_stddev": 0.01770492886664164
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 572.4879211009281,
+          "min": 502.5999475589986,
+          "max": 619.92545006731,
+          "population_stddev": 50.46011778911307
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.1284722222222222,
+          "min": 0.11458333333333333,
+          "max": 0.13541666666666666,
+          "population_stddev": 0.009820927516479824
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.1284722222222222,
+          "min": 0.11458333333333333,
+          "max": 0.13541666666666666,
+          "population_stddev": 0.009820927516479824
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.3263888888888889,
+          "min": 0.23958333333333334,
+          "max": 0.3854166666666667,
+          "population_stddev": 0.06269260446273538
+        }
+      },
+      "status_counts_total": {
+        "completed": 244,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 7,
+        "oom": 37,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 89.23565283071135,
+          "min": 81.92756608915305,
+          "max": 93.75529623042341,
+          "population_stddev": 5.215704636109033
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 55.72338412685885,
+          "min": 50.216387195236464,
+          "max": 59.45343472281459,
+          "population_stddev": 3.9748304338309968
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 269.5252595983064,
+          "min": 264.4655396166303,
+          "max": 276.13126227648115,
+          "population_stddev": 4.886410675008658
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9277408037971417,
+          "min": 0.8857142857142857,
+          "max": 0.9538461538461539,
+          "population_stddev": 0.03000667211866936
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.7152777777777778,
+          "min": 0.6770833333333334,
+          "max": 0.7395833333333334,
+          "population_stddev": 0.027340305118096552
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 565.6466082752803,
+          "min": 522.2504268304593,
+          "max": 606.2575597087009,
+          "population_stddev": 34.35227040791665
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.2638888888888889,
+          "min": 0.21875,
+          "max": 0.3125,
+          "population_stddev": 0.038351947976344655
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.2638888888888889,
+          "min": 0.21875,
+          "max": 0.3125,
+          "population_stddev": 0.038351947976344655
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5555555555555556,
+          "min": 0.4166666666666667,
+          "max": 0.6666666666666666,
+          "population_stddev": 0.10393492741038725
+        }
+      },
+      "status_counts_total": {
+        "completed": 206,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 76,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "policy": "continuous_fcfs",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "none",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 118.75700734235271,
+          "min": 109.04866863805762,
+          "max": 124.76080929035585,
+          "population_stddev": 6.92871009656868
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 59.790675901828855,
+          "min": 57.492988906544554,
+          "max": 63.33733104609253,
+          "population_stddev": 2.5441468562038345
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 326.17875636003686,
+          "min": 317.2506351609693,
+          "max": 335.83473449635926,
+          "population_stddev": 7.6043636077251895
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8322347449908926,
+          "min": 0.7833333333333333,
+          "max": 0.8852459016393442,
+          "population_stddev": 0.04170699699570373
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.642361111111111,
+          "min": 0.625,
+          "max": 0.6666666666666666,
+          "population_stddev": 0.0177049288666416
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 530.4218797899799,
+          "min": 480.04200357336566,
+          "max": 576.8149050951683,
+          "population_stddev": 39.60782626686787
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.13541666666666666,
+          "min": 0.125,
+          "max": 0.14583333333333334,
+          "population_stddev": 0.00850517271799715
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.19444444444444445,
+          "min": 0.14583333333333334,
+          "max": 0.22916666666666666,
+          "population_stddev": 0.03540985773328322
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.3298611111111111,
+          "min": 0.2916666666666667,
+          "max": 0.3541666666666667,
+          "population_stddev": 0.027340305118096563
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.4131944444444444,
+          "min": 0.3125,
+          "max": 0.53125,
+          "population_stddev": 0.09014413184546646
+        }
+      },
+      "status_counts_total": {
+        "completed": 185,
+        "rejected": 39,
+        "timed_out": 0,
+        "cancelled": 8,
+        "oom": 56,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 4.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.984157179044781,
+          "min": 4.573883595218341,
+          "max": 5.237920224349902,
+          "population_stddev": 0.2928114555002662
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 4.953149756023861,
+          "min": 4.565416621796581,
+          "max": 5.271883780457372,
+          "population_stddev": 0.29251167433205366
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 152.4707321930025,
+          "min": 143.67615727993308,
+          "max": 159.46744204345245,
+          "population_stddev": 6.570916106002294
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9861111111111112,
+          "min": 0.96875,
+          "max": 1.0,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 63.17767716254024,
+          "min": 57.28396434927921,
+          "max": 68.0951654975744,
+          "population_stddev": 4.467309275252969
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8055555555555555,
+          "min": 0.7222222222222222,
+          "max": 0.8888888888888888,
+          "population_stddev": 0.06804138174397716
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 284,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 4,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 8.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.965166611061221,
+          "min": 9.145125375346773,
+          "max": 10.472376019006314,
+          "population_stddev": 0.5852614128876105
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 9.844766193696609,
+          "min": 9.0154307098712,
+          "max": 10.498314744462466,
+          "population_stddev": 0.6180140502109857
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 157.96336541547956,
+          "min": 154.16452607036373,
+          "max": 165.13631281645385,
+          "population_stddev": 5.075002790138896
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9826388888888888,
+          "min": 0.96875,
+          "max": 1.0,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 125.5933817597125,
+          "min": 113.17242806008528,
+          "max": 135.6032321159735,
+          "population_stddev": 9.314694739951014
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9444444444444443,
+          "min": 0.8888888888888888,
+          "max": 1.0,
+          "population_stddev": 0.04536092116265147
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        }
+      },
+      "status_counts_total": {
+        "completed": 283,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 12.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.94303128683103,
+          "min": 13.713727628540381,
+          "max": 15.70337081996234,
+          "population_stddev": 0.8773503748247858
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 14.720862425569882,
+          "min": 13.487328302641385,
+          "max": 15.679878192476487,
+          "population_stddev": 0.9159108401653874
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 171.1006799846102,
+          "min": 168.12565782067415,
+          "max": 173.65399842083713,
+          "population_stddev": 2.27654899256534
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9826388888888888,
+          "min": 0.96875,
+          "max": 1.0,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 187.79822376163906,
+          "min": 169.30901486294505,
+          "max": 202.53175998615464,
+          "population_stddev": 13.820673073506333
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9814814814814815,
+          "min": 0.9444444444444444,
+          "max": 1.0,
+          "population_stddev": 0.026189140043946218
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.013888888888888888,
+          "min": 0.0,
+          "max": 0.03125,
+          "population_stddev": 0.012991865926298408
+        }
+      },
+      "status_counts_total": {
+        "completed": 283,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 0,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 18.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 22.403938415508293,
+          "min": 20.561686894168993,
+          "max": 23.543381163268744,
+          "population_stddev": 1.314808048793976
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 21.88705439755981,
+          "min": 20.13386924382142,
+          "max": 23.11351421058953,
+          "population_stddev": 1.2721768012361434
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 194.26005847377175,
+          "min": 182.61517575724554,
+          "max": 214.21278293480634,
+          "population_stddev": 14.174328218666021
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9791666666666666,
+          "min": 0.96875,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.008505172717997162
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 279.27828675252897,
+          "min": 252.74431603946036,
+          "max": 298.7725836905677,
+          "population_stddev": 19.439103389553523
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.05555555555555556,
+          "min": 0.0,
+          "max": 0.09375,
+          "population_stddev": 0.040193878134688284
+        }
+      },
+      "status_counts_total": {
+        "completed": 282,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 5,
+        "oom": 1,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 24.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 29.85778662751891,
+          "min": 27.403720068468484,
+          "max": 31.375623552470866,
+          "population_stddev": 1.7514563021251166
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 28.892867524459806,
+          "min": 26.626086061885783,
+          "max": 30.272527859262894,
+          "population_stddev": 1.6154199385748773
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 224.97630564131433,
+          "min": 217.72991096091178,
+          "max": 231.77742867844452,
+          "population_stddev": 5.743511622304826
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9756944444444443,
+          "min": 0.96875,
+          "max": 0.9791666666666666,
+          "population_stddev": 0.004910463758239896
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 367.4678969976604,
+          "min": 334.2423569470768,
+          "max": 387.74599513353746,
+          "population_stddev": 23.683848418953474
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.003472222222222222,
+          "min": 0.0,
+          "max": 0.010416666666666666,
+          "population_stddev": 0.004910463758239913
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.13888888888888887,
+          "min": 0.11458333333333333,
+          "max": 0.16666666666666666,
+          "population_stddev": 0.021404215288086722
+        }
+      },
+      "status_counts_total": {
+        "completed": 281,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 1,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 32.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 39.78528773371537,
+          "min": 36.517225891231654,
+          "max": 41.80654986145981,
+          "population_stddev": 2.3323977879731426
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 37.823132623392105,
+          "min": 34.02067871046505,
+          "max": 40.39338137181244,
+          "population_stddev": 2.7436693165739228
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 253.477392977322,
+          "min": 226.74714784136157,
+          "max": 301.39208193375276,
+          "population_stddev": 33.95636456200175
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9638825324180015,
+          "min": 0.9021739130434783,
+          "max": 1.0,
+          "population_stddev": 0.043845684773283905
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9722222222222223,
+          "min": 0.9583333333333334,
+          "max": 0.9895833333333334,
+          "population_stddev": 0.012991865926298411
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 455.0556494067514,
+          "min": 359.4358663757829,
+          "max": 506.830637844215,
+          "population_stddev": 67.69086188335817
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.006944444444444444,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.009820927516479826
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.006944444444444444,
+          "min": 0.0,
+          "max": 0.020833333333333332,
+          "population_stddev": 0.009820927516479826
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.3541666666666667,
+          "min": 0.2708333333333333,
+          "max": 0.5104166666666666,
+          "population_stddev": 0.1105672453339629
+        }
+      },
+      "status_counts_total": {
+        "completed": 280,
+        "rejected": 0,
+        "timed_out": 0,
+        "cancelled": 6,
+        "oom": 2,
+        "aborted": 0
+      },
+      "sustainable": true,
+      "failed_criteria": []
+    },
+    {
+      "configured_poisson_rate_rps": 48.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 59.6027909406942,
+          "min": 54.71274543628245,
+          "max": 62.627144008442244,
+          "population_stddev": 3.4899887670229304
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 51.4039555681506,
+          "min": 44.24769977004715,
+          "max": 57.44476441521799,
+          "population_stddev": 5.445107604546568
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 323.20729265773673,
+          "min": 289.70166854112006,
+          "max": 367.11580964967186,
+          "population_stddev": 32.44895936724018
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.8506276687375154,
+          "min": 0.7790697674418605,
+          "max": 0.9111111111111111,
+          "population_stddev": 0.05447147167590001
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9375,
+          "min": 0.8958333333333334,
+          "max": 0.9791666666666666,
+          "population_stddev": 0.03402069087198856
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 503.0907221087752,
+          "min": 372.50389108737363,
+          "max": 569.5587280317358,
+          "population_stddev": 92.34381404943747
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.010416666666666666,
+          "min": 0.0,
+          "max": 0.03125,
+          "population_stddev": 0.01473139127471974
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "population_stddev": 0.0
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.027777777777777776,
+          "min": 0.010416666666666666,
+          "max": 0.052083333333333336,
+          "population_stddev": 0.017704928866641614
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.03819444444444444,
+          "min": 0.010416666666666666,
+          "max": 0.08333333333333333,
+          "population_stddev": 0.03220006422047119
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.6493055555555555,
+          "min": 0.5,
+          "max": 0.8125,
+          "population_stddev": 0.12795504008811304
+        }
+      },
+      "status_counts_total": {
+        "completed": 270,
+        "rejected": 3,
+        "timed_out": 0,
+        "cancelled": 7,
+        "oom": 8,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "slo_attainment"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 72.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 89.23565283071135,
+          "min": 81.92756608915305,
+          "max": 93.75529623042341,
+          "population_stddev": 5.215704636109033
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 51.7784878057221,
+          "min": 49.557299917733154,
+          "max": 53.06450664731747,
+          "population_stddev": 1.577134663455611
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 368.6318667265148,
+          "min": 365.59618091882476,
+          "max": 374.0622621562171,
+          "population_stddev": 3.848775433810144
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.6431159420289855,
+          "min": 0.6086956521739131,
+          "max": 0.6956521739130435,
+          "population_stddev": 0.037740338144926895
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.7013888888888888,
+          "min": 0.6666666666666666,
+          "max": 0.71875,
+          "population_stddev": 0.024552318791199585
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 320.93037983704454,
+          "min": 302.53055236866373,
+          "max": 341.87354725856494,
+          "population_stddev": 16.162080008765894
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.16666666666666666,
+          "min": 0.14583333333333334,
+          "max": 0.19791666666666666,
+          "population_stddev": 0.02250257186947173
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.03125,
+          "min": 0.010416666666666666,
+          "max": 0.052083333333333336,
+          "population_stddev": 0.017010345435994292
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.07638888888888888,
+          "min": 0.03125,
+          "max": 0.15625,
+          "population_stddev": 0.056630230660764204
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.2743055555555556,
+          "min": 0.23958333333333334,
+          "max": 0.3229166666666667,
+          "population_stddev": 0.03540985773328323
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.9097222222222223,
+          "min": 0.6770833333333334,
+          "max": 1.1354166666666667,
+          "population_stddev": 0.1871782218325494
+        }
+      },
+      "status_counts_total": {
+        "completed": 202,
+        "rejected": 48,
+        "timed_out": 9,
+        "cancelled": 7,
+        "oom": 22,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    },
+    {
+      "configured_poisson_rate_rps": 96.0,
+      "policy": "continuous_fcfs_preempt",
+      "policy_kind": "continuous_fcfs",
+      "preemption_policy": "preempt_largest",
+      "trial_count": 3,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "metrics": {
+        "offered_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 118.75700734235271,
+          "min": 109.04866863805762,
+          "max": 124.76080929035585,
+          "population_stddev": 6.92871009656868
+        },
+        "completed_load_requests_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 52.21300468528554,
+          "min": 50.067173854886335,
+          "max": 54.07193244363772,
+          "population_stddev": 1.647474404071682
+        },
+        "e2e_p99_ms": {
+          "n": 3,
+          "missing": 0,
+          "mean": 373.8119587130711,
+          "min": 368.41930034563694,
+          "max": 378.96641309969914,
+          "population_stddev": 4.309133920258164
+        },
+        "slo_attainment": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.6107836990595611,
+          "min": 0.5454545454545454,
+          "max": 0.7068965517241379,
+          "population_stddev": 0.06940992937099612
+        },
+        "completion_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.5659722222222222,
+          "min": 0.5208333333333334,
+          "max": 0.6041666666666666,
+          "population_stddev": 0.034373246307679364
+        },
+        "slo_goodput_tokens_per_second": {
+          "n": 3,
+          "missing": 0,
+          "mean": 280.60531945326017,
+          "min": 232.31168668667257,
+          "max": 365.6890126545234,
+          "population_stddev": 60.34627401187195
+        },
+        "rejection_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.2986111111111111,
+          "min": 0.28125,
+          "max": 0.3229166666666667,
+          "population_stddev": 0.01770492886664162
+        },
+        "timeout_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.04861111111111111,
+          "min": 0.03125,
+          "max": 0.0625,
+          "population_stddev": 0.012991865926298408
+        },
+        "oom_rate": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.0625,
+          "min": 0.052083333333333336,
+          "max": 0.07291666666666667,
+          "population_stddev": 0.008505172717997148
+        },
+        "terminal_failure_ratio": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.40972222222222227,
+          "min": 0.3854166666666667,
+          "max": 0.4583333333333333,
+          "population_stddev": 0.03437324630767938
+        },
+        "kv_peak_utilization": {
+          "n": 3,
+          "missing": 0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "population_stddev": 0.0
+        },
+        "kv_allocation_failures_per_request": {
+          "n": 3,
+          "missing": 0,
+          "mean": 0.75,
+          "min": 0.6458333333333334,
+          "max": 0.9583333333333334,
+          "population_stddev": 0.1473139127471974
+        }
+      },
+      "status_counts_total": {
+        "completed": 163,
+        "rejected": 86,
+        "timed_out": 14,
+        "cancelled": 7,
+        "oom": 18,
+        "aborted": 0
+      },
+      "sustainable": false,
+      "failed_criteria": [
+        "completion_ratio",
+        "slo_attainment",
+        "terminal_failure_ratio"
+      ]
+    }
+  ],
+  "knees": {
+    "static_fcfs": {
+      "rule_id": "prefix_first_mean_threshold_violation_v1",
+      "classification": "observed_interval",
+      "last_sustainable_configured_rate_rps": 24.0,
+      "first_unsustainable_configured_rate_rps": 32.0,
+      "last_sustainable_realized_offered_load_rps_mean": 29.85778662751891,
+      "first_unsustainable_realized_offered_load_rps_mean": 39.78528773371537,
+      "first_failed_criteria": [
+        "slo_attainment"
+      ]
+    },
+    "continuous_fcfs": {
+      "rule_id": "prefix_first_mean_threshold_violation_v1",
+      "classification": "observed_interval",
+      "last_sustainable_configured_rate_rps": 32.0,
+      "first_unsustainable_configured_rate_rps": 48.0,
+      "last_sustainable_realized_offered_load_rps_mean": 39.78528773371537,
+      "first_unsustainable_realized_offered_load_rps_mean": 59.6027909406942,
+      "first_failed_criteria": [
+        "completion_ratio",
+        "terminal_failure_ratio"
+      ]
+    },
+    "continuous_fcfs_preempt": {
+      "rule_id": "prefix_first_mean_threshold_violation_v1",
+      "classification": "observed_interval",
+      "last_sustainable_configured_rate_rps": 32.0,
+      "first_unsustainable_configured_rate_rps": 48.0,
+      "last_sustainable_realized_offered_load_rps_mean": 39.78528773371537,
+      "first_unsustainable_realized_offered_load_rps_mean": 59.6027909406942,
+      "first_failed_criteria": [
+        "slo_attainment"
+      ]
+    }
+  },
+  "row_count": 81,
+  "paired_trace_count": 27,
+  "config": {
+    "enabled": true,
+    "poisson_rates_rps": [
+      4.0,
+      8.0,
+      12.0,
+      18.0,
+      24.0,
+      32.0,
+      48.0,
+      72.0,
+      96.0
+    ],
+    "request_count": 96,
+    "seeds": [
+      1103,
+      2207,
+      3301
+    ],
+    "minimum_completion_ratio": 0.9,
+    "minimum_slo_attainment": 0.9,
+    "maximum_terminal_failure_ratio": 0.1
+  }
+}

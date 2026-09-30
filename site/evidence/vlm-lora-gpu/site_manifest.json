@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "bytes": 2569,
+      "path": "provenance.json",
+      "sha256": "eb95fa2f63e2d7143e788d24c059ac33d37b138ef3b2cf9a468271b61ffa84b6"
+    },
+    {
+      "bytes": 4154,
+      "path": "report.html",
+      "sha256": "9b7c5829d4c2b03370e73e03c4aeedf8256d6fc3f65b681977e28c7f95444780"
+    },
+    {
+      "bytes": 130550,
+      "path": "result.json",
+      "sha256": "6f79993e701ed8ab2609df6992e3d7d9ba83218adfee623005d554a3ef89dd09"
+    },
+    {
+      "bytes": 2379,
+      "path": "source_evidence_manifest.json",
+      "sha256": "e37a9126eabc189f918daa485f78dc629183992906aba57f095a599204030d40"
+    }
+  ],
+  "schema": "fmlab.portfolio-site-bundle/v1",
+  "source_manifest": "source_evidence_manifest.json",
+  "source_manifest_sha256": "e37a9126eabc189f918daa485f78dc629183992906aba57f095a599204030d40",
+  "transformations": []
+}

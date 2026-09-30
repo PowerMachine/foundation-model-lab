@@ -1,0 +1,13 @@
+kind: rag
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-3B-Instruct
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/rag
+smoke: true
+max_steps: 1
+sample_limit: 16
+max_length: 256
+batch_size: 1
+extra:
+  retriever: bm25
+  top_k: 2
+  metrics: [recall_at_k, hit_rate_at_k, mrr]
+

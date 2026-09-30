@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: >-
+  If this software or its experimental protocols support your work, please cite
+  the repository and the exact release used.
+title: Foundation Model Lab
+type: software
+authors:
+  - name: Foundation Model Lab contributors
+version: 0.1.0
+date-released: 2026-08-04
+license: MIT
+abstract: >-
+  A resource-aware, reproducible laboratory for foundation-model adaptation,
+  multimodal LoRA and response distillation, visual reward design, reliable
+  agent evaluation, controlled inference-systems studies, actual two-rank CPU
+  distributed-training correctness, compact transformers, and executable code
+  agents.

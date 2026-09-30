@@ -1,0 +1,19 @@
+provider: transformers
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-Coder-3B-Instruct
+max_steps: 20
+runner: podman
+image: localhost/fmlab-python:3.12
+podman_binary: podman
+sandbox:
+  workspace: ${FMLAB_DATA_ROOT}/agent-sandboxes/qwen-coder-current
+  timeout_seconds: 30
+  cpu_seconds: 20
+  memory_mb: 4096
+  output_bytes: 200000
+  file_bytes: 50000000
+  processes: 32
+  allowlist: [python3, pytest]
+  python_modules: [pytest]
+  cpus: 1.0
+  tmpfs_mb: 256
+

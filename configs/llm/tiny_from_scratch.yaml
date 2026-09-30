@@ -1,0 +1,17 @@
+experiment: llm_tiny_from_scratch
+mode: smoke
+description: "Byte tokenizer + decoder-only Transformer를 처음부터 학습하고 loss/attention을 시각화"
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/tiny_from_scratch
+model:
+  context_length: 48
+  d_model: 48
+  n_layers: 2
+  n_heads: 4
+  ffn_hidden_size: 128
+training:
+  steps: 20
+  batch_size: 4
+  learning_rate: 0.003
+  seed: 42
+  device: auto
+

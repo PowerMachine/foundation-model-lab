@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "bytes": 3032,
+      "path": "environment_spec.json",
+      "sha256": "078eec15f5f0a78128234e4d0d3241e038cb46cdc9ddc4696dce5031994273ab"
+    },
+    {
+      "bytes": 799,
+      "path": "provenance.json",
+      "sha256": "f18631076d2cabc00959d7c4787632a72fdbd6ad1b3b7e4fe8d29b4ab0987c29"
+    },
+    {
+      "bytes": 6097,
+      "path": "report.html",
+      "sha256": "d11d5c8dc3e94564aa900bbb4d5c13ef4bec0762ff43a9c1f9da0e7c61b8c8b3"
+    },
+    {
+      "bytes": 3294,
+      "path": "result.json",
+      "sha256": "54c3b32e24f285d08a4f25dcd9c3cc076dbe079f68613f15dd215dd84e2b575c"
+    },
+    {
+      "bytes": 1486,
+      "path": "reward_audit.svg",
+      "sha256": "6b886e6b3d07499fc7821bcf7d59dd625d359a939991b952bc1f8123e1526e51"
+    },
+    {
+      "bytes": 2747,
+      "path": "source_evidence_manifest.json",
+      "sha256": "a7af686eb3c1a67afb3d7f4f1414615908daecc4d2c522c5696fb99cb4fb3b0c"
+    }
+  ],
+  "schema": "fmlab.portfolio-site-bundle/v1",
+  "source_manifest": "source_evidence_manifest.json",
+  "source_manifest_sha256": "a7af686eb3c1a67afb3d7f4f1414615908daecc4d2c522c5696fb99cb4fb3b0c",
+  "transformations": []
+}

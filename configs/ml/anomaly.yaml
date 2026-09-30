@@ -1,0 +1,11 @@
+seed: 17
+device: auto
+feature_dim: 4
+train_normal_count: 512
+test_normal_count: 240
+test_anomaly_count: 120
+hidden_dim: 16
+bottleneck_dim: 2
+epochs: 180
+learning_rate: 0.003
+threshold_quantile: 0.95

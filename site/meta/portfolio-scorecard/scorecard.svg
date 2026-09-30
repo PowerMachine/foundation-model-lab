@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="960" viewBox="0 0 1200 960" role="img" aria-labelledby="title desc">
+<title id="title">Foundation Model Lab evidence scorecard</title>
+<desc id="desc">Five experiment cards distinguish actual, scripted, and simulated evidence and show scale, deltas, uncertainty, and claim boundaries.</desc>
+<style>
+.bg{fill:#08111f}.card{fill:#101d31;stroke:#263b59;stroke-width:1}.title{fill:#f6f8fb;font:700 30px system-ui,sans-serif}.subtitle{fill:#9cb0ca;font:400 14px system-ui,sans-serif}.cardTitle{fill:#f6f8fb;font:700 19px system-ui,sans-serif}.metric{fill:#77e1bd;font:700 29px system-ui,sans-serif}.body{fill:#c8d4e5;font:400 14px system-ui,sans-serif}.muted{fill:#8297b3;font:400 12px system-ui,sans-serif}.label{font:700 11px system-ui,sans-serif;letter-spacing:.8px}.actual{fill:#52d4a7}.scripted{fill:#ffc66d}.simulated{fill:#83b8ff}.divider{stroke:#263b59;stroke-width:1}.warn{fill:#ff9d9d;font:400 12px system-ui,sans-serif}
+</style>
+<rect class="bg" width="1200" height="960" rx="18"/>
+<text x="48" y="60" class="title" text-anchor="start">Foundation Model Lab — Evidence Scorecard</text>
+<text x="48" y="88" class="subtitle" text-anchor="start">Manifest-verified results · evidence modes are explicit · no aggregate vanity score</text>
+<text x="900" y="55" class="label actual" text-anchor="start">ACTUAL</text>
+<text x="900" y="76" class="label scripted" text-anchor="start">SCRIPTED</text>
+<text x="900" y="97" class="label simulated" text-anchor="start">SIMULATED</text>
+<rect x="48" y="128" width="540" height="276" rx="14" class="card"/>
+<rect x="612" y="128" width="540" height="276" rx="14" class="card"/>
+<rect x="48" y="428" width="540" height="276" rx="14" class="card"/>
+<rect x="612" y="428" width="540" height="276" rx="14" class="card"/>
+<rect x="48" y="728" width="1104" height="120" rx="14" class="card"/>
+<text x="76" y="164" class="cardTitle" text-anchor="start">Visual Reward Robustness</text>
+<text x="558" y="164" class="label scripted" text-anchor="end">SCRIPTED</text>
+<text x="76" y="211" class="metric" text-anchor="start">+54.2 pp</text>
+<text x="76" y="238" class="body" text-anchor="start">robust - naive preference accuracy</text>
+<text x="76" y="270" class="body" text-anchor="start">45.8% to 100.0%</text>
+<text x="76" y="294" class="body" text-anchor="start">bootstrap 95% CI  +39.6 to +68.8 pp</text>
+<text x="76" y="320" class="body" text-anchor="start">60 candidates · 24 attacks · 0 source overlap</text>
+<text x="76" y="366" class="warn" text-anchor="start">Boundary: synthetic tasks; not VLM quality or online RL</text>
+<text x="640" y="164" class="cardTitle" text-anchor="start">Reliable Agent Evaluation</text>
+<text x="1122" y="164" class="label scripted" text-anchor="end">ACTUAL ENV · SCRIPTED POLICY</text>
+<text x="640" y="211" class="metric" text-anchor="start">12/12 vs 0/12</text>
+<text x="640" y="238" class="body" text-anchor="start">oracle vs shortcut pass@1 controls</text>
+<text x="640" y="270" class="body" text-anchor="start">12 tasks · 24 episodes · 74 tool calls</text>
+<text x="640" y="294" class="body" text-anchor="start">5 injected failures · all retried</text>
+<text x="640" y="320" class="body" text-anchor="start">hidden outcome + process-integrity grading</text>
+<text x="640" y="366" class="warn" text-anchor="start">Boundary: no LLM inference; process mode is not a sandbox</text>
+<text x="76" y="464" class="cardTitle" text-anchor="start">Inference Dynamics</text>
+<text x="558" y="464" class="label simulated" text-anchor="end">SIMULATED + ACTUAL CPU</text>
+<text x="76" y="511" class="metric" text-anchor="start">+65.4%</text>
+<text x="76" y="538" class="body" text-anchor="start">modeled output throughput, continuous vs static</text>
+<text x="76" y="570" class="body" text-anchor="start">p99 -10.0% · SLO goodput +218.0%</text>
+<text x="76" y="594" class="body" text-anchor="start">modeled knee 39.8–59.6 offered rps</text>
+<text x="76" y="618" class="body" text-anchor="start">81 rows · 3 seeds · actual TinyDecoder FP32 p50 0.290 ms</text>
+<text x="76" y="666" class="warn" text-anchor="start">Boundary: capacity is modeled; tiny probe uses CPU FP32 kernels</text>
+<text x="640" y="464" class="cardTitle" text-anchor="start">Distributed Correctness</text>
+<text x="1122" y="464" class="label actual" text-anchor="end">ACTUAL</text>
+<text x="640" y="511" class="metric" text-anchor="start">11/11 gates</text>
+<text x="640" y="538" class="body" text-anchor="start">actual CPU/Gloo correctness gates passed</text>
+<text x="640" y="570" class="body" text-anchor="start">gradient max |error| 1.11e-16</text>
+<text x="640" y="594" class="body" text-anchor="start">final weight max |error| 2.78e-17</text>
+<text x="640" y="618" class="body" text-anchor="start">resume state/loss error 0.0 / 0.0</text>
+<text x="640" y="666" class="warn" text-anchor="start">Boundary: 2-rank CPU/Gloo; no NCCL or scaling claim</text>
+<text x="76" y="764" class="cardTitle" text-anchor="start">Qwen3-VL-8B LoRA Pipeline</text>
+<text x="1122" y="764" class="label actual" text-anchor="end">ACTUAL GPU SMOKE</text>
+<text x="76" y="812" class="metric" text-anchor="start">2 steps</text>
+<text x="222" y="792" class="body" text-anchor="start">actual BF16 LoRA optimizer updates</text>
+<text x="222" y="816" class="body" text-anchor="start">7,667,712 trainable · 17.45 GiB peak · 36.75 s total</text>
+<text x="720" y="792" class="body" text-anchor="start">held-out EM 100.0% to 100.0%</text>
+<text x="720" y="816" class="warn" text-anchor="start">3 grouped synthetic examples · Δ 0 · no quality improvement claimed</text>
+<line x1="48" y1="880" x2="1152" y2="880" class="divider"/>
+<text x="48" y="914" class="muted" text-anchor="start">SOURCE SET  2ebae7c2edcc746c…  ·  5 bundles  ·  26 files SHA-256 verified</text>
+<text x="48" y="940" class="muted" text-anchor="start">Read every result with its claim boundary. Actual is not production; scripted is not model capability; simulated is not measured serving.</text>
+</svg>

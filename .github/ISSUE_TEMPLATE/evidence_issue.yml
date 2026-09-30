@@ -1,0 +1,59 @@
+name: Reproducibility or evidence issue
+description: Report a claim, provenance, metric, or public-evidence integrity mismatch.
+title: "[Evidence]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Evidence issues are first-class defects. Link a sanitized checked-in bundle when possible;
+        never upload the external raw artifact directory.
+  - type: input
+    id: claim
+    attributes:
+      label: Claim or evidence bundle
+      description: Relative repository path, experiment name, or exact scoped claim.
+      placeholder: public-evidence/systems/inference-dynamics/evidence_manifest.json
+    validations:
+      required: true
+  - type: dropdown
+    id: claim-level
+    attributes:
+      label: Declared claim level
+      options:
+        - Wiring
+        - Smoke
+        - Controlled study
+        - Experiment
+        - Benchmark
+        - Not declared or not sure
+    validations:
+      required: true
+  - type: textarea
+    id: mismatch
+    attributes:
+      label: Observed mismatch
+      description: Explain the unsupported number, broken hash, leakage, source-kind confusion, or missing control.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Verification procedure
+      description: Provide a deterministic, offline command when possible.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Proposed claim boundary or acceptance criterion
+      description: State what the evidence can and cannot support after the fix.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Disclosure check
+      options:
+        - label: This report contains no secret, private data, model weight, hidden grader payload, or local path.
+          required: true

@@ -1,0 +1,5 @@
+experiment: tokenizer_bpe
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/tokenizer-bpe
+vocab_size: 320
+corpus: built_in_korean_code
+

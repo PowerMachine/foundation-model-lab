@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>CPU DDP correctness report</title>
+<style>
+body{font-family:Inter,system-ui,sans-serif;background:#08111f;color:#e2e8f0;margin:0;padding:28px;line-height:1.5}
+main{max-width:1120px;margin:auto} h1,h2{color:#f8fafc} .sub{color:#94a3b8}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:20px 0}
+.card{background:#111c2e;border:1px solid #26364f;border-radius:12px;padding:15px}
+.label{font-size:12px;color:#94a3b8} .value{font-size:23px;font-weight:700;margin-top:5px}
+.panel{background:#111c2e;border:1px solid #26364f;border-radius:12px;padding:18px;margin:16px 0;overflow:auto}
+table{border-collapse:collapse;width:100%} td{border-bottom:1px solid #26364f;padding:8px;text-align:left}
+img{max-width:100%;height:auto;border-radius:8px} code{color:#7dd3fc}
+.pass{color:#86efac} .warning{color:#fbbf24}
+</style></head><body><main>
+<h1>CPU DDP Correctness &amp; Exact-Resume Lab</h1>
+<p class="sub">Actual 2-process CPU/Gloo execution · status <strong class="pass">completed</strong> · claim level <code>controlled_correctness</code></p>
+<div class="cards"><div class="card"><div class="label">Gradient max abs</div><div class="value">1.11e-16</div></div><div class="card"><div class="label">Final-weight max abs</div><div class="value">2.78e-17</div></div><div class="card"><div class="label">Resume max abs</div><div class="value">0</div></div><div class="card"><div class="label">Effective global batch</div><div class="value">8</div></div><div class="card"><div class="label">Coverage</div><div class="value">true</div></div><div class="card"><div class="label">Corrupt rejected</div><div class="value">true</div></div></div>
+<div class="panel"><h2>Deterministic sharding</h2><img src="sample_sharding.svg" alt="rank sample assignment"></div>
+<div class="panel"><h2>Resume equivalence</h2><img src="resume_equivalence.svg" alt="uninterrupted and resumed loss"></div>
+<div class="panel"><h2>Measured and estimated metrics</h2><table><tr><td>parity.gradient_abs</td><td><code>1.11022e-16</code></td></tr><tr><td>parity.gradient_rel</td><td><code>1.37958e-15</code></td></tr><tr><td>parity.first_update_abs</td><td><code>2.77556e-17</code></td></tr><tr><td>parity.final_weight_abs</td><td><code>2.77556e-17</code></td></tr><tr><td>resume.state_abs</td><td><code>0</code></td></tr><tr><td>resume.state_rel</td><td><code>0</code></td></tr><tr><td>resume.loss_abs</td><td><code>0</code></td></tr><tr><td>training.effective_global_batch</td><td><code>8</code></td></tr><tr><td>training.local_batch_size</td><td><code>2</code></td></tr><tr><td>training.gradient_accumulation_steps</td><td><code>2</code></td></tr><tr><td>training.optimizer_steps</td><td><code>2</code></td></tr><tr><td>training.no_sync_microbatches_per_rank.0</td><td><code>2</code></td></tr><tr><td>training.no_sync_microbatches_per_rank.1</td><td><code>2</code></td></tr><tr><td>training.straggler.injected</td><td><code>true</code></td></tr><tr><td>training.straggler.rank</td><td><code>1</code></td></tr><tr><td>training.straggler.optimizer_step</td><td><code>0</code></td></tr><tr><td>training.straggler.delay_ms</td><td><code>20</code></td></tr><tr><td>training.max_rank_step_skew_seconds</td><td><code>0.000115393</code></td></tr><tr><td>training.mean_rank_step_skew_seconds</td><td><code>0.000106731</code></td></tr><tr><td>training.estimated_communication.model_gradient_bytes</td><td><code>464</code></td></tr><tr><td>training.estimated_communication.assumption</td><td><code>ring_all_reduce_2*(world_size-1)/world_size*gradient_bytes</code></td></tr><tr><td>training.estimated_communication.per_rank_per_sync_estimated_bytes</td><td><code>464</code></td></tr><tr><td>training.estimated_communication.sync_count</td><td><code>2</code></td></tr><tr><td>training.estimated_communication.per_rank_total_estimated_bytes</td><td><code>928</code></td></tr><tr><td>training.estimated_communication.cluster_total_estimated_bytes</td><td><code>1856</code></td></tr><tr><td>training.estimated_communication.measured_network_bytes</td><td><code>false</code></td></tr><tr><td>checkpoint.bytes</td><td><code>22725</code></td></tr><tr><td>checkpoint.save_seconds</td><td><code>0.0358392</code></td></tr><tr><td>checkpoint.load_seconds</td><td><code>0.000967882</code></td></tr></table></div>
+<div class="panel"><h2>Claim boundary</h2><p>Actual two-process CPU/Gloo DDP correctness on one deterministic tiny model and dataset, including averaged-gradient parity, no_sync accumulation, exact-resume auditing, and fail-closed checkpoint validation.</p><p class="warning">This run does not evidence:</p><ul><li>NCCL or GPU collective correctness/performance</li><li>multi-node networking or elastic rank-failure recovery</li><li>FSDP, ZeRO, tensor parallelism, or pipeline parallelism</li><li>large-model convergence or production throughput scaling</li><li>measured network communication bytes (reported bytes are a ring estimate)</li></ul></div>
+<div class="panel"><h2>Reproduction</h2><pre><code>python scripts/run_ddp_correctness.py --config configs/distributed/ddp_cpu.yaml</code></pre></div>
+<div class="panel"><h2>Machine-readable contract</h2><pre><code>{
+  &quot;schema_version&quot;: &quot;1.0&quot;,
+  &quot;config_contract_hash&quot;: &quot;7547a5dcf01f2601db30a957e394582effb8550292e88a9c8e706c4b04a0a9fd&quot;,
+  &quot;dataset_contract_hash&quot;: &quot;89a48e66f33d53751010e58b3285862a4d26a8a5195535b75ff847a6b770f786&quot;,
+  &quot;combined_contract_hash&quot;: &quot;b95b83e10f2f7265afb6394c6d1e18814529944535f2312ee73fdb53fb5dc3ac&quot;
+}</code></pre></div>
+</main></body></html>

@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-04T06:59:34.117160+00:00",
+  "generator": "fmlab.release.export_public_evidence",
+  "source_artifact_name": "ddp-correctness",
+  "destination_name": "ddp-correctness",
+  "claim_boundary": {
+    "evidenced": "Actual two-process CPU/Gloo DDP correctness on one deterministic tiny model and dataset, including averaged-gradient parity, no_sync accumulation, exact-resume auditing, and fail-closed checkpoint validation.",
+    "not_evidenced": [
+      "NCCL or GPU collective correctness/performance",
+      "multi-node networking or elastic rank-failure recovery",
+      "FSDP, ZeRO, tensor parallelism, or pipeline parallelism",
+      "large-model convergence or production throughput scaling",
+      "measured network communication bytes (reported bytes are a ring estimate)"
+    ]
+  },
+  "claim_boundary_source": "sanitized_result.json",
+  "redaction": {
+    "file_redaction_count": 3,
+    "manifest_metadata_redaction_count": 0,
+    "total_redaction_count": 3,
+    "configured_literal_count": 3,
+    "replacement": "REDACTED_LOCAL"
+  },
+  "policy": {
+    "default_exact_names": [
+      "result.json",
+      "report.html",
+      "provenance.json"
+    ],
+    "default_globs": [
+      "*.svg"
+    ],
+    "explicit_additional_files": [],
+    "max_file_bytes": 20971520,
+    "utf8_text_only": true,
+    "symlinks_forbidden": true,
+    "jsonl_model_weights_hidden_traces_forbidden": true
+  },
+  "files": [
+    {
+      "path": "provenance.json",
+      "source_sha256": "339bd8866b02bee3e1a2b3c621c4fc536dab4e9b1d442e236891c94b958f9b79",
+      "public_sha256": "339bd8866b02bee3e1a2b3c621c4fc536dab4e9b1d442e236891c94b958f9b79",
+      "source_bytes": 1297,
+      "public_bytes": 1297,
+      "redaction_count": 0
+    },
+    {
+      "path": "report.html",
+      "source_sha256": "5c06b6b0bd91583a91a0cb3c716d9a5332e06b54e68fef662e7b6d845e216bd7",
+      "public_sha256": "5c06b6b0bd91583a91a0cb3c716d9a5332e06b54e68fef662e7b6d845e216bd7",
+      "source_bytes": 5661,
+      "public_bytes": 5661,
+      "redaction_count": 0
+    },
+    {
+      "path": "result.json",
+      "source_sha256": "04d22abcd1d92bd0bde35441677de0d7af2eb5d1bff1e38d4b01b9b002b9ba44",
+      "public_sha256": "e608d085881e92845e5d59565a6149cdeb4c7b57404359d4754210dadf4dd0e9",
+      "source_bytes": 11583,
+      "public_bytes": 11363,
+      "redaction_count": 3
+    },
+    {
+      "path": "resume_equivalence.svg",
+      "source_sha256": "192eb018318cc0c602bc2363e761fce36e82cfc1461931f85503498c3871d593",
+      "public_sha256": "192eb018318cc0c602bc2363e761fce36e82cfc1461931f85503498c3871d593",
+      "source_bytes": 1063,
+      "public_bytes": 1063,
+      "redaction_count": 0
+    },
+    {
+      "path": "sample_sharding.svg",
+      "source_sha256": "7321a0bb081eb20ba17702a237d09aa80e40e2b915ae956a5b1ad5bddd6499b0",
+      "public_sha256": "7321a0bb081eb20ba17702a237d09aa80e40e2b915ae956a5b1ad5bddd6499b0",
+      "source_bytes": 6833,
+      "public_bytes": 6833,
+      "redaction_count": 0
+    }
+  ]
+}

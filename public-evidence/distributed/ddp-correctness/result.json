@@ -1,0 +1,382 @@
+{
+  "experiment": "cpu_ddp_correctness_exact_resume",
+  "status": "completed",
+  "claim_level": "controlled_correctness",
+  "simulated": false,
+  "started_at": 1785826206.360527,
+  "finished_at": 1785826210.8636289,
+  "duration_seconds": 4.503101825714111,
+  "parameters": {
+    "world_size": 2,
+    "backend": "gloo",
+    "dataset_size": 16,
+    "input_dim": 4,
+    "hidden_dim": 8,
+    "output_dim": 2,
+    "local_batch_size": 2,
+    "gradient_accumulation_steps": 2,
+    "optimizer_steps": 2,
+    "learning_rate": 0.05,
+    "momentum": 0.9,
+    "model_seed": 17,
+    "sampler_seed": 29,
+    "straggler_rank": 1,
+    "straggler_step": 0,
+    "straggler_delay_ms": 20.0,
+    "process_timeout_seconds": 90.0,
+    "absolute_tolerance": 1e-10,
+    "relative_tolerance": 1e-09,
+    "device": "cpu",
+    "dtype": "float64"
+  },
+  "contracts": {
+    "schema_version": "1.0",
+    "config_contract_hash": "7547a5dcf01f2601db30a957e394582effb8550292e88a9c8e706c4b04a0a9fd",
+    "dataset_contract_hash": "89a48e66f33d53751010e58b3285862a4d26a8a5195535b75ff847a6b770f786",
+    "combined_contract_hash": "b95b83e10f2f7265afb6394c6d1e18814529944535f2312ee73fdb53fb5dc3ac"
+  },
+  "metrics": {
+    "gates": {
+      "gradient": true,
+      "first_update": true,
+      "final_weight": true,
+      "resume_state": true,
+      "resume_loss": true,
+      "sharding": true,
+      "set_epoch": true,
+      "no_sync": true,
+      "checkpoint_contract": true,
+      "checkpoint_integrity": true,
+      "actual_two_rank_gloo": true
+    },
+    "parity": {
+      "gradient": {
+        "max_absolute_error": 1.1102230246251565e-16,
+        "max_relative_error": 1.3795839320784397e-15,
+        "exact_equal": false,
+        "tensors": [
+          {
+            "name": "input.bias",
+            "max_absolute_error": 2.7755575615628914e-17,
+            "max_relative_error": 2.049429804935577e-16,
+            "exact_equal": false,
+            "elements": 8
+          },
+          {
+            "name": "input.weight",
+            "max_absolute_error": 5.551115123125783e-17,
+            "max_relative_error": 1.3795839320784397e-15,
+            "exact_equal": false,
+            "elements": 32
+          },
+          {
+            "name": "output.bias",
+            "max_absolute_error": 2.7755575615628914e-17,
+            "max_relative_error": 1.1720468720275695e-16,
+            "exact_equal": false,
+            "elements": 2
+          },
+          {
+            "name": "output.weight",
+            "max_absolute_error": 1.1102230246251565e-16,
+            "max_relative_error": 4.2456197671561783e-16,
+            "exact_equal": false,
+            "elements": 16
+          }
+        ]
+      },
+      "first_update": {
+        "max_absolute_error": 2.7755575615628914e-17,
+        "max_relative_error": 1.4723678528381905e-16,
+        "exact_equal": false,
+        "tensors": [
+          {
+            "name": "input.bias",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 8
+          },
+          {
+            "name": "input.weight",
+            "max_absolute_error": 6.938893903907228e-18,
+            "max_relative_error": 1.2348547162182085e-16,
+            "exact_equal": false,
+            "elements": 32
+          },
+          {
+            "name": "output.bias",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 2
+          },
+          {
+            "name": "output.weight",
+            "max_absolute_error": 2.7755575615628914e-17,
+            "max_relative_error": 1.4723678528381905e-16,
+            "exact_equal": false,
+            "elements": 16
+          }
+        ]
+      },
+      "final_weight": {
+        "max_absolute_error": 2.7755575615628914e-17,
+        "max_relative_error": 3.658608352313235e-16,
+        "exact_equal": false,
+        "tensors": [
+          {
+            "name": "input.bias",
+            "max_absolute_error": 1.734723475976807e-18,
+            "max_relative_error": 1.3424059576797165e-16,
+            "exact_equal": false,
+            "elements": 8
+          },
+          {
+            "name": "input.weight",
+            "max_absolute_error": 6.938893903907228e-18,
+            "max_relative_error": 1.179479661374987e-16,
+            "exact_equal": false,
+            "elements": 32
+          },
+          {
+            "name": "output.bias",
+            "max_absolute_error": 2.7755575615628914e-17,
+            "max_relative_error": 1.1573488986474168e-16,
+            "exact_equal": false,
+            "elements": 2
+          },
+          {
+            "name": "output.weight",
+            "max_absolute_error": 2.7755575615628914e-17,
+            "max_relative_error": 3.658608352313235e-16,
+            "exact_equal": false,
+            "elements": 16
+          }
+        ]
+      },
+      "absolute_tolerance": 1e-10,
+      "relative_tolerance": 1e-09
+    },
+    "sharding": {
+      "sampler": "torch.utils.data.DistributedSampler",
+      "set_epoch_called": true,
+      "epochs": [
+        {
+          "epoch": 0,
+          "rank_indices": {
+            "0": [
+              5,
+              10,
+              6,
+              12,
+              1,
+              15,
+              11,
+              3
+            ],
+            "1": [
+              9,
+              0,
+              8,
+              13,
+              14,
+              7,
+              2,
+              4
+            ]
+          },
+          "coverage_count": 16,
+          "missing_sample_ids": [],
+          "duplicate_sample_ids": [],
+          "cross_rank_overlap": [],
+          "deterministic_repeat": true
+        },
+        {
+          "epoch": 1,
+          "rank_indices": {
+            "0": [
+              5,
+              7,
+              12,
+              15,
+              0,
+              3,
+              10,
+              1
+            ],
+            "1": [
+              8,
+              2,
+              13,
+              6,
+              4,
+              9,
+              11,
+              14
+            ]
+          },
+          "coverage_count": 16,
+          "missing_sample_ids": [],
+          "duplicate_sample_ids": [],
+          "cross_rank_overlap": [],
+          "deterministic_repeat": true
+        }
+      ],
+      "epoch_permutation_changed": true,
+      "all_epochs_complete": true
+    },
+    "resume": {
+      "state_error": {
+        "max_absolute_error": 0.0,
+        "max_relative_error": 0.0,
+        "exact_equal": true,
+        "tensors": [
+          {
+            "name": "input.bias",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 8
+          },
+          {
+            "name": "input.weight",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 32
+          },
+          {
+            "name": "output.bias",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 2
+          },
+          {
+            "name": "output.weight",
+            "max_absolute_error": 0.0,
+            "max_relative_error": 0.0,
+            "exact_equal": true,
+            "elements": 16
+          }
+        ]
+      },
+      "max_loss_absolute_error": 0.0,
+      "uninterrupted_loss": [
+        {
+          "optimizer_step": 0,
+          "loss": 0.8102899564190048
+        },
+        {
+          "optimizer_step": 1,
+          "loss": 0.8223219837588762
+        }
+      ],
+      "resumed_loss": [
+        {
+          "optimizer_step": 0,
+          "loss": 0.8102899564190048
+        },
+        {
+          "optimizer_step": 1,
+          "loss": 0.8223219837588762
+        }
+      ],
+      "exact_state_equal": true
+    },
+    "training": {
+      "effective_global_batch": 8,
+      "local_batch_size": 2,
+      "gradient_accumulation_steps": 2,
+      "optimizer_steps": 2,
+      "no_sync_microbatches_per_rank": {
+        "0": 2,
+        "1": 2
+      },
+      "straggler": {
+        "injected": true,
+        "rank": 1,
+        "optimizer_step": 0,
+        "delay_ms": 20.0
+      },
+      "rank_step_seconds": {
+        "0": [
+          0.06176035199314356,
+          0.0008926060399971902
+        ],
+        "1": [
+          0.06166228197980672,
+          0.001007999002467841
+        ]
+      },
+      "step_skew_seconds": [
+        9.807001333683729e-05,
+        0.00011539296247065067
+      ],
+      "max_rank_step_skew_seconds": 0.00011539296247065067,
+      "mean_rank_step_skew_seconds": 0.00010673148790374398,
+      "estimated_communication": {
+        "model_gradient_bytes": 464,
+        "assumption": "ring_all_reduce_2*(world_size-1)/world_size*gradient_bytes",
+        "per_rank_per_sync_estimated_bytes": 464,
+        "sync_count": 2,
+        "per_rank_total_estimated_bytes": 928,
+        "cluster_total_estimated_bytes": 1856,
+        "measured_network_bytes": false
+      }
+    },
+    "checkpoint": {
+      "write": {
+        "path": "REDACTED_LOCAL",
+        "checksum_path": "REDACTED_LOCAL",
+        "sha256": "2a59114bc87e60fdc9c3f631b873024a48d32cfee4348887045868ab0fe7520e",
+        "bytes": 22725,
+        "save_seconds": 0.035839213989675045,
+        "atomic_replace": true
+      },
+      "load": {
+        "path": "REDACTED_LOCAL",
+        "sha256": "2a59114bc87e60fdc9c3f631b873024a48d32cfee4348887045868ab0fe7520e",
+        "bytes": 22725,
+        "load_seconds": 0.0009678819915279746,
+        "integrity_verified": true,
+        "contract_verified": true
+      },
+      "cursor": {
+        "epoch": 0,
+        "next_microbatch": 2,
+        "optimizer_step": 1
+      },
+      "contains_model_optimizer_rng_sampler_cursor": true,
+      "fault_audit": {
+        "changed_contract_rejected": true,
+        "changed_contract_error": "config_contract_hash mismatch: expected 0000000000000000000000000000000000000000000000000000000000000000, observed 7547a5dcf01f2601db30a957e394582effb8550292e88a9c8e706c4b04a0a9fd",
+        "corrupt_checkpoint_rejected": true,
+        "corrupt_checkpoint_error": "checkpoint SHA-256 mismatch: expected 2a59114bc87e60fdc9c3f631b873024a48d32cfee4348887045868ab0fe7520e, observed a9ee612c4181972a3823b2d3f10312aadf1cfb828b885408124327a463082bf6",
+        "state_applied_before_validation": false
+      }
+    }
+  },
+  "claim_boundary": {
+    "evidenced": "Actual two-process CPU/Gloo DDP correctness on one deterministic tiny model and dataset, including averaged-gradient parity, no_sync accumulation, exact-resume auditing, and fail-closed checkpoint validation.",
+    "not_evidenced": [
+      "NCCL or GPU collective correctness/performance",
+      "multi-node networking or elastic rank-failure recovery",
+      "FSDP, ZeRO, tensor parallelism, or pipeline parallelism",
+      "large-model convergence or production throughput scaling",
+      "measured network communication bytes (reported bytes are a ring estimate)"
+    ]
+  },
+  "artifacts": [
+    "result.json",
+    "training_trace.jsonl",
+    "provenance.json",
+    "sample_sharding.svg",
+    "resume_equivalence.svg",
+    "report.html",
+    "resume_step_1.pt",
+    "resume_step_1.pt.sha256"
+  ],
+  "reproduction_command": "python scripts/run_ddp_correctness.py --config configs/distributed/ddp_cpu.yaml"
+}

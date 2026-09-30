@@ -1,0 +1,79 @@
+experiment: inference_dynamics
+artifact_dir: ${FMLAB_DATA_ROOT}/artifacts/systems/inference-dynamics
+seed: 20260804
+
+trace:
+  pattern: mixed
+  request_count: 80
+  poisson_rate_rps: 60.0
+  prompt_tokens: [8, 16, 24, 32, 48]
+  output_tokens: [4, 8, 12, 16, 24]
+  burst_every: 16
+  burst_size: 6
+  burst_gap_ms: 0.2
+  timeout_ms: 380.0
+  cancellation_fraction: 0.06
+  cancellation_after_ms: [45.0, 190.0]
+
+engine:
+  max_batch_size: 8
+  queue_capacity: 12
+  static_batch_wait_ms: 10.0
+  prefill_base_ms: 1.0
+  prefill_token_ms: 0.08
+  decode_base_ms: 4.0
+  decode_per_sequence_ms: 0.45
+  slo_e2e_ms: 240.0
+  max_simulation_ms: 10000.0
+  kv_block_size_tokens: 8
+  kv_total_blocks: 36
+  max_preemptions_per_request: 1
+
+fault:
+  enabled: true
+  start_ms: 180.0
+  duration_ms: 160.0
+  service_multiplier: 3.0
+
+policies:
+  - name: static_fcfs
+    kind: static_fcfs
+    preemption_policy: none
+  - name: continuous_fcfs
+    kind: continuous_fcfs
+    preemption_policy: none
+  - name: continuous_fcfs_preempt
+    kind: continuous_fcfs
+    preemption_policy: preempt_largest
+
+probe:
+  enabled: true
+  seed: 31415
+  num_threads: 1
+  batch_size: 3
+  sequence_length: 24
+  warmup: 3
+  iterations: 12
+  vocab_size: 260
+  max_seq_len: 64
+  d_model: 32
+  n_layers: 2
+  n_heads: 4
+  ffn_hidden_size: 96
+  gates:
+    int8_min_top1_agreement: 0.90
+    int8_min_cosine_similarity: 0.999
+    int8_max_kl_divergence: 0.01
+    int4_min_top1_agreement: 0.45
+    int4_min_cosine_similarity: 0.96
+    int4_max_kl_divergence: 0.10
+    max_latency_ratio: 3.0
+
+capacity_sweep:
+  enabled: true
+  poisson_rates_rps: [4, 8, 12, 18, 24, 32, 48, 72, 96]
+  request_count: 96
+  seeds: [1103, 2207, 3301]
+  minimum_completion_ratio: 0.90
+  minimum_slo_attainment: 0.90
+  maximum_terminal_failure_ratio: 0.10

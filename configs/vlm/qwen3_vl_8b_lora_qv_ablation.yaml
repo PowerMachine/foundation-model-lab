@@ -1,0 +1,38 @@
+# Low-cost target-set ablation against qwen3_vl_8b_lora_e2e.yaml.
+# All data, split, rank, and optimizer settings should remain identical; only
+# q/v targets change, which approximately halves attention-adapter parameters.
+experiment: qwen3_vl_8b_lora_qv_ablation
+backend: local
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-8B-Instruct
+dataset_manifest: ${FMLAB_DATA_ROOT}/datasets/vlm/mixed/manifest.jsonl
+artifact_dir: ${FMLAB_DATA_ROOT}/artifacts/vlm/qwen3-vl-8b-lora-qv-ablation
+adapter_output_dir: ${FMLAB_DATA_ROOT}/adapters/vlm/qwen3-vl-8b-lora-qv
+seed: 17
+holdout_fraction: 0.25
+max_train_examples: 16
+max_eval_examples: 3
+max_steps: 2
+per_device_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 0.0002
+weight_decay: 0.0
+max_grad_norm: 1.0
+max_sequence_length: 1024
+max_new_tokens: 24
+rank: 8
+alpha: 16
+dropout: 0.05
+target_modules:
+  - q_proj
+  - v_proj
+freeze_vision_encoder: true
+gradient_checkpointing: true
+bf16: true
+cuda_device: 0
+min_pixels: 65536
+max_pixels: 401408
+max_wall_seconds: 900
+minimum_free_vram_gib: 24
+save_adapter: false
+system_prompt: >-
+  Answer the visual question concisely. Follow any requested output format exactly.

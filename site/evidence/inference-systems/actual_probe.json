@@ -1,0 +1,163 @@
+{
+  "evidence_class": "actual_cpu_tiny_model_measurement",
+  "enabled": true,
+  "claim_boundary": "INT8/INT4 are weight quantize-dequantize simulations executed by FP32 PyTorch kernels. Fidelity and CPU latency are measured; packed-integer kernel speedup is not measured or claimed.",
+  "hardware": {
+    "device": "cpu",
+    "processor": "x86_64",
+    "torch_version": "2.11.0+cu130",
+    "num_threads": 1
+  },
+  "model": {
+    "class": "TinyDecoderLM",
+    "parameter_count": 35104,
+    "config": {
+      "vocab_size": 260,
+      "max_seq_len": 64,
+      "d_model": 32,
+      "n_layers": 2,
+      "n_heads": 4,
+      "ffn_hidden_size": 96
+    }
+  },
+  "input": {
+    "seed": 31416,
+    "batch_size": 3,
+    "sequence_length": 24,
+    "input_token_count": 72
+  },
+  "gate_thresholds": {
+    "int8_min_top1_agreement": 0.9,
+    "int8_min_cosine_similarity": 0.999,
+    "int8_max_kl_divergence": 0.01,
+    "int4_min_top1_agreement": 0.45,
+    "int4_min_cosine_similarity": 0.96,
+    "int4_max_kl_divergence": 0.1,
+    "max_latency_ratio": 3.0
+  },
+  "variants": {
+    "fp32": {
+      "runtime": "torch_cpu_fp32",
+      "latency": {
+        "samples_ms": [
+          0.291953,
+          0.290091,
+          0.292375,
+          0.287636,
+          0.286674,
+          0.292134,
+          0.2899,
+          0.290551,
+          0.29042,
+          0.292755,
+          0.287795,
+          0.287966
+        ],
+        "mean_ms": 0.29002083333333334,
+        "p50_ms": 0.2902555,
+        "p95_ms": 0.292546,
+        "p99_ms": 0.2927132,
+        "input_tokens_per_second_at_p50": 248057.3150207317
+      },
+      "fidelity_vs_fp32": {
+        "top1_agreement": 1.0,
+        "cosine_similarity": 1.0,
+        "kl_divergence_reference_to_candidate": 0.0
+      },
+      "latency_ratio_vs_fp32": 1.0,
+      "gate_pass": true,
+      "gate_failures": []
+    },
+    "fake_int8": {
+      "runtime": "torch_cpu_fp32_with_dequantized_fake_quantized_weights",
+      "weight_quantization": {
+        "bits": 8,
+        "parameter_count": 34944,
+        "original_bytes": 139776,
+        "estimated_packed_bytes": 38800,
+        "compression_ratio": 3.602474226804124,
+        "mean_absolute_error": 9.16375283850357e-05,
+        "root_mean_squared_error": 0.00010954120079986751,
+        "cosine_similarity": 0.9999852180480957
+      },
+      "latency": {
+        "samples_ms": [
+          0.30599,
+          0.294309,
+          0.287956,
+          0.291082,
+          0.293317,
+          0.291653,
+          0.286964,
+          0.293687,
+          0.290531,
+          0.289199,
+          0.288127,
+          0.292405
+        ],
+        "mean_ms": 0.29210166666666665,
+        "p50_ms": 0.2913675,
+        "p95_ms": 0.29956545,
+        "p99_ms": 0.30470509,
+        "input_tokens_per_second_at_p50": 247110.6077376509
+      },
+      "fidelity_vs_fp32": {
+        "top1_agreement": 1.0,
+        "cosine_similarity": 0.9999710917472839,
+        "kl_divergence_reference_to_candidate": 3.307626457171864e-07,
+        "logit_mae": 0.0006919087027199566,
+        "logit_rmse": 0.0008782193763181567,
+        "logit_max_abs": 0.00534554198384285
+      },
+      "latency_ratio_vs_fp32": 1.0038311074208757,
+      "gate_pass": true,
+      "gate_failures": []
+    },
+    "fake_int4": {
+      "runtime": "torch_cpu_fp32_with_dequantized_fake_quantized_weights",
+      "weight_quantization": {
+        "bits": 4,
+        "parameter_count": 34944,
+        "original_bytes": 139776,
+        "estimated_packed_bytes": 21328,
+        "compression_ratio": 6.5536384096024,
+        "mean_absolute_error": 0.0016653845086693764,
+        "root_mean_squared_error": 0.0019872919656336308,
+        "cosine_similarity": 0.9950643181800842
+      },
+      "latency": {
+        "samples_ms": [
+          0.298637,
+          0.289028,
+          0.291943,
+          0.288697,
+          0.286653,
+          0.287124,
+          0.292996,
+          0.287095,
+          0.287545,
+          0.291423,
+          0.288407,
+          0.287896
+        ],
+        "mean_ms": 0.28978699999999996,
+        "p50_ms": 0.28855200000000003,
+        "p95_ms": 0.29553445,
+        "p99_ms": 0.29801648999999997,
+        "input_tokens_per_second_at_p50": 249521.7499792065
+      },
+      "fidelity_vs_fp32": {
+        "top1_agreement": 1.0,
+        "cosine_similarity": 0.9910998940467834,
+        "kl_divergence_reference_to_candidate": 0.00011851008457597345,
+        "logit_mae": 0.012238414026796818,
+        "logit_rmse": 0.015454033389687538,
+        "logit_max_abs": 0.07465307414531708
+      },
+      "latency_ratio_vs_fp32": 0.9941310328314193,
+      "gate_pass": true,
+      "gate_failures": []
+    }
+  },
+  "overall_gate_pass": true
+}

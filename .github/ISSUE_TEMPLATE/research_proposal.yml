@@ -1,0 +1,49 @@
+name: Research or systems proposal
+description: Propose a bounded experiment, ablation, evaluator, or infrastructure extension.
+title: "[Proposal]: "
+body:
+  - type: input
+    id: question
+    attributes:
+      label: Falsifiable research question
+      placeholder: Does policy A improve SLO goodput over policy B under a paired trace?
+    validations:
+      required: true
+  - type: textarea
+    id: baselines
+    attributes:
+      label: Baselines, controls, and leakage prevention
+      description: Name the baseline, negative control, split unit, and pairing strategy.
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Metrics and promotion gate
+      description: Define primary metrics, uncertainty, failure slices, and the intended claim level.
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resource and storage budget
+      description: Bound devices, wall time, seeds/trials, model loading, downloads, and artifact bytes.
+      placeholder: CPU-only; under 10 minutes; three fixed seeds; under 10 MiB public evidence
+    validations:
+      required: true
+  - type: textarea
+    id: boundary
+    attributes:
+      label: Explicit non-claims
+      description: State what the proposed result would not evidence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope checks
+      options:
+        - label: The proposal can run without committing weights, private data, or raw runtime artifacts.
+          required: true
+        - label: Simulator, scripted-control, actual CPU/GPU, and fake-quant evidence will remain distinct.
+          required: true

@@ -1,0 +1,14 @@
+kind: full_sft
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-0.5B
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/full_sft
+train_file: null  # JSONL: {"prompt": "...", "response": "..."}
+smoke: true
+max_steps: 2
+sample_limit: 16
+max_length: 128
+batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 0.00001
+dtype: bfloat16
+save_model: false
+

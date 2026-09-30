@@ -1,0 +1,14 @@
+manifest_path: ${FMLAB_DATA_ROOT}/datasets/vlm/mixed/manifest.jsonl
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/vlm/visual-reward-environment
+seed: 43
+holdout_fraction: 0.25
+max_train_examples: 24
+max_eval_examples: 12
+bootstrap_samples: 1000
+acceptance_threshold: 0.5
+weights:
+  answer: 0.65
+  format: 0.20
+  calibration: 0.15
+  grounding: 0.20
+  hack_penalty: 1.0

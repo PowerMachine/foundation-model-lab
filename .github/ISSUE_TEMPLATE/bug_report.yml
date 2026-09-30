@@ -1,0 +1,69 @@
+name: Bug report
+description: Report a reproducible defect in code, tests, or documented offline workflows.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a defect. Do not attach model weights, private data, credentials,
+        internal paths, or unredacted runtime artifacts. Security issues belong in the private
+        channel described by `SECURITY.md`.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues and reproduced this on the current main branch.
+          required: true
+        - label: I removed secrets, personal data, model weights, and workstation-specific paths.
+          required: true
+  - type: input
+    id: area
+    attributes:
+      label: Affected area
+      description: For example, VLM LoRA, agent evaluator, public evidence, DDP, or CI.
+      placeholder: public-evidence exporter
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Sanitized environment
+      description: Python, OS, package versions, CPU/GPU availability, and execution mode.
+      placeholder: Python 3.12; Ubuntu; CPU-only; offline flags enabled
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Include the smallest safe command or test and deterministic seed/config fields.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized evidence
+      description: Include the error and safe result/manifest fields; avoid bulk logs.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence-class
+    attributes:
+      label: Evidence source
+      options:
+        - Scripted or synthetic control
+        - Deterministic simulator
+        - Actual CPU measurement
+        - Actual GPU/local-model smoke
+        - Documentation or CI only
+        - Not sure
+    validations:
+      required: true

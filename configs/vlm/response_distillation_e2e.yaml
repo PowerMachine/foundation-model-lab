@@ -1,0 +1,69 @@
+experiment: qwen3_vl_response_distillation_e2e
+design:
+  stages_run_in_separate_processes:
+    - teacher_cache
+    - cache_audit
+    - student_lora
+  reason: The 32B teacher and 8B student never coexist in VRAM.
+  distillation_type: sequence_level_response_distillation
+
+teacher_cache:
+  model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-32B-Instruct-FP8
+  manifest_path: ${FMLAB_DATA_ROOT}/datasets/vlm/mixed/manifest.jsonl
+  raw_cache_path: ${FMLAB_DATA_ROOT}/generated/vlm/distillation/teacher-32b-raw.jsonl
+  max_examples: 64
+  max_new_tokens: 128
+  max_minutes: 60
+  split_seed: 17
+  eval_fraction: 0.25
+  cuda_device: 0
+  min_free_vram_gib: 48
+  min_pixels: 65536
+  max_pixels: 262144
+  do_sample: false
+  torch_dtype: auto
+  local_files_only: true
+  resumable: true
+
+audit:
+  accepted_cache_path: ${FMLAB_DATA_ROOT}/generated/vlm/distillation/teacher-32b-accepted.jsonl
+  audit_path: ${FMLAB_DATA_ROOT}/generated/vlm/distillation/audit.json
+  reject_simulated: true
+  reject_reference_in_question: true
+  reject_placeholders: true
+  reject_refusals: true
+  min_answer_chars: 1
+  max_answer_chars: 512
+  deduplicate_inputs: true
+
+student_lora:
+  model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-8B-Instruct
+  output_dir: ${FMLAB_DATA_ROOT}/checkpoints/vlm/response-distilled-8b-lora
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj]
+  freeze_vision_encoder: true
+  gradient_checkpointing: true
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  max_examples: 64
+  max_steps: 20
+  gradient_accumulation_steps: 4
+  max_sequence_length: 2048
+  max_minutes: 30
+  bf16: true
+  save_adapter_only: true
+  cuda_device: 0
+  min_free_vram_gib: 24
+  min_pixels: 65536
+  max_pixels: 262144
+
+evaluation_protocol:
+  primary: held-out exact_match_and_token_f1
+  slices: [document_vqa, chart_qa, grounding]
+  baselines:
+    - qwen3_vl_8b_zero_shot
+    - qwen3_vl_8b_gold_sft_lora
+    - qwen3_vl_8b_teacher_response_lora
+  warning: Do not treat training-set teacher agreement as student quality.

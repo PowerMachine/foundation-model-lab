@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-04T06:59:22.921632+00:00",
+  "generator": "fmlab.release.export_public_evidence",
+  "source_artifact_name": "visual-reward-environment",
+  "destination_name": "visual-reward-environment",
+  "claim_boundary": {
+    "evidenced": "Measured environment-and-grader behavior on deterministic synthetic visual tasks.",
+    "not_evidenced": [
+      "VLM generation quality or online RL",
+      "human-preference agreement or production safety",
+      "distributed rollout scale"
+    ]
+  },
+  "claim_boundary_source": "explicit_export_argument",
+  "redaction": {
+    "file_redaction_count": 1,
+    "manifest_metadata_redaction_count": 0,
+    "total_redaction_count": 1,
+    "configured_literal_count": 3,
+    "replacement": "REDACTED_LOCAL"
+  },
+  "policy": {
+    "default_exact_names": [
+      "result.json",
+      "report.html",
+      "provenance.json"
+    ],
+    "default_globs": [
+      "*.svg"
+    ],
+    "explicit_additional_files": [
+      "environment_spec.json"
+    ],
+    "max_file_bytes": 20971520,
+    "utf8_text_only": true,
+    "symlinks_forbidden": true,
+    "jsonl_model_weights_hidden_traces_forbidden": true
+  },
+  "files": [
+    {
+      "path": "environment_spec.json",
+      "source_sha256": "bf6630382bb617011a9480dca69eca4f22b348a19e520399f9802e251607dc7b",
+      "public_sha256": "078eec15f5f0a78128234e4d0d3241e038cb46cdc9ddc4696dce5031994273ab",
+      "source_bytes": 3082,
+      "public_bytes": 3032,
+      "redaction_count": 1
+    },
+    {
+      "path": "provenance.json",
+      "source_sha256": "f18631076d2cabc00959d7c4787632a72fdbd6ad1b3b7e4fe8d29b4ab0987c29",
+      "public_sha256": "f18631076d2cabc00959d7c4787632a72fdbd6ad1b3b7e4fe8d29b4ab0987c29",
+      "source_bytes": 799,
+      "public_bytes": 799,
+      "redaction_count": 0
+    },
+    {
+      "path": "report.html",
+      "source_sha256": "d11d5c8dc3e94564aa900bbb4d5c13ef4bec0762ff43a9c1f9da0e7c61b8c8b3",
+      "public_sha256": "d11d5c8dc3e94564aa900bbb4d5c13ef4bec0762ff43a9c1f9da0e7c61b8c8b3",
+      "source_bytes": 6097,
+      "public_bytes": 6097,
+      "redaction_count": 0
+    },
+    {
+      "path": "result.json",
+      "source_sha256": "54c3b32e24f285d08a4f25dcd9c3cc076dbe079f68613f15dd215dd84e2b575c",
+      "public_sha256": "54c3b32e24f285d08a4f25dcd9c3cc076dbe079f68613f15dd215dd84e2b575c",
+      "source_bytes": 3294,
+      "public_bytes": 3294,
+      "redaction_count": 0
+    },
+    {
+      "path": "reward_audit.svg",
+      "source_sha256": "6b886e6b3d07499fc7821bcf7d59dd625d359a939991b952bc1f8123e1526e51",
+      "public_sha256": "6b886e6b3d07499fc7821bcf7d59dd625d359a939991b952bc1f8123e1526e51",
+      "source_bytes": 1486,
+      "public_bytes": 1486,
+      "redaction_count": 0
+    }
+  ]
+}

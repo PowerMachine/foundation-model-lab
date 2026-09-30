@@ -1,0 +1,21 @@
+{
+  "claim_level": "measured_environment_and_grader",
+  "quality_evaluated": false,
+  "simulated_policy_outputs": true,
+  "runtime": {
+    "python": "3.12.12",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "cuda": "13.0"
+  },
+  "manifest_sha256": "6f0e8de2e4fa40f600c43a8c2c0125ee5564c7bcc0a9552aa3a93d1a7a877eca",
+  "environment_contract_sha256": "7df41f192ab5adbf2fba118aef69de4d8d0c1840fe1d701b1ec2bc1f104a5a7d",
+  "reward_audit_sha256": "0188d19823a39106db33a69fc39b8c9ecb88e2822632fbd7ebc246c223fc9d30",
+  "preference_pairs_sha256": "8a22fc4f612f438b3e2e68645304240970e5620b6c3a3fd59874b8e55eddc9c1"
+}

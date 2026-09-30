@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-04T07:03:36.221482+00:00",
+  "generator": "fmlab.release.export_public_evidence",
+  "source_artifact_name": "reliable-agent-benchmark",
+  "destination_name": "reliable-agent-benchmark",
+  "claim_boundary": {
+    "evidenced": "Local execution of 12 immutable microtasks under two scripted harness controls, with outcome/process grading, bounded retry, and exact resume.",
+    "not_evidenced": [
+      "LLM or coding-agent model capability",
+      "OS sandbox or network-isolation security",
+      "SWE-bench scale or production long-horizon reliability"
+    ]
+  },
+  "claim_boundary_source": "explicit_export_argument",
+  "redaction": {
+    "file_redaction_count": 4,
+    "manifest_metadata_redaction_count": 0,
+    "total_redaction_count": 4,
+    "configured_literal_count": 3,
+    "replacement": "REDACTED_LOCAL"
+  },
+  "policy": {
+    "default_exact_names": [
+      "result.json",
+      "report.html",
+      "provenance.json"
+    ],
+    "default_globs": [
+      "*.svg"
+    ],
+    "explicit_additional_files": [
+      "run_manifest.json",
+      "task_manifest.json"
+    ],
+    "max_file_bytes": 20971520,
+    "utf8_text_only": true,
+    "symlinks_forbidden": true,
+    "jsonl_model_weights_hidden_traces_forbidden": true
+  },
+  "files": [
+    {
+      "path": "metrics.svg",
+      "source_sha256": "8c23461314f255a8d13fc13535f12ccbe2ce4827d3f4cb12a7f3b18601a0a7f4",
+      "public_sha256": "8c23461314f255a8d13fc13535f12ccbe2ce4827d3f4cb12a7f3b18601a0a7f4",
+      "source_bytes": 2217,
+      "public_bytes": 2217,
+      "redaction_count": 0
+    },
+    {
+      "path": "report.html",
+      "source_sha256": "dbec3012d4de46dc6998cfd704819571826734f302006578aac7e734a1b530f5",
+      "public_sha256": "dbec3012d4de46dc6998cfd704819571826734f302006578aac7e734a1b530f5",
+      "source_bytes": 26517,
+      "public_bytes": 26517,
+      "redaction_count": 0
+    },
+    {
+      "path": "result.json",
+      "source_sha256": "4649fe04cd1b26315b2ce71730bf779649854924d1d7d45367b3138c579b9e1a",
+      "public_sha256": "a0e126c96dfdcdcd2fa1a7e35724d2479c778279e36782d206a621de15b7e7f6",
+      "source_bytes": 5567,
+      "public_bytes": 5465,
+      "redaction_count": 2
+    },
+    {
+      "path": "run_manifest.json",
+      "source_sha256": "637f66f31a183d15117c56dc0dcad84aa9b1c65efb6bbe4cf489d1ad81e7a84e",
+      "public_sha256": "b585fad8eca323d8003e71c27fb452f54e3843d290f5589683724b8f0922e564",
+      "source_bytes": 2021,
+      "public_bytes": 1919,
+      "redaction_count": 2
+    },
+    {
+      "path": "task_manifest.json",
+      "source_sha256": "9bedc3044327ba7a1f5889d466df7e8dcc64aa7991aede86a50d768230cdc698",
+      "public_sha256": "9bedc3044327ba7a1f5889d466df7e8dcc64aa7991aede86a50d768230cdc698",
+      "source_bytes": 11888,
+      "public_bytes": 11888,
+      "redaction_count": 0
+    }
+  ]
+}

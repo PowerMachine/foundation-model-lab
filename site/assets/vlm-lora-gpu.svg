@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="450"
+ viewBox="0 0 900 450" role="img" aria-labelledby="title desc">
+<title id="title">Actual Qwen3-VL LoRA GPU smoke profile</title>
+<desc id="desc">Runtime phases and measured allocated GPU memory.</desc>
+<rect width="100%" height="100%" rx="18" fill="#0b1020"/>
+<style>.title{font:700 25px system-ui;fill:#f4f7ff}.label{font:700 15px system-ui;fill:#e7edff}.small{font:13px system-ui;fill:#b8c4df}.value{font:700 15px ui-monospace;fill:#fff}</style>
+<text x="48" y="48" class="title">Qwen3-VL-8B · actual BF16 LoRA smoke</text>
+<text x="48" y="75" class="small">2 optimizer steps · local-only · vision frozen · total 36.75s</text>
+<text x="64" y="96" class="label">Measured wall-clock profile</text>
+<rect x="64" y="105" width="772" height="42" rx="4" fill="#1d2840"/>
+<rect x="64.00" y="105" width="719.78" height="42" rx="4" fill="#fb7185"><title>model load: 34.265 s</title></rect><rect x="783.78" y="105" width="14.32" height="42" rx="4" fill="#fbbf24"><title>eval before: 0.682 s</title></rect><rect x="798.10" y="105" width="30.52" height="42" rx="4" fill="#2dd4bf"><title>train: 1.453 s</title></rect><rect x="828.62" y="105" width="6.14" height="42" rx="4" fill="#60a5fa"><title>eval after: 0.292 s</title></rect>
+<circle cx="76" cy="178" r="5" fill="#fb7185"/><text x="88" y="183" class="small">model load 34.26s</text><circle cx="261" cy="178" r="5" fill="#fbbf24"/><text x="273" y="183" class="small">eval before 0.68s</text><circle cx="446" cy="178" r="5" fill="#2dd4bf"/><text x="458" y="183" class="small">train 1.45s</text><circle cx="631" cy="178" r="5" fill="#60a5fa"/><text x="643" y="183" class="small">eval after 0.29s</text>
+<text x="64" y="230" class="label">Allocated GPU memory</text>
+<text x="64" y="272" class="small">after load</text>
+<rect x="164" y="252" width="650" height="26" rx="5" fill="#1d2840"/>
+<rect x="164" y="252" width="443.05" height="26" rx="5" fill="#a78bfa"/>
+<text x="826" y="271" class="value" text-anchor="end">16.36 GiB</text>
+<text x="64" y="322" class="small">train peak</text>
+<rect x="164" y="302" width="650" height="26" rx="5" fill="#1d2840"/>
+<rect x="164" y="302" width="472.49" height="26" rx="5" fill="#fb7185"/>
+<text x="826" y="321" class="value" text-anchor="end">17.45 GiB</text>
+<line x1="164" y1="352" x2="814" y2="352" stroke="#43506b"/>
+<text x="164" y="374" class="small">0 GiB</text><text x="814" y="374" class="small" text-anchor="end">24 GiB scale</text>
+<rect x="48" y="400" width="804" height="30" rx="8" fill="#25182a"/>
+<text x="450" y="420" class="small" text-anchor="middle">Held-out synthetic EM: 100% → 100% · delta 0 · not a quality-gain claim</text>
+</svg>

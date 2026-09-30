@@ -1,0 +1,10 @@
+seed: 11
+device: auto
+class_count: 8
+image_size: 10
+embedding_dim: 16
+hidden_dim: 48
+batch_size: 8
+train_steps: 140
+learning_rate: 0.003
+image_noise: 0.15

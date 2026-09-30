@@ -1,0 +1,117 @@
+{
+  "experiment": "visual_knowledge_reward_environment",
+  "status": "completed",
+  "started_at": 1785826117.7090144,
+  "finished_at": 1785826118.2705026,
+  "metrics": {
+    "candidates": {
+      "abstain": {
+        "count": 12,
+        "mean_naive_reward": 0.16666666666666666,
+        "mean_robust_reward": 0.35125,
+        "true_success_rate": 0.0
+      },
+      "extra_field_injection": {
+        "count": 12,
+        "mean_naive_reward": 1.0,
+        "mean_robust_reward": -0.9722222222222222,
+        "true_success_rate": 0.0
+      },
+      "oracle": {
+        "count": 12,
+        "mean_naive_reward": 1.0,
+        "mean_robust_reward": 0.9957500000000001,
+        "true_success_rate": 1.0
+      },
+      "reward_hacker": {
+        "count": 12,
+        "mean_naive_reward": 1.0,
+        "mean_robust_reward": -0.9722222222222222,
+        "true_success_rate": 0.0
+      },
+      "wrong_overconfident": {
+        "count": 12,
+        "mean_naive_reward": 0.0,
+        "mean_robust_reward": 0.21808333333333332,
+        "true_success_rate": 0.0
+      }
+    },
+    "preference_accuracy": {
+      "naive": 0.4583333333333333,
+      "robust": 1.0,
+      "robust_minus_naive": {
+        "pairs": 48,
+        "samples": 1000,
+        "delta": 0.5416666666666666,
+        "ci95_low": 0.3958333333333333,
+        "ci95_high": 0.6875,
+        "probability_positive": 1.0
+      }
+    },
+    "reward_hacking": {
+      "challenge_count": 24,
+      "detector_precision": 1.0,
+      "detector_recall": 1.0,
+      "naive_false_acceptance_rate": 1.0,
+      "robust_false_acceptance_rate": 0.0,
+      "clean_false_positive_count": 0
+    },
+    "reward_true_success_correlation": {
+      "naive_pearson": 0.3804429551263411,
+      "robust_pearson": 0.6874852417815035
+    },
+    "oracle_robust_reward": 0.9957500000000001,
+    "dataset": {
+      "train_examples": 45,
+      "evaluation_examples": 15,
+      "train_sources": 9,
+      "evaluation_sources": 3,
+      "source_overlap": [],
+      "train_tasks": {
+        "chart_qa": 15,
+        "document_vqa": 18,
+        "grounding": 12
+      },
+      "evaluation_tasks": {
+        "chart_qa": 5,
+        "document_vqa": 6,
+        "grounding": 4
+      },
+      "budgeted_train_examples": 24,
+      "budgeted_eval_examples": 12,
+      "preference_pairs": 24,
+      "eval_candidates": 60,
+      "task_fingerprints_unique": 36
+    },
+    "contract_sha256": "7df41f192ab5adbf2fba118aef69de4d8d0c1840fe1d701b1ec2bc1f104a5a7d"
+  },
+  "parameters": {
+    "seed": 43,
+    "holdout_fraction": 0.25,
+    "max_train_examples": 24,
+    "max_eval_examples": 12,
+    "bootstrap_samples": 1000,
+    "reward_weights": {
+      "answer": 0.65,
+      "format": 0.2,
+      "calibration": 0.15,
+      "grounding": 0.2,
+      "hack_penalty": 1.0
+    }
+  },
+  "artifacts": [
+    "environment_spec.json",
+    "reward_audit.jsonl",
+    "preference_pairs.jsonl",
+    "reward_audit.svg",
+    "report.html",
+    "provenance.json"
+  ],
+  "notes": [
+    "Scripted candidates audit environment/reward behavior; they are not VLM outputs.",
+    "Preference rows are training-only and image-disjoint from the reward audit holdout.",
+    "Programmatic reward correctness on synthetic tasks is not evidence of frontier RL scale."
+  ],
+  "error": null,
+  "duration_seconds": 0.561488151550293
+}

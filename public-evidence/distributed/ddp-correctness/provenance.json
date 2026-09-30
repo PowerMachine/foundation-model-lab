@@ -1,0 +1,46 @@
+{
+  "experiment": "cpu_ddp_correctness_exact_resume",
+  "schema_version": "1.0",
+  "config": {
+    "world_size": 2,
+    "backend": "gloo",
+    "dataset_size": 16,
+    "input_dim": 4,
+    "hidden_dim": 8,
+    "output_dim": 2,
+    "local_batch_size": 2,
+    "gradient_accumulation_steps": 2,
+    "optimizer_steps": 2,
+    "learning_rate": 0.05,
+    "momentum": 0.9,
+    "model_seed": 17,
+    "sampler_seed": 29,
+    "straggler_rank": 1,
+    "straggler_step": 0,
+    "straggler_delay_ms": 20.0,
+    "process_timeout_seconds": 90.0,
+    "absolute_tolerance": 1e-10,
+    "relative_tolerance": 1e-09
+  },
+  "contracts": {
+    "config_contract_hash": "7547a5dcf01f2601db30a957e394582effb8550292e88a9c8e706c4b04a0a9fd",
+    "dataset_contract_hash": "89a48e66f33d53751010e58b3285862a4d26a8a5195535b75ff847a6b770f786",
+    "combined_contract_hash": "b95b83e10f2f7265afb6394c6d1e18814529944535f2312ee73fdb53fb5dc3ac"
+  },
+  "runtime": {
+    "python": "3.12.12",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "cuda": "13.0"
+  },
+  "network_used": false,
+  "cuda_used": false,
+  "backend": "gloo",
+  "world_size": 2
+}

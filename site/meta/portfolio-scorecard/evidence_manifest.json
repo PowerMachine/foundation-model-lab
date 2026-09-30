@@ -1,0 +1,27 @@
+{
+  "claim_boundary": {
+    "evidenced": "Deterministic aggregation of five manifest-verified public-evidence source bundles; every displayed metric is recomputed from canonical JSON.",
+    "not_evidenced": [
+      "A composite model-quality score, leaderboard rank, or production readiness.",
+      "Evidence beyond the source bundles and their individual claim boundaries."
+    ]
+  },
+  "claim_boundary_source": "explicit_export_argument",
+  "destination_name": "portfolio-scorecard",
+  "files": [
+    {
+      "path": "scorecard.json",
+      "public_bytes": 25183,
+      "public_sha256": "249b7d393ef006dc372133ae234206f24268f7275ba1c5fa1987884128e72760",
+      "source_sha256": "249b7d393ef006dc372133ae234206f24268f7275ba1c5fa1987884128e72760"
+    },
+    {
+      "path": "scorecard.svg",
+      "public_bytes": 6057,
+      "public_sha256": "188b6798e7df4834ffd0521d862e84a4e32686b0119525e56e81625f7c7d470d",
+      "source_sha256": "188b6798e7df4834ffd0521d862e84a4e32686b0119525e56e81625f7c7d470d"
+    }
+  ],
+  "generator": "fmlab.portfolio.scorecard",
+  "schema_version": "1.0"
+}

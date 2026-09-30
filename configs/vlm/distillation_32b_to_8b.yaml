@@ -1,0 +1,17 @@
+# Legacy objective sketch; temperature/hard_label_weight apply only to logit KD.
+# Use response_distillation_e2e.yaml for executable sequence-level response distillation.
+experiment: vlm_response_distillation
+teacher_model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-32B-Instruct-FP8
+student_model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-8B-Instruct
+dataset_manifest: ${FMLAB_DATA_ROOT}/datasets/vlm/mixed/manifest.jsonl
+targets_path: ${FMLAB_DATA_ROOT}/generated/vlm/teacher-32b-responses.jsonl
+output_dir: ${FMLAB_DATA_ROOT}/checkpoints/vlm/distilled-8b-lora
+temperature: 2.0
+hard_label_weight: 0.5
+cache_teacher_responses: true
+# Response distillation uses 0. Set a small value only for a custom top-k-logit loop.
+cache_top_k_logits: 0
+quality_filters:
+  require_nonempty: true
+  reject_answer_leakage: true
+  deduplicate: true

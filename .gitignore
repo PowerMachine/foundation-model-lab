@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+build/
+dist/
+*.egg-info/
+.env
+*.orig
+*.rej
+
+# Keep large datasets and runtime artifacts outside the Git checkout.
+data/
+artifacts/
+checkpoints/
+datasets/
+*.safetensors
+*.bin
+*.pt
+*.pth
+

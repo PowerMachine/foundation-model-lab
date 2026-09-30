@@ -1,0 +1,6 @@
+experiment: vlm_offline_demo
+mode: offline
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/vlm/offline-demo
+sample_count: 4
+seed: 7
+notice: Offline answers validate plumbing only and are not Qwen3-VL benchmark scores.

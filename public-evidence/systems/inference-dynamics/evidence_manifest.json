@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-04T07:08:50.827032+00:00",
+  "generator": "fmlab.release.export_public_evidence",
+  "source_artifact_name": "inference-dynamics",
+  "destination_name": "inference-dynamics",
+  "claim_boundary": {
+    "evidenced": [
+      "Deterministic request, scheduler, bounded-queue, paged-KV, and fault behavior within the configured discrete-event model.",
+      "Paired multi-seed simulated capacity curves and threshold-defined knees under the configured workload and service-time assumptions.",
+      "Actual CPU TinyDecoder FP32 versus fake-INT8/fake-INT4 logit fidelity and wall-clock latency for the recorded tiny configuration."
+    ],
+    "not_evidenced": [
+      "Measured vLLM, GPU, distributed, or production-service latency, throughput, capacity, reliability, or cost.",
+      "Packed INT8/INT4 kernel speedup, runtime memory reduction, or hardware-native integer execution.",
+      "Foundation-model quality, production traffic representativeness, or causal diagnosis outside the configured simulator."
+    ]
+  },
+  "claim_boundary_source": "sanitized_result.json",
+  "redaction": {
+    "file_redaction_count": 1,
+    "manifest_metadata_redaction_count": 0,
+    "total_redaction_count": 1,
+    "configured_literal_count": 3,
+    "replacement": "REDACTED_LOCAL"
+  },
+  "policy": {
+    "default_exact_names": [
+      "result.json",
+      "report.html",
+      "provenance.json"
+    ],
+    "default_globs": [
+      "*.svg"
+    ],
+    "explicit_additional_files": [
+      "actual_probe.json",
+      "capacity_sweep.json"
+    ],
+    "max_file_bytes": 20971520,
+    "utf8_text_only": true,
+    "symlinks_forbidden": true,
+    "jsonl_model_weights_hidden_traces_forbidden": true
+  },
+  "files": [
+    {
+      "path": "actual_probe.json",
+      "source_sha256": "79accd238f03076b02e1394e1ce4d6225cc9134c2e2eaba968fcfda02df2e8e9",
+      "public_sha256": "79accd238f03076b02e1394e1ce4d6225cc9134c2e2eaba968fcfda02df2e8e9",
+      "source_bytes": 4677,
+      "public_bytes": 4677,
+      "redaction_count": 0
+    },
+    {
+      "path": "capacity.svg",
+      "source_sha256": "4b8bc310895ba6b197a23765e8fa791fb427cbcf318fa2ce6ae3b7ecf78f49bf",
+      "public_sha256": "4b8bc310895ba6b197a23765e8fa791fb427cbcf318fa2ce6ae3b7ecf78f49bf",
+      "source_bytes": 22101,
+      "public_bytes": 22101,
+      "redaction_count": 0
+    },
+    {
+      "path": "capacity_sweep.json",
+      "source_sha256": "5d896104b2f80d99644c57f34ffaa4317e496e6e5519262609bbabc4e27b917a",
+      "public_sha256": "5d896104b2f80d99644c57f34ffaa4317e496e6e5519262609bbabc4e27b917a",
+      "source_bytes": 188853,
+      "public_bytes": 188853,
+      "redaction_count": 0
+    },
+    {
+      "path": "kv.svg",
+      "source_sha256": "002da0017a554550831a4928f79659b92d5044d0f7678730e89466d347394376",
+      "public_sha256": "002da0017a554550831a4928f79659b92d5044d0f7678730e89466d347394376",
+      "source_bytes": 21454,
+      "public_bytes": 21454,
+      "redaction_count": 0
+    },
+    {
+      "path": "pareto.svg",
+      "source_sha256": "241d2c0e8749e712626160002b3dcb352b12011b9a6343222cb8f03ae33dbcfc",
+      "public_sha256": "241d2c0e8749e712626160002b3dcb352b12011b9a6343222cb8f03ae33dbcfc",
+      "source_bytes": 3050,
+      "public_bytes": 3050,
+      "redaction_count": 0
+    },
+    {
+      "path": "report.html",
+      "source_sha256": "d54e81053963c717dd08e3b59d38a89e4b75bef12f703ebb1ef7263ee243217a",
+      "public_sha256": "d54e81053963c717dd08e3b59d38a89e4b75bef12f703ebb1ef7263ee243217a",
+      "source_bytes": 19515,
+      "public_bytes": 19515,
+      "redaction_count": 0
+    },
+    {
+      "path": "result.json",
+      "source_sha256": "5bf1fa979dae7b89a2c20fc6094cfd6d0904230f581b008f6803e085698256fd",
+      "public_sha256": "8585e85250bfa4dff17634d5de6e37dd33b3f1ef4a491bcda7d83ad73110aa08",
+      "source_bytes": 228125,
+      "public_bytes": 228072,
+      "redaction_count": 1
+    },
+    {
+      "path": "slo.svg",
+      "source_sha256": "e217317cf850a709552e41fbfb443be21ae9e0d8c46191eb304e24cce42f943c",
+      "public_sha256": "e217317cf850a709552e41fbfb443be21ae9e0d8c46191eb304e24cce42f943c",
+      "source_bytes": 3935,
+      "public_bytes": 3935,
+      "redaction_count": 0
+    }
+  ]
+}

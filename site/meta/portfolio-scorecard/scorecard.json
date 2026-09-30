@@ -1,0 +1,666 @@
+{
+  "claim_boundaries": {
+    "agent_eval": {
+      "evidenced": [
+        "Local execution of 12 immutable microtasks under two scripted harness controls, with outcome/process grading, bounded retry, and exact resume."
+      ],
+      "not_evidenced": [
+        "LLM or coding-agent model capability",
+        "OS sandbox or network-isolation security",
+        "SWE-bench scale or production long-horizon reliability"
+      ]
+    },
+    "ddp_correctness": {
+      "evidenced": [
+        "Actual two-process CPU/Gloo DDP correctness on one deterministic tiny model and dataset, including averaged-gradient parity, no_sync accumulation, exact-resume auditing, and fail-closed checkpoint validation."
+      ],
+      "not_evidenced": [
+        "NCCL or GPU collective correctness/performance",
+        "multi-node networking or elastic rank-failure recovery",
+        "FSDP, ZeRO, tensor parallelism, or pipeline parallelism",
+        "large-model convergence or production throughput scaling",
+        "measured network communication bytes (reported bytes are a ring estimate)"
+      ]
+    },
+    "inference_dynamics": {
+      "evidenced": [
+        "Deterministic request, scheduler, bounded-queue, paged-KV, and fault behavior within the configured discrete-event model.",
+        "Paired multi-seed simulated capacity curves and threshold-defined knees under the configured workload and service-time assumptions.",
+        "Actual CPU TinyDecoder FP32 versus fake-INT8/fake-INT4 logit fidelity and wall-clock latency for the recorded tiny configuration."
+      ],
+      "not_evidenced": [
+        "Measured vLLM, GPU, distributed, or production-service latency, throughput, capacity, reliability, or cost.",
+        "Packed INT8/INT4 kernel speedup, runtime memory reduction, or hardware-native integer execution.",
+        "Foundation-model quality, production traffic representativeness, or causal diagnosis outside the configured simulator."
+      ]
+    },
+    "qwen3_vl_lora": {
+      "evidenced": [
+        "Actual local Qwen3-VL-8B BF16 load, source-grouped greedy evaluation, and two assistant-only LoRA optimizer steps on the declared synthetic visual dataset."
+      ],
+      "not_evidenced": [
+        "Generalized VLM quality or adaptation improvement: only three held-out synthetic examples were evaluated and the baseline was already perfect.",
+        "Convergence, multi-seed variance, public-benchmark competitiveness, human preference, or online RL.",
+        "Adapter deployment, production serving, or 32B-to-8B distillation quality."
+      ]
+    },
+    "visual_reward": {
+      "evidenced": [
+        "Measured environment-and-grader behavior on deterministic synthetic visual tasks."
+      ],
+      "not_evidenced": [
+        "VLM generation quality or online RL",
+        "human-preference agreement or production safety",
+        "distributed rollout scale"
+      ]
+    }
+  },
+  "evidence_modes": {
+    "component_counts": {
+      "actual": 4,
+      "scripted": 2,
+      "simulated": 2
+    },
+    "components": [
+      {
+        "component": "vlm.qwen3_vl_8b_lora",
+        "mode": "actual",
+        "qualifier": "actual GPU smoke only; no quality-improvement claim"
+      },
+      {
+        "component": "agent.local_execution_environment",
+        "mode": "actual",
+        "qualifier": "local process execution; not a security boundary"
+      },
+      {
+        "component": "ddp.cpu_gloo_correctness",
+        "mode": "actual",
+        "qualifier": "two-process CPU/Gloo controlled run"
+      },
+      {
+        "component": "systems.tiny_cpu_probe",
+        "mode": "actual",
+        "qualifier": "FP32 kernels; INT8/INT4 weights are quantize-dequantize simulations"
+      },
+      {
+        "component": "agent.policy_controls",
+        "mode": "scripted",
+        "qualifier": "oracle and adversarial controls; no model inference"
+      },
+      {
+        "component": "vlm.visual_reward_audit",
+        "mode": "scripted",
+        "qualifier": "synthetic tasks and scripted candidates; no VLM generation"
+      },
+      {
+        "component": "systems.scheduler_queue_kv_fault",
+        "mode": "simulated",
+        "qualifier": "deterministic discrete-event model"
+      },
+      {
+        "component": "systems.capacity_sweep",
+        "mode": "simulated",
+        "qualifier": "paired multi-seed discrete-event study"
+      }
+    ],
+    "definitions": {
+      "actual": "wall-clock or multi-process execution occurred on the recorded local setup",
+      "scripted": "deterministic controls evaluate the harness, not model capability",
+      "simulated": "results arise from the declared discrete-event model"
+    }
+  },
+  "experimental_scale": {
+    "agent_eval": {
+      "episodes": 24,
+      "episodes_requiring_retry": 5,
+      "policies": 2,
+      "resumed_episodes": 24,
+      "tasks": 12,
+      "tool_calls": 74,
+      "transient_failures_injected": 5
+    },
+    "ddp_correctness": {
+      "backend": "gloo",
+      "dataset_size": 16,
+      "device": "cpu",
+      "effective_global_batch": 8,
+      "gate_count": 11,
+      "optimizer_steps": 2,
+      "world_size": 2
+    },
+    "inference": {
+      "capacity_paired_traces": 27,
+      "capacity_policy_request_executions": 7776,
+      "capacity_rates": 9,
+      "capacity_rows": 81,
+      "capacity_seeds": 3,
+      "capacity_unique_trace_requests": 2592,
+      "single_trace_policy_request_executions": 240,
+      "tiny_probe_input_tokens": 72,
+      "tiny_probe_parameters": 35104
+    },
+    "qwen3_vl_lora_actual_gpu_smoke": {
+      "budgeted_train_examples": 16,
+      "heldout_grouped_examples": 3,
+      "optimizer_steps": 2,
+      "source_overlap_count": 0,
+      "supervised_tokens": 44,
+      "total_parameters": 8774791408,
+      "trainable_parameters": 7667712,
+      "trainable_percent": 0.08738341053907364
+    },
+    "visual_reward": {
+      "eval_candidates": 60,
+      "evaluation_examples": 15,
+      "evaluation_sources": 3,
+      "preference_pairs": 24,
+      "reward_hack_challenges": 24,
+      "source_overlap_count": 0,
+      "train_examples": 45,
+      "train_sources": 9
+    }
+  },
+  "performance": {
+    "agent_scripted_controls_on_actual_environment": {
+      "oracle_scripted_control": {
+        "episodes": 12,
+        "outcome_pass_rate": 1.0,
+        "pass_at_1": 1.0,
+        "pass_at_1_ci_95": [
+          1.0,
+          1.0
+        ],
+        "reward_hack_rate": 0.0,
+        "tool_calls": 48,
+        "tool_error_rate": 0.0
+      },
+      "pass_at_1_gap": 1.0,
+      "shortcut_scripted_control": {
+        "episodes": 12,
+        "outcome_pass_rate": 0.16666666666666666,
+        "pass_at_1": 0.0,
+        "pass_at_1_ci_95": [
+          0.0,
+          0.0
+        ],
+        "reward_hack_rate": 1.0,
+        "tool_calls": 26,
+        "tool_error_rate": 0.23076923076923078
+      }
+    },
+    "ddp_actual_cpu_gloo": {
+      "absolute_tolerance": 1e-10,
+      "all_correctness_gates_pass": true,
+      "final_weight_max_absolute_error": 2.7755575615628914e-17,
+      "gradient_max_absolute_error": 1.1102230246251565e-16,
+      "gradient_max_relative_error": 1.3795839320784397e-15,
+      "passed_gate_count": 11,
+      "relative_tolerance": 1e-09,
+      "resume_exact_state_equal": true,
+      "resume_loss_max_absolute_error": 0.0,
+      "resume_state_max_absolute_error": 0.0
+    },
+    "inference_capacity_simulated": {
+      "configured_rates_rps": [
+        4.0,
+        8.0,
+        12.0,
+        18.0,
+        24.0,
+        32.0,
+        48.0,
+        72.0,
+        96.0
+      ],
+      "evidence_mode": "simulated",
+      "knees": {
+        "continuous_fcfs": {
+          "first_failed_criteria": [
+            "completion_ratio",
+            "terminal_failure_ratio"
+          ],
+          "first_unsustainable_configured_rate_rps": 48.0,
+          "first_unsustainable_realized_offered_load_rps_mean": 59.6027909406942,
+          "last_sustainable_configured_rate_rps": 32.0,
+          "last_sustainable_realized_offered_load_rps_mean": 39.78528773371537
+        },
+        "continuous_fcfs_preempt": {
+          "first_failed_criteria": [
+            "slo_attainment"
+          ],
+          "first_unsustainable_configured_rate_rps": 48.0,
+          "first_unsustainable_realized_offered_load_rps_mean": 59.6027909406942,
+          "last_sustainable_configured_rate_rps": 32.0,
+          "last_sustainable_realized_offered_load_rps_mean": 39.78528773371537
+        },
+        "static_fcfs": {
+          "first_failed_criteria": [
+            "slo_attainment"
+          ],
+          "first_unsustainable_configured_rate_rps": 32.0,
+          "first_unsustainable_realized_offered_load_rps_mean": 39.78528773371537,
+          "last_sustainable_configured_rate_rps": 24.0,
+          "last_sustainable_realized_offered_load_rps_mean": 29.85778662751891
+        }
+      },
+      "last_sustainable_continuous_uncertainty": {
+        "configured_rate_rps": 32.0,
+        "e2e_p99_ms": {
+          "max": 197.30787040920066,
+          "mean": 193.85821535735363,
+          "min": 190.37334624610418,
+          "n": 3,
+          "population_stddev": 2.83111713694164
+        },
+        "policy": "continuous_fcfs",
+        "realized_offered_load_requests_per_second": {
+          "max": 41.80654986145981,
+          "mean": 39.78528773371537,
+          "min": 36.517225891231654,
+          "n": 3,
+          "population_stddev": 2.3323977879731426
+        },
+        "slo_goodput_tokens_per_second": {
+          "max": 488.122124366744,
+          "mean": 454.334039946642,
+          "min": 411.87469394522793,
+          "n": 3,
+          "population_stddev": 31.726022384678046
+        }
+      },
+      "paired_trace_count": 27,
+      "policy_count": 3,
+      "policy_request_executions": 7776,
+      "qualifier": "paired multi-seed deterministic discrete-event capacity study",
+      "request_count_per_trial": 96,
+      "row_count": 81,
+      "seeds": [
+        1103,
+        2207,
+        3301
+      ],
+      "unique_trace_requests": 2592
+    },
+    "inference_single_trace_simulated": {
+      "continuous_e2e_p99_ms": 325.8603691285749,
+      "continuous_output_tokens_per_second": 516.8601494335026,
+      "continuous_relative_e2e_p99_change": -0.09964455209465219,
+      "continuous_relative_output_throughput_change": 0.6538250616084756,
+      "continuous_relative_slo_goodput_change": 2.1801728045995388,
+      "continuous_slo_goodput_tokens_per_second": 279.179934730505,
+      "evidence_mode": "simulated",
+      "paired_request_count": 80,
+      "policy_count": 3,
+      "policy_request_executions": 240,
+      "qualifier": "deterministic discrete-event scheduler/queue/KV/fault model",
+      "static_e2e_p99_ms": 361.9241377243622,
+      "static_output_tokens_per_second": 312.52407611408137,
+      "static_slo_goodput_tokens_per_second": 87.78766182979813
+    },
+    "inference_tiny_cpu_actual": {
+      "evidence_mode": "actual",
+      "input_token_count": 72,
+      "overall_gate_pass": true,
+      "parameter_count": 35104,
+      "qualifier": "INT8/INT4 are weight quantize-dequantize simulations executed by FP32 PyTorch kernels. Fidelity and CPU latency are measured; packed-integer kernel speedup is not measured or claimed.",
+      "variants": {
+        "fake_int4": {
+          "cosine_similarity": 0.9910998940467834,
+          "gate_pass": true,
+          "kl_divergence": 0.00011851008457597345,
+          "latency_p50_ms": 0.28855200000000003,
+          "latency_p95_ms": 0.29553445,
+          "latency_ratio_vs_fp32": 0.9941310328314193,
+          "top1_agreement": 1.0
+        },
+        "fake_int8": {
+          "cosine_similarity": 0.9999710917472839,
+          "gate_pass": true,
+          "kl_divergence": 3.307626457171864e-07,
+          "latency_p50_ms": 0.2913675,
+          "latency_p95_ms": 0.29956545,
+          "latency_ratio_vs_fp32": 1.0038311074208757,
+          "top1_agreement": 1.0
+        },
+        "fp32": {
+          "cosine_similarity": 1.0,
+          "gate_pass": true,
+          "kl_divergence": 0.0,
+          "latency_p50_ms": 0.2902555,
+          "latency_p95_ms": 0.292546,
+          "latency_ratio_vs_fp32": 1.0,
+          "top1_agreement": 1.0
+        }
+      }
+    },
+    "qwen3_vl_lora_actual_gpu_smoke": {
+      "evidence_tier": "actual_gpu_smoke",
+      "heldout_delta_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "heldout_exact_match_after": 1.0,
+      "heldout_exact_match_before": 1.0,
+      "heldout_exact_match_delta": 0.0,
+      "heldout_metric": "exact_match",
+      "heldout_paired_examples": 3,
+      "peak_allocated_gib": 17.445631980895996,
+      "quality_improvement_claimed": false,
+      "supervised_tokens_per_second": 30.282568236406014,
+      "total_seconds": 36.750945535022765,
+      "training_seconds": 1.4529811228858307
+    },
+    "visual_reward_scripted": {
+      "absolute_delta": 0.5416666666666666,
+      "bootstrap_95_ci": [
+        0.3958333333333333,
+        0.6875
+      ],
+      "bootstrap_samples": 1000,
+      "comparison_pairs": 48,
+      "detector_precision": 1.0,
+      "detector_recall": 1.0,
+      "naive_false_acceptance_rate": 1.0,
+      "naive_preference_accuracy": 0.4583333333333333,
+      "robust_false_acceptance_rate": 0.0,
+      "robust_preference_accuracy": 1.0
+    }
+  },
+  "schema": "fmlab.portfolio-scorecard/v1",
+  "source_set": {
+    "bundle_count": 5,
+    "bundles": [
+      {
+        "bundle": "agent/reliable-agent-benchmark",
+        "claim_boundary": {
+          "evidenced": [
+            "Local execution of 12 immutable microtasks under two scripted harness controls, with outcome/process grading, bounded retry, and exact resume."
+          ],
+          "not_evidenced": [
+            "LLM or coding-agent model capability",
+            "OS sandbox or network-isolation security",
+            "SWE-bench scale or production long-horizon reliability"
+          ]
+        },
+        "files": [
+          {
+            "bytes": 2217,
+            "path": "agent/reliable-agent-benchmark/metrics.svg",
+            "sha256": "8c23461314f255a8d13fc13535f12ccbe2ce4827d3f4cb12a7f3b18601a0a7f4"
+          },
+          {
+            "bytes": 26517,
+            "path": "agent/reliable-agent-benchmark/report.html",
+            "sha256": "dbec3012d4de46dc6998cfd704819571826734f302006578aac7e734a1b530f5"
+          },
+          {
+            "bytes": 5465,
+            "path": "agent/reliable-agent-benchmark/result.json",
+            "sha256": "a0e126c96dfdcdcd2fa1a7e35724d2479c778279e36782d206a621de15b7e7f6"
+          },
+          {
+            "bytes": 1919,
+            "path": "agent/reliable-agent-benchmark/run_manifest.json",
+            "sha256": "b585fad8eca323d8003e71c27fb452f54e3843d290f5589683724b8f0922e564"
+          },
+          {
+            "bytes": 11888,
+            "path": "agent/reliable-agent-benchmark/task_manifest.json",
+            "sha256": "9bedc3044327ba7a1f5889d466df7e8dcc64aa7991aede86a50d768230cdc698"
+          }
+        ],
+        "key": "agent_eval",
+        "manifest_sha256": "80c25e439411a2a8f3ff8e1fdbacc1d3b640f9ae8a6bd0c9303bc664cf20665c",
+        "verified_file_count": 5
+      },
+      {
+        "bundle": "distributed/ddp-correctness",
+        "claim_boundary": {
+          "evidenced": [
+            "Actual two-process CPU/Gloo DDP correctness on one deterministic tiny model and dataset, including averaged-gradient parity, no_sync accumulation, exact-resume auditing, and fail-closed checkpoint validation."
+          ],
+          "not_evidenced": [
+            "NCCL or GPU collective correctness/performance",
+            "multi-node networking or elastic rank-failure recovery",
+            "FSDP, ZeRO, tensor parallelism, or pipeline parallelism",
+            "large-model convergence or production throughput scaling",
+            "measured network communication bytes (reported bytes are a ring estimate)"
+          ]
+        },
+        "files": [
+          {
+            "bytes": 1297,
+            "path": "distributed/ddp-correctness/provenance.json",
+            "sha256": "339bd8866b02bee3e1a2b3c621c4fc536dab4e9b1d442e236891c94b958f9b79"
+          },
+          {
+            "bytes": 5661,
+            "path": "distributed/ddp-correctness/report.html",
+            "sha256": "5c06b6b0bd91583a91a0cb3c716d9a5332e06b54e68fef662e7b6d845e216bd7"
+          },
+          {
+            "bytes": 11363,
+            "path": "distributed/ddp-correctness/result.json",
+            "sha256": "e608d085881e92845e5d59565a6149cdeb4c7b57404359d4754210dadf4dd0e9"
+          },
+          {
+            "bytes": 1063,
+            "path": "distributed/ddp-correctness/resume_equivalence.svg",
+            "sha256": "192eb018318cc0c602bc2363e761fce36e82cfc1461931f85503498c3871d593"
+          },
+          {
+            "bytes": 6833,
+            "path": "distributed/ddp-correctness/sample_sharding.svg",
+            "sha256": "7321a0bb081eb20ba17702a237d09aa80e40e2b915ae956a5b1ad5bddd6499b0"
+          }
+        ],
+        "key": "ddp_correctness",
+        "manifest_sha256": "02f98629c0bb0bc35a80d5b269d29bca7d6470c1b17be16a4a633c350564e9bf",
+        "verified_file_count": 5
+      },
+      {
+        "bundle": "systems/inference-dynamics",
+        "claim_boundary": {
+          "evidenced": [
+            "Deterministic request, scheduler, bounded-queue, paged-KV, and fault behavior within the configured discrete-event model.",
+            "Paired multi-seed simulated capacity curves and threshold-defined knees under the configured workload and service-time assumptions.",
+            "Actual CPU TinyDecoder FP32 versus fake-INT8/fake-INT4 logit fidelity and wall-clock latency for the recorded tiny configuration."
+          ],
+          "not_evidenced": [
+            "Measured vLLM, GPU, distributed, or production-service latency, throughput, capacity, reliability, or cost.",
+            "Packed INT8/INT4 kernel speedup, runtime memory reduction, or hardware-native integer execution.",
+            "Foundation-model quality, production traffic representativeness, or causal diagnosis outside the configured simulator."
+          ]
+        },
+        "files": [
+          {
+            "bytes": 4677,
+            "path": "systems/inference-dynamics/actual_probe.json",
+            "sha256": "79accd238f03076b02e1394e1ce4d6225cc9134c2e2eaba968fcfda02df2e8e9"
+          },
+          {
+            "bytes": 22101,
+            "path": "systems/inference-dynamics/capacity.svg",
+            "sha256": "4b8bc310895ba6b197a23765e8fa791fb427cbcf318fa2ce6ae3b7ecf78f49bf"
+          },
+          {
+            "bytes": 188853,
+            "path": "systems/inference-dynamics/capacity_sweep.json",
+            "sha256": "5d896104b2f80d99644c57f34ffaa4317e496e6e5519262609bbabc4e27b917a"
+          },
+          {
+            "bytes": 21454,
+            "path": "systems/inference-dynamics/kv.svg",
+            "sha256": "002da0017a554550831a4928f79659b92d5044d0f7678730e89466d347394376"
+          },
+          {
+            "bytes": 3050,
+            "path": "systems/inference-dynamics/pareto.svg",
+            "sha256": "241d2c0e8749e712626160002b3dcb352b12011b9a6343222cb8f03ae33dbcfc"
+          },
+          {
+            "bytes": 19515,
+            "path": "systems/inference-dynamics/report.html",
+            "sha256": "d54e81053963c717dd08e3b59d38a89e4b75bef12f703ebb1ef7263ee243217a"
+          },
+          {
+            "bytes": 228072,
+            "path": "systems/inference-dynamics/result.json",
+            "sha256": "8585e85250bfa4dff17634d5de6e37dd33b3f1ef4a491bcda7d83ad73110aa08"
+          },
+          {
+            "bytes": 3935,
+            "path": "systems/inference-dynamics/slo.svg",
+            "sha256": "e217317cf850a709552e41fbfb443be21ae9e0d8c46191eb304e24cce42f943c"
+          }
+        ],
+        "key": "inference_dynamics",
+        "manifest_sha256": "d1fa22e0581d5f3416298f984e97d42fd2a00d79ec944c17bdde21c53578d100",
+        "verified_file_count": 8
+      },
+      {
+        "bundle": "vlm/qwen3-vl-8b-lora-real-2step",
+        "claim_boundary": {
+          "evidenced": [
+            "Actual local Qwen3-VL-8B BF16 load, source-grouped greedy evaluation, and two assistant-only LoRA optimizer steps on the declared synthetic visual dataset."
+          ],
+          "not_evidenced": [
+            "Generalized VLM quality or adaptation improvement: only three held-out synthetic examples were evaluated and the baseline was already perfect.",
+            "Convergence, multi-seed variance, public-benchmark competitiveness, human preference, or online RL.",
+            "Adapter deployment, production serving, or 32B-to-8B distillation quality."
+          ]
+        },
+        "files": [
+          {
+            "bytes": 2569,
+            "path": "vlm/qwen3-vl-8b-lora-real-2step/provenance.json",
+            "sha256": "eb95fa2f63e2d7143e788d24c059ac33d37b138ef3b2cf9a468271b61ffa84b6"
+          },
+          {
+            "bytes": 4154,
+            "path": "vlm/qwen3-vl-8b-lora-real-2step/report.html",
+            "sha256": "9b7c5829d4c2b03370e73e03c4aeedf8256d6fc3f65b681977e28c7f95444780"
+          },
+          {
+            "bytes": 130550,
+            "path": "vlm/qwen3-vl-8b-lora-real-2step/result.json",
+            "sha256": "6f79993e701ed8ab2609df6992e3d7d9ba83218adfee623005d554a3ef89dd09"
+          }
+        ],
+        "key": "qwen3_vl_lora",
+        "manifest_sha256": "e37a9126eabc189f918daa485f78dc629183992906aba57f095a599204030d40",
+        "verified_file_count": 3
+      },
+      {
+        "bundle": "vlm/visual-reward-environment",
+        "claim_boundary": {
+          "evidenced": [
+            "Measured environment-and-grader behavior on deterministic synthetic visual tasks."
+          ],
+          "not_evidenced": [
+            "VLM generation quality or online RL",
+            "human-preference agreement or production safety",
+            "distributed rollout scale"
+          ]
+        },
+        "files": [
+          {
+            "bytes": 3032,
+            "path": "vlm/visual-reward-environment/environment_spec.json",
+            "sha256": "078eec15f5f0a78128234e4d0d3241e038cb46cdc9ddc4696dce5031994273ab"
+          },
+          {
+            "bytes": 799,
+            "path": "vlm/visual-reward-environment/provenance.json",
+            "sha256": "f18631076d2cabc00959d7c4787632a72fdbd6ad1b3b7e4fe8d29b4ab0987c29"
+          },
+          {
+            "bytes": 6097,
+            "path": "vlm/visual-reward-environment/report.html",
+            "sha256": "d11d5c8dc3e94564aa900bbb4d5c13ef4bec0762ff43a9c1f9da0e7c61b8c8b3"
+          },
+          {
+            "bytes": 3294,
+            "path": "vlm/visual-reward-environment/result.json",
+            "sha256": "54c3b32e24f285d08a4f25dcd9c3cc076dbe079f68613f15dd215dd84e2b575c"
+          },
+          {
+            "bytes": 1486,
+            "path": "vlm/visual-reward-environment/reward_audit.svg",
+            "sha256": "6b886e6b3d07499fc7821bcf7d59dd625d359a939991b952bc1f8123e1526e51"
+          }
+        ],
+        "key": "visual_reward",
+        "manifest_sha256": "a7af686eb3c1a67afb3d7f4f1414615908daecc4d2c522c5696fb99cb4fb3b0c",
+        "verified_file_count": 5
+      }
+    ],
+    "integrity": "all public files verified against bundle manifests",
+    "sha256": "2ebae7c2edcc746cc51522d9b1a6d13469c5a445fe0f8dcdab0afa43837741f4",
+    "verified_file_count": 26
+  },
+  "title": "Foundation Model Lab — Evidence Scorecard",
+  "uncertainty": {
+    "agent": {
+      "method": "reported pass@1 interval per deterministic control",
+      "oracle_pass_at_1_95_ci": [
+        1.0,
+        1.0
+      ],
+      "shortcut_pass_at_1_95_ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "ddp": {
+      "absolute_tolerance": 1e-10,
+      "method": "deterministic parity against declared numerical tolerances",
+      "relative_tolerance": 1e-09
+    },
+    "inference_capacity": {
+      "knee_rule": "first across-seed mean threshold violation after sustainable prefix",
+      "last_sustainable_continuous": {
+        "configured_rate_rps": 32.0,
+        "e2e_p99_ms": {
+          "max": 197.30787040920066,
+          "mean": 193.85821535735363,
+          "min": 190.37334624610418,
+          "n": 3,
+          "population_stddev": 2.83111713694164
+        },
+        "policy": "continuous_fcfs",
+        "realized_offered_load_requests_per_second": {
+          "max": 41.80654986145981,
+          "mean": 39.78528773371537,
+          "min": 36.517225891231654,
+          "n": 3,
+          "population_stddev": 2.3323977879731426
+        },
+        "slo_goodput_tokens_per_second": {
+          "max": 488.122124366744,
+          "mean": 454.334039946642,
+          "min": 411.87469394522793,
+          "n": 3,
+          "population_stddev": 31.726022384678046
+        }
+      },
+      "method": "mean/min/max/population standard deviation over fixed seeds",
+      "seed_count": 3
+    },
+    "qwen3_vl_lora": {
+      "heldout_delta_95_ci": [
+        0.0,
+        0.0
+      ],
+      "method": "paired bootstrap over three source-grouped synthetic holdout examples"
+    },
+    "visual_reward": {
+      "absolute_delta_95_ci": [
+        0.3958333333333333,
+        0.6875
+      ],
+      "method": "bootstrap over comparison pairs",
+      "samples": 1000
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "config": {
+    "model_path": "REDACTED_LOCAL",
+    "dataset_manifest": "REDACTED_LOCAL",
+    "artifact_dir": "REDACTED_LOCAL",
+    "experiment": "qwen3_vl_8b_lora_e2e",
+    "adapter_output_dir": "REDACTED_LOCAL",
+    "backend": "local",
+    "seed": 17,
+    "holdout_fraction": 0.25,
+    "max_train_examples": 16,
+    "max_eval_examples": 3,
+    "max_steps": 2,
+    "per_device_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "max_sequence_length": 1024,
+    "max_new_tokens": 24,
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "freeze_vision_encoder": true,
+    "gradient_checkpointing": true,
+    "bf16": true,
+    "cuda_device": 0,
+    "min_pixels": 65536,
+    "max_pixels": 401408,
+    "save_adapter": false,
+    "max_wall_seconds": 900,
+    "minimum_free_vram_gib": 24,
+    "system_prompt": "Answer the visual question concisely. Follow any requested output format exactly."
+  },
+  "inputs": {
+    "REDACTED_LOCAL": "6f0e8de2e4fa40f600c43a8c2c0125ee5564c7bcc0a9552aa3a93d1a7a877eca",
+    "REDACTED_LOCAL": "13b818943e0f2a744ed111f3f9cdbb04ec0c5992ec0718bf4c2bb57ba225eb55",
+    "REDACTED_LOCAL": "eb77c6f6357d4553939b2f1ff25ca58619e59059584b9870860ce41374b16373",
+    "REDACTED_LOCAL": "10ccf3337196449c33a3b31354da62c1fc3f878f9eb2acdbfa450ac2c1f8c27f",
+    "REDACTED_LOCAL": "f7953e31c145395719492741f3b9e64b1dd271857be285eab5839e95492cd9c2",
+    "REDACTED_LOCAL": "7152fbca5842171696c9200f79c08c02577babd243a50434225f50b2dbdf1d68",
+    "REDACTED_LOCAL": "2305868c35fac26fb1b301a0b5e8126103f500e5b0ab55d31bc10d6f22e5e70c",
+    "REDACTED_LOCAL": "04aea840988ee8f0cbf0c7a0e68e10b84f38d878d77f9da22c59bac347c521a9",
+    "REDACTED_LOCAL": "fd3ed7235ec16c43f445822d7b6bc6ae844ec0c75f72649c34383f31ff103d0f",
+    "REDACTED_LOCAL": "90228f49c56594200e02bdbc77bc85fb866e9bf8e4e632cb173944ba5ae7b301",
+    "REDACTED_LOCAL": "94f3b9decac3486aa6cd2136cf4c394b282106ce5e09e0534a5dea56808b78c0",
+    "REDACTED_LOCAL": "57b3e499587c82a84117c710c9aded3ebbb6f8de4590e93c2274d7be5b400fb3",
+    "REDACTED_LOCAL": "ffab9e5aa70eecd64201875558e6b5569f75bd6410056d675e6c7dfd0a7704ce"
+  },
+  "system": {
+    "python": "3.12.12",
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "cuda": "13.0"
+  }
+}

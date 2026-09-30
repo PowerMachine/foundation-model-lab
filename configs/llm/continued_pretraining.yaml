@@ -1,0 +1,14 @@
+kind: continued_pretraining
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-0.5B
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/continued_pretraining
+train_file: null  # null이면 내장된 4개 문장으로 offline smoke 실행
+smoke: true
+max_steps: 2
+sample_limit: 16
+max_length: 128
+batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 0.00002
+dtype: bfloat16
+save_model: false
+

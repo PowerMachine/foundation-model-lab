@@ -1,0 +1,332 @@
+{
+  "schema": "fmlab.agent-task-manifest/v1",
+  "selected_task_uids": [
+    "integer_addition:canonical:eeecbd7762db314a",
+    "integer_addition:renamed_module:638fed38a359ba91",
+    "bounded_clamp:canonical:e07529580dd2fc6d",
+    "bounded_clamp:renamed_module:29e120d863bc2edc",
+    "stable_slug:canonical:f4d711babe5b563b",
+    "stable_slug:renamed_module:eb99485fe445953b",
+    "order_independent_median:canonical:b6039dd1b4e59dbb",
+    "order_independent_median:renamed_module:fea28edd944bfc0d",
+    "robust_boolean_parser:canonical:d61500afe5e2b474",
+    "robust_boolean_parser:renamed_module:d76b2b1f891ed36d",
+    "stable_unique:canonical:0bfd386fbdb136ce",
+    "stable_unique:renamed_module:a0ae67db9667f8d8"
+  ],
+  "suite_fingerprint_sha256": "86180481cdb0f01d9142154c64e8e2c319307987bad0c9d88d7f744e05e0a72d",
+  "tasks": [
+    {
+      "assets": [
+        {
+          "content_sha256": "e1a894022d1a082987b87adecb623438c9e386d86b2b621cff4a5fe7fdf7edc8",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "57f35ba2612c2b2108cffacfb3e02078aa56c929051f0653e78d8063c0aec585",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "eeecbd7762db314aac2ab3ae937ca057d1499f277adfe4ce5d8d603c84e43abe",
+      "hidden_case_count": 4,
+      "instruction": "Fix add(a, b) so it returns the arithmetic sum for integers.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "arithmetic",
+        "bug-fix",
+        "canonical"
+      ],
+      "task_id": "integer_addition",
+      "task_uid": "integer_addition:canonical:eeecbd7762db314a"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "4a5e0cebc83467cda1809c83ae3bf6c5e0bde21ce457d7aaa98b6659977febf5",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "764d03cc4e77eabcf1e9365406ee30cf999c22254b72a315d5d68b31ea09e919",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "638fed38a359ba910ad41c47622ec5c809ddc94d55ead327ec58618fa4aaba1b",
+      "hidden_case_count": 4,
+      "instruction": "Fix add(a, b) so it returns the arithmetic sum for integers.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "arithmetic",
+        "bug-fix",
+        "renamed_module"
+      ],
+      "task_id": "integer_addition",
+      "task_uid": "integer_addition:renamed_module:638fed38a359ba91"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "3575cd123863cb3789e790782f810c4f1226afe06711bb86e531fee5ff4409b8",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "6cf09988208f0a608d3b84a08e26bd27043fde94368289739a3b20f8fda3cb6a",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "e07529580dd2fc6dce0c3c5b0831a3fd55a5627b4c18d881a58a276808cd13cb",
+      "hidden_case_count": 3,
+      "instruction": "Fix clamp(value, low, high) so values are bounded inclusively.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "boundary",
+        "bug-fix",
+        "canonical"
+      ],
+      "task_id": "bounded_clamp",
+      "task_uid": "bounded_clamp:canonical:e07529580dd2fc6d"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "cd3eda2b80fbda84eb216a7859a90afde1ad5021baf4a56246252fb0e0d32992",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "f122ef977e070aa5bbf890afae13fb8cd44047da9e2a31b6c1fc6eb26346d6ab",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "29e120d863bc2edc3ee21fa50645b5e23f5c4a6c91e11a917aa051b93efcba74",
+      "hidden_case_count": 3,
+      "instruction": "Fix clamp(value, low, high) so values are bounded inclusively.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "boundary",
+        "bug-fix",
+        "renamed_module"
+      ],
+      "task_id": "bounded_clamp",
+      "task_uid": "bounded_clamp:renamed_module:29e120d863bc2edc"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "1ebc8de474a0278dfe5db095511a52e012a5242c3e7c35a72a36c263fdc5f89e",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "24f88905b50d6f0917db85a318bb1a8c09b20d3814794bbbc4c4a99c164fb8db",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "f4d711babe5b563b984118d44d2eb03435c4dc82a2a06d2f3845d6f141a6f079",
+      "hidden_case_count": 3,
+      "instruction": "Fix slugify(text) so surrounding whitespace is removed, words are lower-cased, runs of whitespace collapse, and words are joined with hyphens.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "text",
+        "normalization",
+        "canonical"
+      ],
+      "task_id": "stable_slug",
+      "task_uid": "stable_slug:canonical:f4d711babe5b563b"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "bfc4f85579600b3e8735b37ce453e839d05249f1ed826da027328a9cfce9d32c",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "10c9e8edd87059ceb199b42efb796fad0fef3a2a7fea79906bcabbe0bf10d1c5",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "eb99485fe445953bcc2dd67314fe575c34e387ffd440ea1995d97962b936f7ec",
+      "hidden_case_count": 3,
+      "instruction": "Fix slugify(text) so surrounding whitespace is removed, words are lower-cased, runs of whitespace collapse, and words are joined with hyphens.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "text",
+        "normalization",
+        "renamed_module"
+      ],
+      "task_id": "stable_slug",
+      "task_uid": "stable_slug:renamed_module:eb99485fe445953b"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "c1eb0aac5fed570f407af5ce3e31b1ca10f4914606d744e7c459c51747f21d86",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "4247747ed9c2bda5508110ba19fe088a211a63838550f98b45f4baf28b93be2b",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "b6039dd1b4e59dbbe38bdb6b0580b609cba0ec07963e4b9218d7a9087fa21a12",
+      "hidden_case_count": 4,
+      "instruction": "Fix median(values) so the result does not depend on input ordering.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "statistics",
+        "ordering",
+        "canonical"
+      ],
+      "task_id": "order_independent_median",
+      "task_uid": "order_independent_median:canonical:b6039dd1b4e59dbb"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "3a5bdc55a26d6883e9e9906da21eeb2b363dcb7c02d36ef5389d4bb9a586f501",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "0bf2d23368c41c66324e91fb1b5fbae2396db74ded6ab81f1c2060d888e5f451",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "fea28edd944bfc0dfaf25957127f9285c9b69757ce3195bf61599cdcdb72d826",
+      "hidden_case_count": 4,
+      "instruction": "Fix median(values) so the result does not depend on input ordering.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "statistics",
+        "ordering",
+        "renamed_module"
+      ],
+      "task_id": "order_independent_median",
+      "task_uid": "order_independent_median:renamed_module:fea28edd944bfc0d"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "a2af727e1063a33f0758df7b3d32460a9cc12f161944aa73d2943fb03a9cfc88",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "10651cd550235a56ad7943a205289f94b9c3f3a10ba11b9cd6888569dd8a3582",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "d61500afe5e2b474d814fd84fa433a85cb24dfa89bc34c2134e01e0d3b1be4ba",
+      "hidden_case_count": 5,
+      "instruction": "Fix parse_bool(value) to ignore surrounding whitespace and accept true, 1, yes, or on case-insensitively.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "parsing",
+        "edge-cases",
+        "canonical"
+      ],
+      "task_id": "robust_boolean_parser",
+      "task_uid": "robust_boolean_parser:canonical:d61500afe5e2b474"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "73b9bb0a87c586259208569bba46472e1784bb6509c7c6b1658bde8210c964c4",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "12e7b75034eac502e3810078f9771a059e3d110a6fd0e948f43c3747e1b0df0b",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "d76b2b1f891ed36dfd5c2230cdcde2d63fa8984ae9d613d1e666bad053ce198b",
+      "hidden_case_count": 5,
+      "instruction": "Fix parse_bool(value) to ignore surrounding whitespace and accept true, 1, yes, or on case-insensitively.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "parsing",
+        "edge-cases",
+        "renamed_module"
+      ],
+      "task_id": "robust_boolean_parser",
+      "task_uid": "robust_boolean_parser:renamed_module:d76b2b1f891ed36d"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "b81fe76d79819bc9ec173c3bada045862b127328af39af23e64e1ceaadc2ef4b",
+          "path": "solution.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "e97acf2b8f702054ca549971e68d70b8c0b03a137e565904d0be941a36b71d1b",
+          "path": "test_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "0bfd386fbdb136ce020d6bfe82012058e60530af775237675b65af3052595abb",
+      "hidden_case_count": 4,
+      "instruction": "Fix stable_unique(values) so duplicates are removed without reordering.",
+      "perturbation_id": "canonical",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "collections",
+        "ordering",
+        "canonical"
+      ],
+      "task_id": "stable_unique",
+      "task_uid": "stable_unique:canonical:0bfd386fbdb136ce"
+    },
+    {
+      "assets": [
+        {
+          "content_sha256": "a119917b215b734fad3bbd7050ed2a3c8c2786327ce6ef05e37a28c862ed4028",
+          "path": "candidate_impl.py",
+          "role": "source"
+        },
+        {
+          "content_sha256": "9b3b49c207c17af1c18de126e534f89d79cb57092e70c929542466bf03d81e34",
+          "path": "verify_public.py",
+          "role": "public_test"
+        }
+      ],
+      "fingerprint_sha256": "a0ae67db9667f8d89bb37e37b7ffe554e9a317ae74a6c45276e442b032ea50a2",
+      "hidden_case_count": 4,
+      "instruction": "Fix stable_unique(values) so duplicates are removed without reordering.",
+      "perturbation_id": "renamed_module",
+      "schema_version": "fmlab.agent-task/v1",
+      "tags": [
+        "collections",
+        "ordering",
+        "renamed_module"
+      ],
+      "task_id": "stable_unique",
+      "task_uid": "stable_unique:renamed_module:a0ae67db9667f8d8"
+    }
+  ]
+}

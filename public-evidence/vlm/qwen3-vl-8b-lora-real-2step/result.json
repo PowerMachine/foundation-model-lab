@@ -1,0 +1,3415 @@
+{
+  "experiment": "qwen3_vl_8b_lora_e2e",
+  "status": "completed",
+  "started_at": 1785834559.075213,
+  "finished_at": 1785834595.8259907,
+  "metrics": {
+    "backend": "local",
+    "simulated": false,
+    "completed_steps": 2,
+    "requested_steps": 2,
+    "stopped_early": false,
+    "stop_reason": null,
+    "final_loss": 0.19357032353220305,
+    "best_loss": 1.6416016705989023e-06,
+    "total_supervised_tokens": 44,
+    "supervised_tokens_per_second": 30.282568236406014,
+    "parameters": {
+      "total_parameters": 8774791408,
+      "trainable_parameters": 7667712,
+      "trainable_percent": 0.08738341053907364
+    },
+    "dataset": {
+      "train_examples": 45,
+      "evaluation_examples": 15,
+      "train_sources": 9,
+      "evaluation_sources": 3,
+      "source_overlap": [],
+      "train_tasks": {
+        "chart_qa": 15,
+        "document_vqa": 18,
+        "grounding": 12
+      },
+      "evaluation_tasks": {
+        "chart_qa": 5,
+        "document_vqa": 6,
+        "grounding": 4
+      },
+      "manifest_examples": 60,
+      "budgeted_train_examples": 16,
+      "budgeted_evaluation_examples": 3,
+      "budgeted_train_tasks": {
+        "chart_qa": 6,
+        "document_vqa": 5,
+        "grounding": 5
+      },
+      "budgeted_evaluation_tasks": {
+        "chart_qa": 1,
+        "document_vqa": 1,
+        "grounding": 1
+      },
+      "missing_budgeted_evaluation_tasks": []
+    },
+    "evaluation_before": {
+      "count": 3,
+      "exact_match": 1.0,
+      "anls": 1.0,
+      "type_accuracy": 1.0,
+      "by_task": {
+        "chart_qa": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        "document_vqa": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        "grounding": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        }
+      },
+      "records": [
+        {
+          "id": "chart-002-argmin",
+          "source_id": "image-sha256:04aea840988ee8f0cbf0c7a0e68e10b84f38d878d77f9da22c59bac347c521a9",
+          "task": "chart_qa",
+          "question": "Which category has the lowest value?",
+          "reference": "Gamma",
+          "prediction": "Gamma",
+          "answer_type": "text",
+          "latency_seconds": 0.4620616410393268,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        {
+          "id": "document-003-tax",
+          "source_id": "image-sha256:f7953e31c145395719492741f3b9e64b1dd271857be285eab5839e95492cd9c2",
+          "task": "document_vqa",
+          "question": "What is the tax? Answer with a number.",
+          "reference": "4.21",
+          "prediction": "4.21",
+          "answer_type": "number",
+          "latency_seconds": 0.1423057831125334,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        {
+          "id": "scene-000-blue-square-absent",
+          "source_id": "image-sha256:90228f49c56594200e02bdbc77bc85fb866e9bf8e4e632cb173944ba5ae7b301",
+          "task": "grounding",
+          "question": "Is there a blue square in this image? Answer only yes or no.",
+          "reference": "no",
+          "prediction": "no",
+          "answer_type": "boolean",
+          "latency_seconds": 0.0724390879040584,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        }
+      ],
+      "phase": "before",
+      "metric_kind": "greedy_generation",
+      "mean_latency_seconds": 0.2256021706853062
+    },
+    "evaluation_after": {
+      "count": 3,
+      "exact_match": 1.0,
+      "anls": 1.0,
+      "type_accuracy": 1.0,
+      "by_task": {
+        "chart_qa": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        "document_vqa": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        "grounding": {
+          "count": 1,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        }
+      },
+      "records": [
+        {
+          "id": "chart-002-argmin",
+          "source_id": "image-sha256:04aea840988ee8f0cbf0c7a0e68e10b84f38d878d77f9da22c59bac347c521a9",
+          "task": "chart_qa",
+          "question": "Which category has the lowest value?",
+          "reference": "Gamma",
+          "prediction": "Gamma",
+          "answer_type": "text",
+          "latency_seconds": 0.0802281741052866,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        {
+          "id": "document-003-tax",
+          "source_id": "image-sha256:f7953e31c145395719492741f3b9e64b1dd271857be285eab5839e95492cd9c2",
+          "task": "document_vqa",
+          "question": "What is the tax? Answer with a number.",
+          "reference": "4.21",
+          "prediction": "4.21",
+          "answer_type": "number",
+          "latency_seconds": 0.13637363002635539,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        },
+        {
+          "id": "scene-000-blue-square-absent",
+          "source_id": "image-sha256:90228f49c56594200e02bdbc77bc85fb866e9bf8e4e632cb173944ba5ae7b301",
+          "task": "grounding",
+          "question": "Is there a blue square in this image? Answer only yes or no.",
+          "reference": "no",
+          "prediction": "no",
+          "answer_type": "boolean",
+          "latency_seconds": 0.07041269808541983,
+          "exact_match": 1.0,
+          "anls": 1.0,
+          "type_accuracy": 1.0
+        }
+      ],
+      "phase": "after",
+      "metric_kind": "greedy_generation",
+      "mean_latency_seconds": 0.0956715007390206
+    },
+    "comparison": {
+      "paired_examples": 3,
+      "metric": "exact_match",
+      "before": 1.0,
+      "after": 1.0,
+      "delta": 0.0,
+      "paired_bootstrap": {
+        "pairs": 3,
+        "samples": 1000,
+        "delta": 0.0,
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "probability_positive": 0.0
+      }
+    },
+    "runtime_seconds": {
+      "model_load": 34.26489620807115,
+      "evaluation_before": 0.6819317670306191,
+      "training_steps": 1.4529811228858307,
+      "evaluation_after": 0.2921682840678841,
+      "total": 36.750945535022765
+    },
+    "gpu_memory_after_load": {
+      "devices": [
+        {
+          "index": 0,
+          "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+          "allocated_gib": 16.35867166519165,
+          "reserved_gib": 16.361328125,
+          "peak_allocated_gib": 16.3587327003479,
+          "peak_reserved_gib": 16.361328125,
+          "free_gib": 76.858642578125,
+          "total_gib": 94.96856689453125
+        }
+      ],
+      "aggregate_peak_allocated_gib": 16.3587327003479
+    },
+    "gpu_memory_training_peak": {
+      "devices": [
+        {
+          "index": 0,
+          "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+          "allocated_gib": 16.37551784515381,
+          "reserved_gib": 18.521484375,
+          "peak_allocated_gib": 17.445631980895996,
+          "peak_reserved_gib": 18.521484375,
+          "free_gib": 74.669189453125,
+          "total_gib": 94.96856689453125
+        }
+      ],
+      "aggregate_peak_allocated_gib": 17.445631980895996
+    },
+    "backend_details": {
+      "model_class": "PeftModelForCausalLM",
+      "processor_class": "Qwen3VLProcessor",
+      "local_files_only": true,
+      "vision_frozen": true,
+      "cuda_device": 0,
+      "device_budget_before_load": {
+        "cuda_device": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "free_gib": 93.307861328125,
+        "total_gib": 94.96856689453125,
+        "minimum_free_vram_gib": 24
+      },
+      "target_audit": {
+        "before_peft": {
+          "intended_target_suffixes": [
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "v_proj"
+          ],
+          "matched_module_count": 144,
+          "matched_by_target": {
+            "k_proj": 36,
+            "o_proj": 36,
+            "q_proj": 36,
+            "v_proj": 36
+          },
+          "matched_by_scope": {
+            "text": 144,
+            "vision": 0
+          },
+          "matched_modules": [
+            {
+              "name": "model.language_model.layers.0.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.0.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.0.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.0.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.1.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.1.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.1.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.1.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.2.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.2.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.2.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.2.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.3.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.3.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.3.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.3.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.4.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.4.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.4.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.4.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.5.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.5.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.5.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.5.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.6.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.6.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.6.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.6.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.7.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.7.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.7.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.7.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.8.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.8.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.8.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.8.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.9.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.9.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.9.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.9.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.10.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.10.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.10.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.10.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.11.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.11.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.11.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.11.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.12.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.12.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.12.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.12.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.13.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.13.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.13.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.13.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.14.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.14.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.14.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.14.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.15.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.15.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.15.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.15.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.16.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.16.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.16.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.16.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.17.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.17.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.17.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.17.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.18.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.18.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.18.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.18.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.19.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.19.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.19.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.19.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.20.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.20.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.20.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.20.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.21.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.21.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.21.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.21.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.22.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.22.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.22.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.22.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.23.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.23.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.23.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.23.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.24.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.24.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.24.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.24.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.25.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.25.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.25.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.25.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.26.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.26.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.26.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.26.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.27.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.27.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.27.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.27.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.28.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.28.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.28.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.28.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.29.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.29.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.29.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.29.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.30.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.30.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.30.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.30.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.31.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.31.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.31.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.31.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.32.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.32.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.32.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.32.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.33.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.33.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.33.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.33.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.34.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.34.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.34.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.34.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.35.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.35.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.35.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "model.language_model.layers.35.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            }
+          ],
+          "active_lora_site_count": 0,
+          "active_lora_sites": [],
+          "active_by_target": {
+            "k_proj": 0,
+            "o_proj": 0,
+            "q_proj": 0,
+            "v_proj": 0
+          },
+          "trainable_parameter_count": 0,
+          "trainable_parameters": [],
+          "trainable_by_scope": {
+            "text": 0,
+            "vision": 0
+          },
+          "unexpected_non_lora_trainable_parameters": []
+        },
+        "after_peft": {
+          "intended_target_suffixes": [
+            "k_proj",
+            "o_proj",
+            "q_proj",
+            "v_proj"
+          ],
+          "matched_module_count": 144,
+          "matched_by_target": {
+            "k_proj": 36,
+            "o_proj": 36,
+            "q_proj": 36,
+            "v_proj": 36
+          },
+          "matched_by_scope": {
+            "text": 144,
+            "vision": 0
+          },
+          "matched_modules": [
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.q_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.k_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.v_proj",
+              "class": "Linear",
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.o_proj",
+              "class": "Linear",
+              "scope": "text"
+            }
+          ],
+          "active_lora_site_count": 144,
+          "active_lora_sites": [
+            "base_model.model.model.language_model.layers.0.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.0.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.0.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.0.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.1.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.1.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.1.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.1.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.10.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.10.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.10.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.10.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.11.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.11.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.11.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.11.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.12.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.12.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.12.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.12.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.13.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.13.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.13.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.13.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.14.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.14.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.14.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.14.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.15.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.15.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.15.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.15.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.16.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.16.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.16.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.16.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.17.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.17.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.17.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.17.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.18.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.18.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.18.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.18.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.19.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.19.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.19.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.19.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.2.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.2.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.2.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.2.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.20.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.20.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.20.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.20.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.21.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.21.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.21.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.21.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.22.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.22.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.22.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.22.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.23.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.23.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.23.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.23.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.24.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.24.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.24.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.24.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.25.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.25.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.25.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.25.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.26.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.26.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.26.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.26.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.27.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.27.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.27.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.27.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.28.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.28.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.28.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.28.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.29.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.29.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.29.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.29.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.3.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.3.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.3.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.3.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.30.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.30.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.30.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.30.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.31.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.31.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.31.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.31.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.32.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.32.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.32.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.32.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.33.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.33.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.33.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.33.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.34.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.34.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.34.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.34.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.35.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.35.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.35.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.35.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.4.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.4.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.4.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.4.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.5.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.5.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.5.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.5.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.6.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.6.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.6.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.6.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.7.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.7.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.7.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.7.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.8.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.8.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.8.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.8.self_attn.v_proj",
+            "base_model.model.model.language_model.layers.9.self_attn.k_proj",
+            "base_model.model.model.language_model.layers.9.self_attn.o_proj",
+            "base_model.model.model.language_model.layers.9.self_attn.q_proj",
+            "base_model.model.model.language_model.layers.9.self_attn.v_proj"
+          ],
+          "active_by_target": {
+            "k_proj": 36,
+            "o_proj": 36,
+            "q_proj": 36,
+            "v_proj": 36
+          },
+          "trainable_parameter_count": 288,
+          "trainable_parameters": [
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.1.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.2.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.3.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.4.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.5.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.6.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.7.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.8.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.9.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.10.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.11.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.12.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.13.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.14.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.15.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.16.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.17.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.18.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.19.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.20.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.21.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.22.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.23.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.24.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.25.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.26.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.27.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.28.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.29.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.30.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.31.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.32.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.33.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.34.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.q_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.q_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.k_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.k_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.v_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.v_proj.lora_B.default.weight",
+              "numel": 8192,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.o_proj.lora_A.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            },
+            {
+              "name": "base_model.model.model.language_model.layers.35.self_attn.o_proj.lora_B.default.weight",
+              "numel": 32768,
+              "scope": "text"
+            }
+          ],
+          "trainable_by_scope": {
+            "text": 7667712,
+            "vision": 0
+          },
+          "unexpected_non_lora_trainable_parameters": []
+        }
+      }
+    }
+  },
+  "parameters": {
+    "model_path": "REDACTED_LOCAL",
+    "dataset_manifest": "REDACTED_LOCAL",
+    "artifact_dir": "REDACTED_LOCAL",
+    "experiment": "qwen3_vl_8b_lora_e2e",
+    "adapter_output_dir": "REDACTED_LOCAL",
+    "backend": "local",
+    "seed": 17,
+    "holdout_fraction": 0.25,
+    "max_train_examples": 16,
+    "max_eval_examples": 3,
+    "max_steps": 2,
+    "per_device_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0,
+    "max_grad_norm": 1.0,
+    "max_sequence_length": 1024,
+    "max_new_tokens": 24,
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "freeze_vision_encoder": true,
+    "gradient_checkpointing": true,
+    "bf16": true,
+    "cuda_device": 0,
+    "min_pixels": 65536,
+    "max_pixels": 401408,
+    "save_adapter": false,
+    "max_wall_seconds": 900,
+    "minimum_free_vram_gib": 24,
+    "system_prompt": "Answer the visual question concisely. Follow any requested output format exactly."
+  },
+  "artifacts": [
+    "REDACTED_LOCAL",
+    "REDACTED_LOCAL",
+    "REDACTED_LOCAL",
+    "REDACTED_LOCAL",
+    "REDACTED_LOCAL",
+    "REDACTED_LOCAL"
+  ],
+  "notes": [
+    "Evaluation is grouped by source image to prevent QA leakage.",
+    "Only assistant answer tokens contribute to cross-entropy loss.",
+    "This bounded synthetic run is a systems smoke test, not a model-quality benchmark.",
+    "All model and processor files were loaded with local_files_only=True."
+  ],
+  "error": null,
+  "duration_seconds": 36.75077772140503
+}

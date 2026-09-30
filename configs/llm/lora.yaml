@@ -1,0 +1,17 @@
+kind: lora
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen2.5-3B-Instruct
+output_dir: ${FMLAB_DATA_ROOT}/artifacts/llm/lora
+train_file: null
+smoke: true
+max_steps: 2
+sample_limit: 16
+max_length: 128
+batch_size: 1
+learning_rate: 0.0002
+dtype: bfloat16
+save_model: false
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+

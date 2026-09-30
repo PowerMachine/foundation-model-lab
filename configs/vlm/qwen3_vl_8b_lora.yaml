@@ -1,0 +1,26 @@
+# Legacy recipe-only example for fmlab.vlm.training; it is not the E2E runner schema.
+# Use qwen3_vl_8b_lora_e2e.yaml for executable, resource-guarded experiments.
+experiment: qwen3_vl_lora
+model_path: ${FMLAB_MODEL_ROOT}/Qwen/Qwen3-VL-8B-Instruct
+dataset_manifest: ${FMLAB_DATA_ROOT}/datasets/vlm/documents/manifest.jsonl
+output_dir: ${FMLAB_DATA_ROOT}/checkpoints/vlm/qwen3-vl-8b-lora
+rank: 16
+alpha: 32
+dropout: 0.05
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+freeze_vision_encoder: true
+gradient_checkpointing: true
+learning_rate: 0.0001
+epochs: 1.0
+per_device_batch_size: 1
+gradient_accumulation_steps: 8
+max_sequence_length: 2048
+bf16: true
+checkpoint_policy: Keep best plus last two adapters; do not merge every checkpoint.

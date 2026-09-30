@@ -1,0 +1,11 @@
+seed: 23
+device: auto
+series_length: 480
+seasonal_period: 24
+window: 36
+train_fraction: 0.72
+noise_std: 0.12
+hidden_dim: 32
+epochs: 180
+learning_rate: 0.006
+ridge: 0.01

@@ -1,0 +1,26 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'><title>VLM LoRA report</title>
+<style>
+:root{color-scheme:dark;--bg:#081018;--panel:#101e2b;--line:#284457;--ink:#e9f4f7;--muted:#9db1bc;--a:#47e0b0;--b:#64a7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0,#17344a,transparent 35%),var(--bg);color:var(--ink);font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}main{max-width:1180px;margin:auto;padding:48px 24px 72px}header{padding:36px;border:1px solid var(--line);background:linear-gradient(135deg,#102637,#101a26);border-radius:18px}h1{font:700 clamp(2rem,5vw,4rem)/1.02 system-ui;margin:.2rem 0}h2{font:650 1.2rem system-ui}.eyebrow{color:var(--a);letter-spacing:.16em}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.card,article,section{border:1px solid var(--line);background:rgba(16,30,43,.86);border-radius:14px;padding:20px}.card span,.card small,dt{color:var(--muted)}.card strong{display:block;font:700 1.55rem system-ui;margin:8px 0}.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:16px;margin:16px 0}section{margin:16px 0}.grid section{margin:0}svg{width:100%;height:auto}.axis{stroke:#496578;fill:none}.loss{stroke:var(--a);stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}svg text{fill:var(--muted);font-size:12px}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid var(--line);padding:10px}th{color:var(--muted)}dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}dd{margin:0;text-align:right}aside{border-left:4px solid var(--a);padding:16px 20px;background:#10251f}.bad{color:#ff8d96}@media(max-width:820px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}@media(max-width:480px){.cards{grid-template-columns:1fr}}
+</style></head><body><main>
+<header><p class='eyebrow'>RESOURCE-BOUNDED MULTIMODAL ADAPTATION</p>
+<h1>Qwen3-VL-8B · LoRA SFT</h1><p>assistant-only loss · image-group holdout · local-only weights</p></header>
+<section class='cards'>
+<article class='card'><span>Backend</span><strong>local</strong><small>real local</small></article>
+<article class='card'><span>Steps</span><strong>2</strong><small>requested 2</small></article>
+<article class='card'><span>Trainable</span><strong>0.0874%</strong><small>7,667,712 params</small></article>
+<article class='card'><span>Final loss</span><strong>0.1936</strong><small>best 0.0000</small></article>
+</section>
+<section class='grid'><article><h2>Optimization trace</h2><svg viewBox='0 0 600 190' role='img' aria-label='training loss'><path d='M24 164H576M24 39V164' class='axis'/><polyline points='24.0,164.0 576.0,39.0' class='loss'/><text x='28' y='32'>0.1936</text><text x='28' y='182'>0.0000</text></svg></article>
+<article><h2>Leakage-safe data contract</h2><dl>
+<dt>Manifest examples</dt><dd>60</dd>
+<dt>Budgeted train / eval</dt><dd>16 / 3</dd>
+<dt>Source overlap</dt><dd>[]</dd>
+<dt>Assistant tokens</dt><dd>44</dd>
+</dl></article></section>
+<section><h2>Held-out evaluation</h2><table><thead><tr><th>Metric</th><th>Before</th><th>After</th><th>Δ</th></tr></thead><tbody><tr><td>exact_match</td><td>1.0000</td><td>1.0000</td><td>0.0000</td></tr><tr><td>exact_match</td><td>1.0000</td><td>1.0000</td><td>0.0000</td></tr><tr><td>ANLS</td><td>1.0000</td><td>1.0000</td><td>0.0000</td></tr></tbody></table></section>
+<section class='grid'><article><h2>Runtime (seconds)</h2><table><tbody><tr><td>model_load</td><td>34.2649</td></tr><tr><td>evaluation_before</td><td>0.6819</td></tr><tr><td>training_steps</td><td>1.4530</td></tr><tr><td>evaluation_after</td><td>0.2922</td></tr><tr><td>total</td><td>36.7509</td></tr></tbody></table></article>
+<article><h2>Memory & backend</h2><table><tbody><tr><td>aggregate_peak_allocated_gib</td><td>17.4456</td></tr></tbody></table></article></section>
+<aside><strong>Interpretation boundary.</strong> The synthetic held-out set validates the full training and evaluation path. It is not a claim of general VLM quality. Mock backend values validate mechanics only.</aside>
+</main></body></html>

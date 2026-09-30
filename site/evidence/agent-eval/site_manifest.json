@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "bytes": 2217,
+      "path": "metrics.svg",
+      "sha256": "8c23461314f255a8d13fc13535f12ccbe2ce4827d3f4cb12a7f3b18601a0a7f4"
+    },
+    {
+      "bytes": 26561,
+      "path": "report.html",
+      "sha256": "dc46f39953780d3a9b23cd33c3c9ec21335e2900229777a73bf2545ebfdb9ca9"
+    },
+    {
+      "bytes": 5465,
+      "path": "result.json",
+      "sha256": "a0e126c96dfdcdcd2fa1a7e35724d2479c778279e36782d206a621de15b7e7f6"
+    },
+    {
+      "bytes": 1919,
+      "path": "run_manifest.json",
+      "sha256": "b585fad8eca323d8003e71c27fb452f54e3843d290f5589683724b8f0922e564"
+    },
+    {
+      "bytes": 2853,
+      "path": "source_evidence_manifest.json",
+      "sha256": "80c25e439411a2a8f3ff8e1fdbacc1d3b640f9ae8a6bd0c9303bc664cf20665c"
+    },
+    {
+      "bytes": 11888,
+      "path": "task_manifest.json",
+      "sha256": "9bedc3044327ba7a1f5889d466df7e8dcc64aa7991aede86a50d768230cdc698"
+    }
+  ],
+  "schema": "fmlab.portfolio-site-bundle/v1",
+  "source_manifest": "source_evidence_manifest.json",
+  "source_manifest_sha256": "80c25e439411a2a8f3ff8e1fdbacc1d3b640f9ae8a6bd0c9303bc664cf20665c",
+  "transformations": [
+    "Neutralized excluded report links: ledger.jsonl, traces.jsonl"
+  ]
+}
