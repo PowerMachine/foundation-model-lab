@@ -12,14 +12,14 @@
     {
       "path": "scorecard.json",
       "public_bytes": 25183,
-      "public_sha256": "249b7d393ef006dc372133ae234206f24268f7275ba1c5fa1987884128e72760",
-      "source_sha256": "249b7d393ef006dc372133ae234206f24268f7275ba1c5fa1987884128e72760"
+      "public_sha256": "b33e1628f0a3ad3d95c45c124d43c709ae0292c428fdaa3d95de5b5b861e52fb",
+      "source_sha256": "b33e1628f0a3ad3d95c45c124d43c709ae0292c428fdaa3d95de5b5b861e52fb"
     },
     {
       "path": "scorecard.svg",
       "public_bytes": 6057,
-      "public_sha256": "188b6798e7df4834ffd0521d862e84a4e32686b0119525e56e81625f7c7d470d",
-      "source_sha256": "188b6798e7df4834ffd0521d862e84a4e32686b0119525e56e81625f7c7d470d"
+      "public_sha256": "8ced7d0286615482acbeaec444afa5b8abb213e6df286d4e741541f990e0f6f2",
+      "source_sha256": "8ced7d0286615482acbeaec444afa5b8abb213e6df286d4e741541f990e0f6f2"
     }
   ],
   "generator": "fmlab.portfolio.scorecard",

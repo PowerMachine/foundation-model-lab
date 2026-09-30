@@ -6,6 +6,12 @@
   <meta name="description" content="Evidence-first portfolio for reliable multimodal agents, evaluation, distributed correctness, and inference systems.">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#07111e">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reliable Multimodal Agent Systems">
+  <meta property="og:description" content="Auditable work in multimodal post-training, agent evaluation, distributed correctness, and inference systems.">
+  <meta property="og:image" content="https://powermachine.github.io/foundation-model-lab/assets/github-social-preview.png">
+  <meta property="og:url" content="https://powermachine.github.io/foundation-model-lab/">
+  <meta name="twitter:card" content="summary_large_image">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Reliable Multimodal Agent Systems · Research Engineering Portfolio</title>
   <link rel="stylesheet" href="styles.css">
@@ -138,9 +144,8 @@
     <p data-i18n data-en="Deterministic synthetic tasks and scripted candidates audit the grader. This is not VLM generation, human-preference agreement, or online RL evidence." data-ko="결정론적 합성 과제와 스크립트 후보로 grader를 검증했습니다. VLM 생성 품질, 사람 선호 일치도, 온라인 RL의 증거는 아닙니다.">Deterministic synthetic tasks and scripted candidates audit the grader. This is not VLM generation, human-preference agreement, or online RL evidence.</p>
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/visual-reward/report.html">
-      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
-    </a>
+    <a class="button button-small" href="evidence/visual-reward/report.html"><span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span></a>
+    <a class="text-link" href="evidence/visual-reward/report.html"><span data-i18n data-en="Report" data-ko="보고서">Report</span> ↗</a>
     <a class="text-link" href="evidence/visual-reward/result.json">JSON ↗</a>
     <a class="text-link" href="source/visual-reward.py" data-repo-path="src/fmlab/vlm/reward_environment.py">
       <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
@@ -165,9 +170,8 @@
     <p data-i18n data-en="Three synthetic held-out examples were already perfect: exact match stayed 100% → 100% (delta 0). This proves execution wiring, not quality gain or benchmark value." data-ko="합성 held-out 3개는 baseline부터 완벽해 EM이 100% → 100%(delta 0)였습니다. 실행 경로 증거이며 품질 향상이나 benchmark 성능의 증거가 아닙니다.">Three synthetic held-out examples were already perfect: exact match stayed 100% → 100% (delta 0). This proves execution wiring, not quality gain or benchmark value.</p>
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/vlm-lora-gpu/report.html">
-      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
-    </a>
+    <a class="button button-small" href="projects/multimodal-post-training/index.html"><span data-i18n data-en="View case study" data-ko="케이스 스터디 보기">View case study</span></a>
+    <a class="text-link" href="evidence/vlm-lora-gpu/report.html"><span data-i18n data-en="Report" data-ko="보고서">Report</span> ↗</a>
     <a class="text-link" href="evidence/vlm-lora-gpu/result.json">JSON ↗</a>
     <a class="text-link" href="source/vlm-lora-gpu.py" data-repo-path="src/fmlab/vlm/lora_e2e.py">
       <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
@@ -192,9 +196,8 @@
     <p data-i18n data-en="Real files, tools, graders, and processes ran locally, but both policies are deterministic scripted controls. This is not an LLM benchmark or OS sandbox." data-ko="실제 파일·도구·grader·프로세스를 실행했지만 정책은 스크립트 통제군입니다. LLM 성능 벤치마크나 OS 보안 샌드박스가 아닙니다.">Real files, tools, graders, and processes ran locally, but both policies are deterministic scripted controls. This is not an LLM benchmark or OS sandbox.</p>
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/agent-eval/report.html">
-      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
-    </a>
+    <a class="button button-small" href="projects/reliable-agent-evaluation/index.html"><span data-i18n data-en="View case study" data-ko="케이스 스터디 보기">View case study</span></a>
+    <a class="text-link" href="evidence/agent-eval/report.html"><span data-i18n data-en="Report" data-ko="보고서">Report</span> ↗</a>
     <a class="text-link" href="evidence/agent-eval/result.json">JSON ↗</a>
     <a class="text-link" href="source/agent-eval.py" data-repo-path="src/fmlab/agent/eval_environment.py">
       <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
@@ -219,9 +222,8 @@
     <p data-i18n data-en="This is a real two-process CPU/Gloo correctness study on one tiny deterministic workload. It makes no NCCL, multi-node, convergence, or scaling claim." data-ko="작은 결정론적 workload에서 실제 2-process CPU/Gloo 정확성을 검증했습니다. NCCL, multi-node, 수렴 또는 확장 성능 주장은 포함하지 않습니다.">This is a real two-process CPU/Gloo correctness study on one tiny deterministic workload. It makes no NCCL, multi-node, convergence, or scaling claim.</p>
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/ddp-correctness/report.html">
-      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
-    </a>
+    <a class="button button-small" href="projects/distributed-correctness/index.html"><span data-i18n data-en="View case study" data-ko="케이스 스터디 보기">View case study</span></a>
+    <a class="text-link" href="evidence/ddp-correctness/report.html"><span data-i18n data-en="Report" data-ko="보고서">Report</span> ↗</a>
     <a class="text-link" href="evidence/ddp-correctness/result.json">JSON ↗</a>
     <a class="text-link" href="source/ddp-correctness.py" data-repo-path="src/fmlab/distributed/experiment.py">
       <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
@@ -246,9 +248,8 @@
     <p data-i18n data-en="Scheduler and capacity results are discrete-event simulation. Fake INT8/INT4 weights run through FP32 kernels; this is not vLLM, GPU, or fleet telemetry." data-ko="scheduler와 capacity 결과는 discrete-event simulation입니다. Fake INT8/INT4 weight는 FP32 kernel로 실행되며 vLLM, GPU, fleet telemetry가 아닙니다.">Scheduler and capacity results are discrete-event simulation. Fake INT8/INT4 weights run through FP32 kernels; this is not vLLM, GPU, or fleet telemetry.</p>
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/inference-systems/report.html">
-      <span data-i18n data-en="Open report" data-ko="보고서 열기">Open report</span>
-    </a>
+    <a class="button button-small" href="projects/inference-systems/index.html"><span data-i18n data-en="View case study" data-ko="케이스 스터디 보기">View case study</span></a>
+    <a class="text-link" href="evidence/inference-systems/report.html"><span data-i18n data-en="Report" data-ko="보고서">Report</span> ↗</a>
     <a class="text-link" href="evidence/inference-systems/result.json">JSON ↗</a>
     <a class="text-link" href="source/inference-systems.py" data-repo-path="src/fmlab/systems/simulator.py">
       <span data-i18n data-en="Source" data-ko="코드">Source</span> ↗
@@ -397,10 +398,10 @@
   </main>
 
   <footer>
-    <div><strong>Reliable Systems Lab</strong>
-      <p><span data-i18n data-en="Multimodal agents, evaluation, and ML systems." data-ko="멀티모달 에이전트·평가·ML 시스템">Multimodal agents, evaluation, and ML systems.</span></p>
+    <div><strong>Sungmok Kim · Reliable Systems Lab</strong>
+      <p><span data-i18n data-en="Independent personal portfolio · Deep Learning Lab, Seoul National University · Contact: darkha123@gmail.com" data-ko="독립적인 개인 포트폴리오 · 서울대학교 딥러닝연구실 · 연락처: darkha123@gmail.com">Independent personal portfolio · Deep Learning Lab, Seoul National University · Contact: darkha123@gmail.com</span></p><p class="independence-note"><span data-i18n data-en="Not an official project or position of any employer or institution." data-ko="직장 또는 기관의 공식 프로젝트나 입장을 대표하지 않습니다.">Not an official project or position of any employer or institution.</span></p>
     </div>
-    <div class="build-stamp"><span>Evidence snapshot</span><code>c133c27f7b08</code>
+    <div class="build-stamp"><span>Evidence snapshot</span><code>4d8cc8bcb801</code>
       <span>· 5 source + 1 aggregate manifests</span>
     </div>
   </footer>

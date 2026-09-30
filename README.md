@@ -3,9 +3,67 @@
 [![CI](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/ci.yml)
 [![Portfolio Pages](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/pages.yml/badge.svg)](https://github.com/PowerMachine/foundation-model-lab/actions/workflows/pages.yml)
 
-Resource-aware research on foundation models, multimodal adaptation, and executable agents.
+<p align="center">
+  <a href="https://powermachine.github.io/foundation-model-lab/">
+    <img src="docs/assets/github-social-preview.png" alt="Reliable multimodal agent systems portfolio" width="100%">
+  </a>
+</p>
 
-[Open the evidence site](https://powermachine.github.io/foundation-model-lab/)
+Resource-aware research on foundation models, multimodal adaptation, executable agents, and ML
+systems—with every headline claim linked to code, machine-readable evidence, and an explicit
+boundary.
+
+**[Open the portfolio](https://powermachine.github.io/foundation-model-lab/)** ·
+[5-minute reviewer path](#five-minute-reviewer-path) · [한국어 README](README.ko.md)
+
+**Sungmok Kim** · Researcher, Deep Learning Lab, Seoul National University ·
+[darkha123@gmail.com](mailto:darkha123@gmail.com)
+
+> This is an independent personal research portfolio. The work and views presented here are my
+> own and do not represent Seoul National University, Deep Learning Lab, or any current or former
+> employer. No employer- or institution-proprietary code, data, model weights, or internal
+> infrastructure is included.
+
+## Featured case studies
+
+<table>
+  <tr>
+    <td width="50%">
+      <a href="https://powermachine.github.io/foundation-model-lab/projects/multimodal-post-training/">
+        <img src="site/assets/project-multimodal-post-training.svg" alt="Multimodal post-training case study">
+      </a><br>
+      <strong>Multimodal post-training</strong><br>
+      Auditable, memory-bounded Qwen3-VL LoRA execution with grouped holdouts and a frozen vision tower.
+      <br><a href="https://powermachine.github.io/foundation-model-lab/projects/multimodal-post-training/">Case study →</a>
+    </td>
+    <td width="50%">
+      <a href="https://powermachine.github.io/foundation-model-lab/projects/reliable-agent-evaluation/">
+        <img src="site/assets/project-reliable-agent-evaluation.svg" alt="Reliable agent evaluation case study">
+      </a><br>
+      <strong>Reliable agent evaluation</strong><br>
+      Outcome and process-integrity grading with adversarial controls, bounded retries, and exact resume.
+      <br><a href="https://powermachine.github.io/foundation-model-lab/projects/reliable-agent-evaluation/">Case study →</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <a href="https://powermachine.github.io/foundation-model-lab/projects/inference-systems/">
+        <img src="site/assets/project-inference-systems.svg" alt="Inference systems case study">
+      </a><br>
+      <strong>Inference systems</strong><br>
+      Paired load traces, SLO goodput, paged KV behavior, and threshold-defined capacity knees.
+      <br><a href="https://powermachine.github.io/foundation-model-lab/projects/inference-systems/">Case study →</a>
+    </td>
+    <td width="50%">
+      <a href="https://powermachine.github.io/foundation-model-lab/projects/distributed-correctness/">
+        <img src="site/assets/project-distributed-correctness.svg" alt="Distributed correctness case study">
+      </a><br>
+      <strong>Distributed correctness</strong><br>
+      Two-rank DDP parity, exact checkpoint continuation, deterministic sharding, and fail-closed validation.
+      <br><a href="https://powermachine.github.io/foundation-model-lab/projects/distributed-correctness/">Case study →</a>
+    </td>
+  </tr>
+</table>
 
 This repository is an experiment system, not a model zoo. It turns each method into a small,
 inspectable run with explicit hypotheses, leakage controls, resource budgets, machine-readable
@@ -16,10 +74,11 @@ knowing what changed, what the evidence supports, and what still needs to be mea
 [Evidence scorecard](public-evidence/meta/portfolio-scorecard/scorecard.svg) ·
 [Scorecard JSON](public-evidence/meta/portfolio-scorecard/scorecard.json) ·
 [Scorecard manifest](public-evidence/meta/portfolio-scorecard/evidence_manifest.json) ·
-[한국어 README](README.ko.md) · [Frontier-role alignment](docs/frontier_role_alignment.md) ·
+[Frontier-role alignment](docs/frontier_role_alignment.md) ·
 [2026-08-04 frontier-systems evidence](docs/results_2026-08-04-frontier-systems.md) ·
 [Public-evidence index](public-evidence/README.md) · [Evidence policy](docs/public_evidence.md) ·
 [Research protocol](docs/research_protocol.md) · [VLM track](docs/vlm_track.md) ·
+[GitHub presentation checklist](docs/github_portfolio_release.md) ·
 [Response-distillation design](docs/vlm_response_distillation.md) ·
 [2026-08-04 actual VLM GPU smoke](docs/results_2026-08-04-vlm-gpu-smoke.md) ·
 [2026-08-03 VLM evidence report](docs/results_2026-08-03-vlm.md) ·
@@ -35,7 +94,7 @@ The self-contained reviewer UI lives in [`site/`](site/) and is deployed by the 
 [Pages workflow](.github/workflows/pages.yml). Rebuild and preview it locally with:
 
 ```bash
-python scripts/build_portfolio_site.py
+make site-build
 make site-check
 python -m http.server 8000 --directory site
 ```

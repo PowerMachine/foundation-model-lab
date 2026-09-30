@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">Qwen3-VL LoRA execution case study</title>
+<desc id="desc">8.77B BF16 parameters loaded. Three synthetic held-out examples were already perfect: exact match stayed 100% → 100% (delta 0). This proves execution wiring, not quality gain or benchmark value.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111e"/><stop offset="1" stop-color="#101f31"/></linearGradient><radialGradient id="glow" cx="84%" cy="12%" r="75%"><stop stop-color="#fb8da1" stop-opacity=".25"/><stop offset="1" stop-color="#fb8da1" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="675" rx="32" fill="url(#bg)"/><rect width="1200" height="675" rx="32" fill="url(#glow)"/><rect x="1" y="1" width="1198" height="673" rx="31" fill="none" stroke="#a4bcd9" stroke-opacity=".22"/>
+<style>.sans{font-family:Inter,Segoe UI,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}</style>
+<text x="64" y="72" class="mono" fill="#fb8da1" font-size="18" font-weight="700" letter-spacing="2">CASE STUDY · 02</text>
+<rect x="922" y="42" width="214" height="46" rx="23" fill="#fb8da1" fill-opacity=".1" stroke="#fb8da1" stroke-opacity=".55"/><text x="1029" y="71" text-anchor="middle" class="mono" fill="#fb8da1" font-size="15" font-weight="700">ACTUAL GPU</text>
+<text x="64" y="188" class="sans" fill="#f4f7fb" font-size="78" font-weight="750" letter-spacing="-4"><tspan x="64">Multimodal</tspan><tspan x="64" dy="82">post-training</tspan></text>
+<line x1="64" y1="352" x2="1136" y2="352" stroke="#a4bcd9" stroke-opacity=".18"/>
+<text x="64" y="468" class="mono" fill="#fb8da1" font-size="82" font-weight="700" letter-spacing="-4">8.77B</text><text x="64" y="510" class="sans" fill="#9fb0c5" font-size="24">BF16 parameters loaded</text>
+<path d="M730 456h88l30-40 42 86 43-126 44 80h159" fill="none" stroke="#fb8da1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="730" cy="456" r="8" fill="#fb8da1"/><circle cx="1136" cy="456" r="8" fill="#fb8da1"/>
+<rect x="64" y="570" width="1072" height="1" fill="#a4bcd9" fill-opacity=".18"/><text x="64" y="615" class="mono" fill="#71849d" font-size="16">PROBLEM → SYSTEM → EVIDENCE → CLAIM BOUNDARY</text><text x="1136" y="615" text-anchor="end" class="sans" fill="#9fb0c5" font-size="17" font-weight="650">Reliable Systems Lab</text>
+</svg>

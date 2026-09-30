@@ -186,6 +186,34 @@ def _sanitize_text(text: str, literals: Sequence[str]) -> tuple[str, int]:
     return sanitized, count
 
 
+def _repair_duplicate_json_keys(text: str) -> tuple[str, int]:
+    """Preserve redacted mapping entries whose original path keys collapse to one token."""
+
+    duplicate_count = 0
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        nonlocal duplicate_count
+        result: dict[str, Any] = {}
+        occurrences: dict[str, int] = {}
+        for key, value in pairs:
+            occurrences[key] = occurrences.get(key, 0) + 1
+            candidate = key
+            if candidate in result:
+                duplicate_count += 1
+                suffix = occurrences[key]
+                candidate = f"{key}_{suffix:03d}"
+                while candidate in result:
+                    suffix += 1
+                    candidate = f"{key}_{suffix:03d}"
+            result[candidate] = value
+        return result
+
+    decoded = json.loads(text, object_pairs_hook=unique_object)
+    if duplicate_count == 0:
+        return text, 0
+    return json.dumps(decoded, indent=2, ensure_ascii=False) + "\n", duplicate_count
+
+
 def _forbidden_findings(text: str, literals: Sequence[str]) -> list[str]:
     decoded = html.unescape(text)
     findings: list[str] = []
@@ -239,6 +267,9 @@ def _read_sanitized_file(
     except UnicodeDecodeError as exc:
         raise EvidencePolicyError(f"public evidence must be UTF-8 text: {path.name}") from exc
     sanitized, redaction_count = _sanitize_text(text, literals)
+    if path.suffix.lower() == ".json":
+        sanitized, duplicate_repairs = _repair_duplicate_json_keys(sanitized)
+        redaction_count += duplicate_repairs
     findings = _forbidden_findings(sanitized, literals)
     if findings:
         raise EvidenceRedactionError(f"forbidden content remains in {path.name}: {findings}")

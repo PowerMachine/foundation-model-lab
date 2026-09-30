@@ -20,3 +20,5 @@ datasets/
 *.pt
 *.pth
 
+# Local review captures may include browser chrome or account-identifying UI.
+Screenshot/

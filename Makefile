@@ -19,7 +19,7 @@ OFFLINE_ENV = env \
 	TORCH_HOME="$(FMLAB_CI_ROOT)/cache/torch" \
 	TRANSFORMERS_OFFLINE=1
 
-.PHONY: help bootstrap-cpu metadata lint format-check test evidence toy site-check check ci
+.PHONY: help bootstrap-cpu metadata lint format-check test evidence toy site-build site-check check ci
 
 help:
 	@echo "bootstrap-cpu  Install editable CPU/offline development dependencies"
@@ -30,6 +30,7 @@ help:
 	@echo "evidence       Verify every sanitized public-evidence manifest and file hash"
 	@echo "toy            Run the bounded download-free toy suite"
 	@echo "site-check     Validate the static site/ Pages artifact"
+	@echo "site-build     Rebuild social preview and deterministic Pages artifact"
 	@echo "check          Run lint, format, evidence, and tests"
 	@echo "ci             Run check plus the bounded toy suite"
 
@@ -66,6 +67,10 @@ toy:
 		--tiny-steps 2 \
 		--vlm-samples 1 \
 		--fail-fast
+
+site-build:
+	$(PYTHON) scripts/build_social_preview.py
+	$(PYTHON) scripts/build_portfolio_site.py
 
 site-check:
 	$(PYTHON) .github/scripts/validate_site.py site

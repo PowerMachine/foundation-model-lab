@@ -5,6 +5,7 @@ import importlib.util
 import json
 import re
 import shutil
+import struct
 import sys
 
 import pytest
@@ -102,9 +103,9 @@ def test_every_html_reference_is_local_and_resolves() -> None:
                 reference,
             )
             local = unquote(reference.split("#", 1)[0].split("?", 1)[0])
-            parts = Path(local).parts
-            assert ".." not in parts, (html_path, reference)
-            assert (html_path.parent / local).is_file(), (html_path, reference)
+            target = (html_path.parent / local).resolve()
+            assert target.is_relative_to(SITE.resolve()), (html_path, reference)
+            assert target.is_file(), (html_path, reference)
 
 
 def test_index_is_accessible_bilingual_and_boundary_first() -> None:
@@ -125,6 +126,39 @@ def test_index_is_accessible_bilingual_and_boundary_first() -> None:
     assert "source evidence bundles" in source
     assert "5 source + 1 aggregate manifests" in source
     assert "Aggregate view · not an experiment" in source
+    assert source.count('href="projects/') == len(BUILDER.CASE_STUDIES)
+
+
+def test_flagship_case_studies_are_independent_and_auditable() -> None:
+    for track_slug, study in BUILDER.CASE_STUDIES.items():
+        page = SITE / "projects" / study["slug"] / "index.html"
+        source = page.read_text(encoding="utf-8")
+        parser = MarkupAudit()
+        parser.feed(source)
+        assert parser.h1_count == 1
+        assert parser.claim_boundaries == 1
+        assert parser.i18n_nodes >= 15
+        assert not parser.duplicate_ids
+        assert not parser.images_without_alt
+        assert '<meta http-equiv="Content-Security-Policy"' in source
+        assert "Next evidence promotion" in source
+        assert f"../../evidence/{track_slug}/result.json" in source
+        assert f"../../source/{track_slug}.py" in source
+        assert 'property="og:image"' in source
+        thumbnail = SITE / "assets" / f"project-{study['slug']}.svg"
+        assert thumbnail.is_file()
+        assert "PROBLEM → SYSTEM → EVIDENCE → CLAIM BOUNDARY" in thumbnail.read_text()
+
+
+def test_social_preview_is_share_ready() -> None:
+    preview = SITE / "assets" / "github-social-preview.png"
+    payload = preview.read_bytes()
+    assert payload[:8] == b"\x89PNG\r\n\x1a\n"
+    width, height = struct.unpack(">II", payload[16:24])
+    assert (width, height) == (1280, 640)
+    index = (SITE / "index.html").read_text(encoding="utf-8")
+    assert 'property="og:image"' in index
+    assert 'name="twitter:card" content="summary_large_image"' in index
 
 
 def test_headline_metrics_are_derived_from_public_results() -> None:

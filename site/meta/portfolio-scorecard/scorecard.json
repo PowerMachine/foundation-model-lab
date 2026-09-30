@@ -532,9 +532,9 @@
         },
         "files": [
           {
-            "bytes": 2569,
+            "bytes": 2620,
             "path": "vlm/qwen3-vl-8b-lora-real-2step/provenance.json",
-            "sha256": "eb95fa2f63e2d7143e788d24c059ac33d37b138ef3b2cf9a468271b61ffa84b6"
+            "sha256": "944a82709c5149b5dc433e56495998c80ac099105d2bb4bc353bb9b5a07928ad"
           },
           {
             "bytes": 4154,
@@ -548,7 +548,7 @@
           }
         ],
         "key": "qwen3_vl_lora",
-        "manifest_sha256": "e37a9126eabc189f918daa485f78dc629183992906aba57f095a599204030d40",
+        "manifest_sha256": "eded263bf126b32b2865c38585b8f8d7e4bf22397db854db917b44e8fcade2be",
         "verified_file_count": 3
       },
       {
@@ -596,7 +596,7 @@
       }
     ],
     "integrity": "all public files verified against bundle manifests",
-    "sha256": "2ebae7c2edcc746cc51522d9b1a6d13469c5a445fe0f8dcdab0afa43837741f4",
+    "sha256": "3f9f67a3ddc6618ea6c78ef7a9e8aa308ee5fe447aacbc97737a3c34851d0c62",
     "verified_file_count": 26
   },
   "title": "Foundation Model Lab — Evidence Scorecard",

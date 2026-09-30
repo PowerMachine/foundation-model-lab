@@ -1197,6 +1197,12 @@ footer p {
   margin: 0.4rem 0 0;
 }
 
+footer .independence-note {
+  max-width: 720px;
+  color: var(--subtle);
+  font-size: 0.67rem;
+}
+
 .build-stamp {
   display: flex;
   flex-wrap: wrap;
@@ -1238,6 +1244,258 @@ footer p {
   border: 0 !important;
 }
 
+/* Flagship case studies */
+.case-main {
+  width: min(calc(100% - 3rem), var(--max-width));
+  margin: 0 auto;
+}
+
+.case-hero {
+  padding: clamp(5.5rem, 10vw, 9rem) 0 clamp(3rem, 7vw, 6rem);
+}
+
+.case-breadcrumb {
+  display: inline-flex;
+  margin-bottom: 3rem;
+  color: var(--muted);
+  font: 700 0.68rem/1 ui-monospace, monospace;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.case-breadcrumb:hover {
+  color: var(--mint);
+}
+
+.case-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.case-hero h1 {
+  max-width: 760px;
+  margin: 1.3rem 0 1.1rem;
+  font-size: clamp(3.5rem, 7vw, 6.8rem);
+  line-height: 0.91;
+}
+
+.case-lede {
+  max-width: 640px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.role-signal {
+  max-width: 640px;
+  margin: 1.4rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted);
+  border-left: 2px solid var(--mint);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.role-signal span {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--mint);
+  font: 700 0.58rem/1 ui-monospace, monospace;
+  letter-spacing: 0.08em;
+}
+
+.case-hero-figure,
+.case-evidence-figure {
+  display: grid;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #0b1020;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  place-items: center;
+}
+
+.case-hero-figure {
+  transform: rotate(0.7deg);
+}
+
+.case-hero-figure img,
+.case-evidence-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+.case-proof-strip .metric {
+  min-height: 130px;
+  border-bottom: 0;
+}
+
+.case-proof-strip .metric:last-child {
+  border-right: 0;
+}
+
+.case-section {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.25fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding: clamp(4rem, 8vw, 7.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.case-section-label {
+  padding-top: 0.65rem;
+  color: var(--subtle);
+  font: 700 0.66rem/1.3 ui-monospace, monospace;
+  letter-spacing: 0.08em;
+}
+
+.case-section h2 {
+  max-width: 920px;
+  margin: 0 0 2rem;
+  font-size: clamp(2.25rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.case-statement {
+  max-width: 980px;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.5rem, 3vw, 2.7rem);
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+
+.contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.contribution-card {
+  min-height: 260px;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 14px;
+}
+
+.contribution-card > span {
+  color: var(--mint);
+  font: 700 0.7rem/1 ui-monospace, monospace;
+}
+
+.contribution-card h3 {
+  margin: 4rem 0 0.8rem;
+  font-size: 1.15rem;
+}
+
+.contribution-card p,
+.case-finding {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.architecture-line {
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--mint) 8%, transparent), var(--surface));
+  border-radius: 14px;
+  font: 600 clamp(0.85rem, 1.6vw, 1.15rem)/1.8 ui-monospace, monospace;
+}
+
+.case-finding {
+  max-width: 880px;
+  margin-top: 1.6rem;
+}
+
+.case-evidence-figure {
+  max-width: 1000px;
+}
+
+.case-artifact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.case-section .claim-boundary {
+  max-width: 960px;
+  margin-top: 0;
+}
+
+.next-promotion {
+  max-width: 960px;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.next-promotion > span,
+.case-switcher > span {
+  color: var(--blue);
+  font: 700 0.65rem/1 ui-monospace, monospace;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.next-promotion p {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.case-switcher {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.25fr) minmax(0, 1fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  padding: 3rem 0 7rem;
+  border-top: 1px solid var(--line);
+}
+
+.case-switcher div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.case-switcher a {
+  padding: 0.8rem 1rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+
+.case-switcher a:hover,
+.case-switcher a[aria-current="page"] {
+  color: var(--text);
+  border-color: var(--mint);
+}
+
 @media (max-width: 1000px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1272,6 +1530,31 @@ footer p {
 
   .limitations-panel {
     grid-template-columns: 1fr;
+  }
+
+  .case-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-hero-figure {
+    max-width: 760px;
+    transform: none;
+  }
+
+  .case-proof-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contribution-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contribution-card {
+    min-height: auto;
+  }
+
+  .contribution-card h3 {
+    margin-top: 2rem;
   }
 }
 
@@ -1368,6 +1651,20 @@ footer p {
   .build-stamp {
     justify-content: start;
   }
+
+  .case-main {
+    width: min(calc(100% - 2rem), var(--max-width));
+  }
+
+  .case-hero h1 {
+    font-size: clamp(3rem, 15vw, 4.6rem);
+  }
+
+  .case-section,
+  .case-switcher {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1429,4 +1726,3 @@ footer p {
     break-inside: avoid;
   }
 }
-

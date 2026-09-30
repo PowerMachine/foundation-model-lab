@@ -14,9 +14,9 @@
   },
   "claim_boundary_source": "explicit_export_argument",
   "redaction": {
-    "file_redaction_count": 27,
+    "file_redaction_count": 39,
     "manifest_metadata_redaction_count": 0,
-    "total_redaction_count": 27,
+    "total_redaction_count": 39,
     "configured_literal_count": 3,
     "replacement": "REDACTED_LOCAL"
   },
@@ -39,10 +39,10 @@
     {
       "path": "provenance.json",
       "source_sha256": "4780a3c9d2324f46fd0bc00928138dc9e73f64823caeb977fe07065d82273ce4",
-      "public_sha256": "eb95fa2f63e2d7143e788d24c059ac33d37b138ef3b2cf9a468271b61ffa84b6",
+      "public_sha256": "944a82709c5149b5dc433e56495998c80ac099105d2bb4bc353bb9b5a07928ad",
       "source_bytes": 3534,
-      "public_bytes": 2569,
-      "redaction_count": 17
+      "public_bytes": 2620,
+      "redaction_count": 29
     },
     {
       "path": "report.html",

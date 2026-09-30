@@ -55,6 +55,6 @@
 <text x="720" y="792" class="body" text-anchor="start">held-out EM 100.0% to 100.0%</text>
 <text x="720" y="816" class="warn" text-anchor="start">3 grouped synthetic examples · Δ 0 · no quality improvement claimed</text>
 <line x1="48" y1="880" x2="1152" y2="880" class="divider"/>
-<text x="48" y="914" class="muted" text-anchor="start">SOURCE SET  2ebae7c2edcc746c…  ·  5 bundles  ·  26 files SHA-256 verified</text>
+<text x="48" y="914" class="muted" text-anchor="start">SOURCE SET  3f9f67a3ddc6618e…  ·  5 bundles  ·  26 files SHA-256 verified</text>
 <text x="48" y="940" class="muted" text-anchor="start">Read every result with its claim boundary. Actual is not production; scripted is not model capability; simulated is not measured serving.</text>
 </svg>

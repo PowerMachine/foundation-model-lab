@@ -216,6 +216,75 @@ TRACKS = (
     ),
 )
 
+CASE_STUDIES: dict[str, dict[str, Any]] = {
+    "vlm-lora-gpu": {
+        "slug": "multimodal-post-training",
+        "problem_en": "Can a local 8B vision-language model be adapted with an auditable, memory-bounded training contract?",
+        "problem_ko": "로컬 8B vision-language model을 감사 가능하고 메모리 제한이 명확한 계약으로 적응시킬 수 있는가?",
+        "contributions": [
+            ("Leakage-resistant data", "Image-SHA grouped splits keep questions about the same pixels out of both train and evaluation."),
+            ("Audited adaptation", "Assistant-only labels, a frozen vision tower, and exact q/k/v/o LoRA target accounting make the gradient path inspectable."),
+            ("Failure-preserving research", "The 32B FP8 teacher failure is retained as negative evidence instead of being converted into a distillation claim."),
+        ],
+        "architecture": "image-grouped manifests → multimodal collator → frozen vision tower → text-attention LoRA → paired held-out generation",
+        "next_en": "Promote this smoke with releasable non-synthetic data, three seeds, stronger baselines, and a compatible 32B FP8 runtime.",
+        "next_ko": "공개 가능한 비합성 데이터, 3개 seed, 강한 baseline, 호환되는 32B FP8 runtime으로 smoke를 승격해야 합니다.",
+    },
+    "agent-eval": {
+        "slug": "reliable-agent-evaluation",
+        "problem_en": "How do we distinguish a coding agent that solved the task from one that only manipulated the evaluator?",
+        "problem_ko": "실제로 과제를 해결한 coding agent와 evaluator만 조작한 agent를 어떻게 구분할 것인가?",
+        "contributions": [
+            ("Immutable environments", "Content-addressed tasks and ephemeral workspaces prevent the policy from silently rewriting the benchmark contract."),
+            ("Outcome + process grading", "Private functional checks are combined with unsafe-action and reward-hack detection."),
+            ("Operational reliability", "Atomic ledgers, bounded retry, injected transient faults, and exact resume test the harness—not just the happy path."),
+        ],
+        "architecture": "immutable task → restricted tool loop → process trace → hidden outcome grader → integrity grader → atomic ledger",
+        "next_en": "Replace scripted controls with real model policies and a container-backed long-horizon benchmark while preserving the same graders.",
+        "next_ko": "동일 grader를 유지하면서 scripted control을 실제 model policy와 container 기반 장기 과제로 대체해야 합니다.",
+    },
+    "inference-systems": {
+        "slug": "inference-systems",
+        "problem_en": "Where do batching, queueing, and KV policies stop producing useful SLO goodput under rising load?",
+        "problem_ko": "부하가 증가할 때 batching·queue·KV 정책이 유효한 SLO goodput을 잃는 지점은 어디인가?",
+        "contributions": [
+            ("Paired workload traces", "Three scheduler policies consume identical seeded arrivals, separating policy effects from workload variance."),
+            ("Threshold-defined knees", "Capacity is reported as a sustainable-to-failing interval under explicit completion, SLO, and terminal-failure gates."),
+            ("Measurement separation", "A real tiny CPU fidelity probe is labeled separately from the discrete-event capacity simulation."),
+        ],
+        "architecture": "seeded arrivals → scheduler + queue → paged KV model → faults/cancellation → latency + SLO goodput → capacity gate",
+        "next_en": "Replay the same workload against vLLM or SGLang and fit service/KV parameters to real GPU traces.",
+        "next_ko": "동일 workload를 vLLM 또는 SGLang에서 replay하고 실제 GPU trace로 service/KV parameter를 보정해야 합니다.",
+    },
+    "ddp-correctness": {
+        "slug": "distributed-correctness",
+        "problem_en": "Can distributed training and checkpoint resume be proven equivalent to a declared single-process reference?",
+        "problem_ko": "분산 학습과 checkpoint resume가 선언된 single-process 기준과 동등함을 증명할 수 있는가?",
+        "contributions": [
+            ("Semantic reference", "A float64 global-batch run defines the expected gradient and update rather than treating successful launch as correctness."),
+            ("Exact continuation", "RNG, sampler cursor, optimizer, and model state are restored and compared with uninterrupted execution."),
+            ("Fail-closed checkpoints", "Contract drift and byte corruption are rejected before applying state."),
+        ],
+        "architecture": "global-batch reference ↔ 2-rank Gloo + no_sync accumulation → atomic checkpoint → fresh-process resume → invariant gates",
+        "next_en": "Re-run semantic gates on NCCL, then measure multi-GPU scaling and fault recovery as separate claims.",
+        "next_ko": "NCCL에서 semantic gate를 다시 실행한 뒤 multi-GPU scaling과 fault recovery를 별도 주장으로 측정해야 합니다.",
+    },
+}
+
+CASE_STUDY_SIGNALS = {
+    "vlm-lora-gpu": ("8.77B", "BF16 parameters loaded", "ACTUAL GPU"),
+    "agent-eval": ("24", "local evaluation episodes", "ACTUAL HARNESS"),
+    "inference-systems": ("81", "paired systems trials", "SIM + CPU"),
+    "ddp-correctness": ("11/11", "correctness gates passed", "ACTUAL CPU/GLOO"),
+}
+
+HIRING_SIGNALS = {
+    "vlm-lora-gpu": "Resource-bounded multimodal post-training with auditable data and gradient contracts.",
+    "agent-eval": "Evaluation infrastructure that separates task completion from evaluator manipulation.",
+    "inference-systems": "Capacity analysis that separates modeled behavior from measured runtime evidence.",
+    "ddp-correctness": "Distributed execution validated against semantic invariants—not successful launch.",
+}
+
 
 def _load_json(path: Path) -> dict[str, Any]:
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -394,6 +463,14 @@ def _metric_html(metric: dict[str, str]) -> str:
 
 def _track_card(track: Track, metrics: list[dict[str, str]]) -> str:
     tokens = " ".join(track.evidence_tokens)
+    case_study = CASE_STUDIES.get(track.slug)
+    primary_action = (
+        f'<a class="button button-small" href="projects/{case_study["slug"]}/index.html">'
+        f'{_dual("View case study", "케이스 스터디 보기")}</a>'
+        if case_study
+        else f'<a class="button button-small" href="evidence/{track.slug}/report.html">'
+        f'{_dual("Open report", "보고서 열기")}</a>'
+    )
     return f"""
 <article class="track-card accent-{track.accent}" id="{track.slug}" data-evidence="{tokens}">
   <div class="track-card-header">
@@ -413,15 +490,80 @@ def _track_card(track: Track, metrics: list[dict[str, str]]) -> str:
     {_dual(track.boundary_en, track.boundary_ko, tag="p")}
   </aside>
   <div class="card-actions">
-    <a class="button button-small" href="evidence/{track.slug}/report.html">
-      {_dual("Open report", "보고서 열기")}
-    </a>
+    {primary_action}
+    <a class="text-link" href="evidence/{track.slug}/report.html">{_dual("Report", "보고서")} ↗</a>
     <a class="text-link" href="evidence/{track.slug}/result.json">JSON ↗</a>
     <a class="text-link" href="source/{track.slug}.py" data-repo-path="{track.source_code}">
       {_dual("Source", "코드")} ↗
     </a>
   </div>
 </article>""".strip()
+
+
+def _render_case_study(
+    track: Track,
+    metrics: list[dict[str, str]],
+    digest: str,
+) -> str:
+    study = CASE_STUDIES[track.slug]
+    contributions = "".join(
+        f"""<article class="contribution-card"><span>0{index}</span>
+        <h3>{html.escape(title)}</h3><p>{html.escape(body)}</p></article>"""
+        for index, (title, body) in enumerate(study["contributions"], start=1)
+    )
+    project_link_parts = []
+    for slug, candidate in CASE_STUDIES.items():
+        current_attr = ' aria-current="page"' if slug == track.slug else ""
+        title = next(item.title_en for item in TRACKS if item.slug == slug)
+        project_link_parts.append(
+            f'<a href="../{candidate["slug"]}/index.html"{current_attr}>'
+            f"{html.escape(title)}</a>"
+        )
+    project_links = "".join(project_link_parts)
+    return f"""<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{html.escape(track.subtitle_en, quote=True)}">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#07111e">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{html.escape(track.title_en, quote=True)} · Reliable Systems Lab">
+  <meta property="og:description" content="{html.escape(study['problem_en'], quote=True)}">
+  <meta property="og:image" content="https://powermachine.github.io/foundation-model-lab/assets/github-social-preview.png">
+  <meta property="og:url" content="https://powermachine.github.io/foundation-model-lab/projects/{study['slug']}/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <title>{html.escape(track.title_en)} · Reliable Systems Lab</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../app.js" defer></script>
+</head>
+<body class="case-page accent-{track.accent}">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <header class="site-header">
+    <a class="brand" href="../../index.html" aria-label="Portfolio home"><span class="brand-mark" aria-hidden="true">RM</span><span class="brand-text">Reliable Systems Lab</span></a>
+    <nav class="primary-nav" aria-label="Case study navigation"><a href="#problem">{_dual("Problem", "문제")}</a><a href="#contributions">{_dual("Contributions", "기여")}</a><a href="#evidence">{_dual("Evidence", "증거")}</a><a href="#boundary">{_dual("Boundary", "경계")}</a></nav>
+    <div class="header-tools"><div class="language-switch" role="group" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">EN</button><button type="button" data-language="ko" aria-pressed="false">KO</button></div><button class="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme"><span aria-hidden="true">◐</span></button></div>
+  </header>
+  <main id="main" class="case-main">
+    <section class="case-hero" id="top">
+      <a class="case-breadcrumb" href="../../index.html">← {_dual("All projects", "전체 프로젝트")}</a>
+      <div class="case-hero-grid"><div><p class="section-kicker">CASE STUDY · {track.number}</p><span class="evidence-badge">{_dual(track.evidence_en, track.evidence_ko)}</span><h1>{_dual(track.title_en, track.title_ko)}</h1>{_dual(track.subtitle_en, track.subtitle_ko, tag="p", class_name="case-lede")}<p class="role-signal"><span>ROLE SIGNAL</span>{html.escape(HIRING_SIGNALS[track.slug])}</p>
+        <div class="hero-actions"><a class="button button-primary" href="#evidence">{_dual("Inspect evidence", "증거 확인")} ↓</a><a class="button button-secondary" href="../../evidence/{track.slug}/report.html">{_dual("Open technical report", "기술 보고서 열기")}</a></div>
+      </div><figure class="case-hero-figure"><img src="../../assets/{track.chart_name}" alt="{html.escape(track.chart_alt, quote=True)}" width="1120" height="570"></figure></div>
+      <div class="case-proof-strip">{"".join(_metric_html(metric) for metric in metrics)}</div>
+    </section>
+    <section class="case-section" id="problem"><div class="case-section-label">01 / PROBLEM</div><div><h2>{_dual("The research question", "연구 질문")}</h2>{_dual(study["problem_en"], study["problem_ko"], tag="p", class_name="case-statement")}</div></section>
+    <section class="case-section" id="contributions"><div class="case-section-label">02 / CONTRIBUTIONS</div><div><h2>{_dual("What this work adds", "이 작업의 핵심 기여")}</h2><div class="contribution-grid">{contributions}</div></div></section>
+    <section class="case-section" id="architecture"><div class="case-section-label">03 / SYSTEM</div><div><h2>{_dual("System path", "시스템 경로")}</h2><div class="architecture-line">{html.escape(study["architecture"])}</div>{_dual(track.finding_en, track.finding_ko, tag="p", class_name="case-finding")}</div></section>
+    <section class="case-section" id="evidence"><div class="case-section-label">04 / EVIDENCE</div><div><h2>{_dual("Measured result, traceable artifacts", "측정 결과와 추적 가능한 산출물")}</h2><figure class="case-evidence-figure"><img src="../../assets/{track.chart_name}" alt="{html.escape(track.chart_alt, quote=True)}" width="1120" height="570"></figure><div class="case-artifact-links"><a class="button button-small" href="../../evidence/{track.slug}/report.html">{_dual("Technical report", "기술 보고서")}</a><a class="text-link" href="../../evidence/{track.slug}/result.json">Result JSON ↗</a><a class="text-link" href="../../evidence/{track.slug}/site_manifest.json">Manifest ↗</a><a class="text-link" href="../../source/{track.slug}.py" data-repo-path="{track.source_code}">{_dual("Source", "코드")} ↗</a></div></div></section>
+    <section class="case-section" id="boundary"><div class="case-section-label">05 / BOUNDARY</div><div><h2>{_dual("What the evidence does—and does not—support", "증거가 지지하는 것과 지지하지 않는 것")}</h2><aside class="claim-boundary"><span class="boundary-label">{_dual("Claim boundary", "주장 경계")}</span>{_dual(track.boundary_en, track.boundary_ko, tag="p")}</aside><div class="next-promotion"><span>{_dual("Next evidence promotion", "다음 증거 승격")}</span>{_dual(study["next_en"], study["next_ko"], tag="p")}</div></div></section>
+    <nav class="case-switcher" aria-label="Other case studies"><span>{_dual("Explore case studies", "다른 케이스 스터디")}</span><div>{project_links}</div></nav>
+  </main>
+  <footer><div><strong>Sungmok Kim · Reliable Systems Lab</strong><p>{_dual("Independent personal research portfolio · Deep Learning Lab, Seoul National University · Contact: darkha123@gmail.com", "독립적인 개인 연구 포트폴리오 · 서울대학교 딥러닝연구실 · 연락처: darkha123@gmail.com")}</p><p class="independence-note">{_dual("Not an official project or position of any employer or institution.", "직장 또는 기관의 공식 프로젝트나 입장을 대표하지 않습니다.")}</p></div><div class="build-stamp"><span>Evidence snapshot</span><code>{digest[:12]}</code></div></footer>
+</body></html>
+"""
 
 
 def _ledger_row(
@@ -500,6 +642,38 @@ def _gpu_profile_svg(result: dict[str, Any]) -> str:
 </svg>"""
 
 
+def _case_thumbnail_svg(track: Track) -> str:
+    """Render a compact README-safe overview card from public metadata."""
+
+    signal, label, mode = CASE_STUDY_SIGNALS[track.slug]
+    title_lines = {
+        "vlm-lora-gpu": ("Multimodal", "post-training"),
+        "agent-eval": ("Reliable agent", "evaluation"),
+        "inference-systems": ("Inference", "systems"),
+        "ddp-correctness": ("Distributed", "correctness"),
+    }[track.slug]
+    accent = {
+        "rose": "#fb8da1",
+        "violet": "#bda6ff",
+        "amber": "#f7c56a",
+        "blue": "#6eb5ff",
+    }[track.accent]
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">{html.escape(track.title_en)} case study</title>
+<desc id="desc">{html.escape(signal)} {html.escape(label)}. {html.escape(track.boundary_en)}</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111e"/><stop offset="1" stop-color="#101f31"/></linearGradient><radialGradient id="glow" cx="84%" cy="12%" r="75%"><stop stop-color="{accent}" stop-opacity=".25"/><stop offset="1" stop-color="{accent}" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="675" rx="32" fill="url(#bg)"/><rect width="1200" height="675" rx="32" fill="url(#glow)"/><rect x="1" y="1" width="1198" height="673" rx="31" fill="none" stroke="#a4bcd9" stroke-opacity=".22"/>
+<style>.sans{{font-family:Inter,Segoe UI,sans-serif}}.mono{{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}}</style>
+<text x="64" y="72" class="mono" fill="{accent}" font-size="18" font-weight="700" letter-spacing="2">CASE STUDY · {track.number}</text>
+<rect x="922" y="42" width="214" height="46" rx="23" fill="{accent}" fill-opacity=".1" stroke="{accent}" stroke-opacity=".55"/><text x="1029" y="71" text-anchor="middle" class="mono" fill="{accent}" font-size="15" font-weight="700">{html.escape(mode)}</text>
+<text x="64" y="188" class="sans" fill="#f4f7fb" font-size="78" font-weight="750" letter-spacing="-4"><tspan x="64">{html.escape(title_lines[0])}</tspan><tspan x="64" dy="82">{html.escape(title_lines[1])}</tspan></text>
+<line x1="64" y1="352" x2="1136" y2="352" stroke="#a4bcd9" stroke-opacity=".18"/>
+<text x="64" y="468" class="mono" fill="{accent}" font-size="82" font-weight="700" letter-spacing="-4">{html.escape(signal)}</text><text x="64" y="510" class="sans" fill="#9fb0c5" font-size="24">{html.escape(label)}</text>
+<path d="M730 456h88l30-40 42 86 43-126 44 80h159" fill="none" stroke="{accent}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="730" cy="456" r="8" fill="{accent}"/><circle cx="1136" cy="456" r="8" fill="{accent}"/>
+<rect x="64" y="570" width="1072" height="1" fill="#a4bcd9" fill-opacity=".18"/><text x="64" y="615" class="mono" fill="#71849d" font-size="16">PROBLEM → SYSTEM → EVIDENCE → CLAIM BOUNDARY</text><text x="1136" y="615" text-anchor="end" class="sans" fill="#9fb0c5" font-size="17" font-weight="650">Reliable Systems Lab</text>
+</svg>"""
+
+
 def _render_index(
     results: dict[str, dict[str, Any]],
     capacity: dict[str, Any],
@@ -557,6 +731,12 @@ def _render_index(
   <meta name="description" content="Evidence-first portfolio for reliable multimodal agents, evaluation, distributed correctness, and inference systems.">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#07111e">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Reliable Multimodal Agent Systems">
+  <meta property="og:description" content="Auditable work in multimodal post-training, agent evaluation, distributed correctness, and inference systems.">
+  <meta property="og:image" content="https://powermachine.github.io/foundation-model-lab/assets/github-social-preview.png">
+  <meta property="og:url" content="https://powermachine.github.io/foundation-model-lab/">
+  <meta name="twitter:card" content="summary_large_image">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Reliable Multimodal Agent Systems · Research Engineering Portfolio</title>
   <link rel="stylesheet" href="styles.css">
@@ -925,9 +1105,11 @@ def _render_index(
   </main>
 
   <footer>
-    <div><strong>Reliable Systems Lab</strong>
+    <div><strong>Sungmok Kim · Reliable Systems Lab</strong>
       <p>{
-        _dual("Multimodal agents, evaluation, and ML systems.", "멀티모달 에이전트·평가·ML 시스템")
+        _dual("Independent personal portfolio · Deep Learning Lab, Seoul National University · Contact: darkha123@gmail.com", "독립적인 개인 포트폴리오 · 서울대학교 딥러닝연구실 · 연락처: darkha123@gmail.com")
+    }</p><p class="independence-note">{
+        _dual("Not an official project or position of any employer or institution.", "직장 또는 기관의 공식 프로젝트나 입장을 대표하지 않습니다.")
     }</p>
     </div>
     <div class="build-stamp"><span>Evidence snapshot</span><code>{digest[:12]}</code>
@@ -1139,7 +1321,7 @@ def _copy_scorecard_bundle(output_dir: Path) -> None:
         )
 
 
-_GENERATED_DIRECTORIES = ("assets", "evidence", "source", "meta")
+_GENERATED_DIRECTORIES = ("assets", "evidence", "source", "meta", "projects")
 
 
 def _reset_generated_output(output_dir: Path) -> None:
@@ -1204,8 +1386,37 @@ def build_site(output_dir: Path = SITE_SOURCE) -> Path:
             chart_target.parent.mkdir(parents=True, exist_ok=True)
             chart_target.write_text(svg, encoding="utf-8")
 
+    social_preview = ROOT / "docs" / "assets" / "github-social-preview.png"
+    if not social_preview.is_file():
+        raise ValueError(
+            f"Missing social preview: run scripts/build_social_preview.py ({social_preview})"
+        )
+    preview_target = output_dir / "assets" / "github-social-preview.png"
+    preview_target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(social_preview, preview_target)
+    for track in TRACKS:
+        if track.slug not in CASE_STUDIES:
+            continue
+        thumbnail = _case_thumbnail_svg(track)
+        thumbnail_path = (
+            output_dir / "assets" / f"project-{CASE_STUDIES[track.slug]['slug']}.svg"
+        )
+        _validate_public_text(thumbnail_path, thumbnail)
+        thumbnail_path.write_text(thumbnail, encoding="utf-8")
+
     _copy_scorecard_bundle(output_dir)
-    index = _render_index(results, capacity, scorecard, _evidence_digest())
+    digest = _evidence_digest()
+    derived = _derived_metrics(results)
+    for track in TRACKS:
+        if track.slug not in CASE_STUDIES:
+            continue
+        page = _render_case_study(track, derived[track.slug], digest)
+        page_path = output_dir / "projects" / CASE_STUDIES[track.slug]["slug"] / "index.html"
+        _validate_public_text(page_path, page)
+        page_path.parent.mkdir(parents=True, exist_ok=True)
+        page_path.write_text(page, encoding="utf-8")
+
+    index = _render_index(results, capacity, scorecard, digest)
     _validate_public_text(output_dir / "index.html", index)
     index_path = output_dir / "index.html"
     index_path.write_text(index, encoding="utf-8")

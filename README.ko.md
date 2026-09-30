@@ -1,12 +1,38 @@
 # Foundation Model Lab
 
+<p align="center">
+  <a href="https://powermachine.github.io/foundation-model-lab/">
+    <img src="docs/assets/github-social-preview.png" alt="신뢰 가능한 멀티모달 에이전트 시스템 포트폴리오" width="100%">
+  </a>
+</p>
+
+**[포트폴리오 열기](https://powermachine.github.io/foundation-model-lab/)** ·
+[핵심 케이스 스터디](#핵심-케이스-스터디) · [English README](README.md)
+
+**김성목 (Sungmok Kim)** · 서울대학교 딥러닝연구실 연구원 ·
+[darkha123@gmail.com](mailto:darkha123@gmail.com)
+
+> 본 저장소는 독립적인 개인 연구 포트폴리오입니다. 공개된 연구와 견해는 개인의 것이며,
+> 서울대학교·딥러닝연구실 또는 현재·이전 직장의 공식 입장을 대표하지 않습니다. 직장이나
+> 기관의 비공개 코드·데이터·모델 weight·내부 인프라는 포함하지 않습니다.
+
+## 핵심 케이스 스터디
+
+| 프로젝트 | 핵심 질문 | 공개 페이지 |
+|---|---|---|
+| **Multimodal post-training** | 로컬 8B VLM을 데이터 누수와 gradient path가 감사 가능한 형태로 적응할 수 있는가? | [Case study →](https://powermachine.github.io/foundation-model-lab/projects/multimodal-post-training/) |
+| **Reliable agent evaluation** | 실제 과제 해결과 evaluator 조작을 어떻게 분리할 것인가? | [Case study →](https://powermachine.github.io/foundation-model-lab/projects/reliable-agent-evaluation/) |
+| **Inference systems** | 부하가 증가할 때 scheduler와 KV 정책의 SLO capacity knee는 어디인가? | [Case study →](https://powermachine.github.io/foundation-model-lab/projects/inference-systems/) |
+| **Distributed correctness** | DDP와 checkpoint resume가 선언된 single-process 기준과 동등한가? | [Case study →](https://powermachine.github.io/foundation-model-lab/projects/distributed-correctness/) |
+
 [포트폴리오 요약](PORTFOLIO.md) ·
 [Evidence scorecard](public-evidence/meta/portfolio-scorecard/scorecard.svg) ·
 [Scorecard JSON](public-evidence/meta/portfolio-scorecard/scorecard.json) ·
-[English README](README.md) · [Frontier 역할 정합성](docs/frontier_role_alignment.md) ·
+[Frontier 역할 정합성](docs/frontier_role_alignment.md) ·
 [2026-08-04 frontier-systems 결과](docs/results_2026-08-04-frontier-systems.md) ·
 [공개 evidence 인덱스](public-evidence/README.md) ·
 [공개 evidence 정책](docs/public_evidence.md) · [연구 프로토콜](docs/research_protocol.md) ·
+[GitHub 공개 체크리스트](docs/github_portfolio_release.md) ·
 [VLM 트랙](docs/vlm_track.md) ·
 [2026-08-04 실제 VLM GPU smoke](docs/results_2026-08-04-vlm-gpu-smoke.md) ·
 [2026-08-03 VLM 결과](docs/results_2026-08-03-vlm.md) ·
@@ -22,7 +48,7 @@ self-contained reviewer UI는 [`site/`](site/)에 있으며 최소 권한
 [Pages workflow](.github/workflows/pages.yml)로 배포한다. 로컬 재생성·미리보기:
 
 ```bash
-python scripts/build_portfolio_site.py
+make site-build
 make site-check
 python -m http.server 8000 --directory site
 ```

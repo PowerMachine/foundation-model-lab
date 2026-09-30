@@ -9,7 +9,7 @@ description = "Visual, reproducible toy experiments for foundation models, multi
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "DLLab" }]
+authors = [{ name = "Sungmok Kim", email = "darkha123@gmail.com" }]
 dependencies = [
   "numpy>=1.26",
   "matplotlib>=3.8",

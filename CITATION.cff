@@ -5,7 +5,10 @@ message: >-
 title: Foundation Model Lab
 type: software
 authors:
-  - name: Foundation Model Lab contributors
+  - family-names: Kim
+    given-names: Sungmok
+    email: darkha123@gmail.com
+    affiliation: Deep Learning Lab, Seoul National University
 version: 0.1.0
 date-released: 2026-08-04
 license: MIT

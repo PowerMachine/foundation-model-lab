@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+import fmlab.release as release
 
 from fmlab.release import (
     EvidencePolicyError,
@@ -115,6 +116,20 @@ def test_export_is_allowlisted_redacted_hashed_and_atomically_replaces_destinati
 
     # Source evidence is immutable; export only writes the destination/staging sibling.
     assert file_sha256(source / "result.json") == original_result_sha
+
+
+def test_json_redaction_preserves_colliding_path_key_entries() -> None:
+    source = '{"inputs":{"/data/private/a.png":"aaa","/data/private/b.png":"bbb"}}\n'
+    sanitized, count = release._sanitize_text(source, ())
+    repaired, repairs = release._repair_duplicate_json_keys(sanitized)
+    decoded = json.loads(repaired)
+
+    assert count == 2
+    assert repairs == 1
+    assert decoded["inputs"] == {
+        "REDACTED_LOCAL": "aaa",
+        "REDACTED_LOCAL_002": "bbb",
+    }
 
 
 @pytest.mark.parametrize(
