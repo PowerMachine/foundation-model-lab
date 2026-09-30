@@ -34,7 +34,7 @@ vlm = [
   "peft>=0.14",
 ]
 ml = ["scikit-learn>=1.5", "networkx>=3.2", "pandas>=2.2"]
-dev = ["pytest>=8", "ruff>=0.9"]
+dev = ["pytest>=8", "ruff==0.15.10"]
 all = [
   "accelerate>=1.2",
   "bitsandbytes>=0.45; platform_system == 'Linux'",
@@ -67,4 +67,3 @@ pythonpath = ["src"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
-
